@@ -12,10 +12,24 @@
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+# define QUICK_SORT 1
+# define DEBUG printf("DEBUG\n");fflush(stdout)
 # include "libft/includes/libft.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
 
-int		ft_is_valid(int ac, char **tab);
+int		ft_is_valid(char **tab);
+typedef struct	s_piles
+{
+	int	*a;
+	int	*b;
+}				t_piles;
+typedef struct	s_quicksort
+{
+	int	left;
+	int	right;
+	int	pivot;
+
+}				t_quicksort;
 #endif

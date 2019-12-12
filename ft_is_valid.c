@@ -25,12 +25,12 @@ static int	ft_isnumber(char *str)
 	return (1);
 }
 
-static int	ft_check_entry(int ac, char **tab)
+static int	ft_check_entry(char **tab)
 {
 	int	i;
 
-	i = 1;
-	while (i < ac)
+	i = 0;
+	while (tab[i])
 	{
 		if (!ft_isnumber(tab[i++]))
 			return (0);
@@ -38,16 +38,16 @@ static int	ft_check_entry(int ac, char **tab)
 	return (1);
 }
 
-static int	ft_check_duplicate(int ac, char **tab)
+static int	ft_check_duplicate(char **tab)
 {
 	int	i;
 	int	j;
 
-	i = 1;
-	while (i < ac - 1)
+	i = 0;
+	while (tab[i])
 	{
 		j = i + 1;
-		while (j < ac)
+		while (tab[j])
 		{
 			if (!ft_strcmp(tab[i], tab[j++]))
 				return (0);
@@ -57,9 +57,9 @@ static int	ft_check_duplicate(int ac, char **tab)
 	return (1);
 }
 
-int			ft_is_valid(int ac, char **tab)
+int			ft_is_valid(char **tab)
 {
-	if (!ft_check_entry(ac, tab) || !ft_check_duplicate(ac, tab))
+	if (!ft_check_entry(tab) || !ft_check_duplicate(tab))
 		return(0);
 	return (1);
 }
