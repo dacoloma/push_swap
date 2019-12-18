@@ -20,6 +20,8 @@
 # define PUSH_B printf("PB\n");fflush(stdout)
 # define ROTATE_A printf("RA\n");fflush(stdout)
 # define ROTATE_B printf("RB\n");fflush(stdout)
+# define RROTATE_A printf("RRA\n");fflush(stdout)
+# define RROTATE_B printf("RRB\n");fflush(stdout)
 # include "libft/includes/libft.h"
 # include <unistd.h>
 # include <stdlib.h>
@@ -49,4 +51,7 @@ void	ft_ss(t_piles *pile);
 void	ft_ra(t_piles *pile);
 void	ft_rb(t_piles *pile);
 void	ft_rr(t_piles *pile);
+void	ft_rra(t_piles *pile);
+void	ft_rrb(t_piles *pile);
+void	ft_rrr(t_piles *pile);
 #endif

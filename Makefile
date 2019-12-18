@@ -28,6 +28,7 @@ SRC =	ft_is_valid.c\
 		ft_swap.c\
 		ft_push.c\
 		ft_rotate.c\
+		ft_rrotate.c\
 		print_piles.c
 	# 	checker.c\
 	#   push_swap.c

@@ -140,10 +140,13 @@ int	main(int ac, char **av)
 	// ft_print_piles(pile);
 	// push_n_times(&ft_pa, pile, 8);
 	ft_print_piles(pile);
-	rotate_n_times(&ft_ra, pile, 3);
+	// rotate_n_times(&ft_ra, pile, 3);
+	rotate_n_times(&ft_rra, pile, 3);
+	ft_print_piles(pile);
 	push_n_times(&ft_pb, pile, 4);
 	ft_print_piles(pile);
-	rotate_n_times(&ft_rb, pile, 3);
+	// rotate_n_times(&ft_rb, pile, 3);
+	rotate_n_times(&ft_rrb, pile, 3);
 	ft_print_piles(pile);
 	return (0);
 }
