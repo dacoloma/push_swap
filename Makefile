@@ -24,7 +24,10 @@ CC = gcc
 
 CF = -Wall -Wextra -Werror -I $(HEADER)
 
-SRC =	ft_is_valid.c
+SRC =	ft_is_valid.c\
+		ft_swap.c\
+		ft_push.c\
+		print_piles.c
 	# 	checker.c\
 	#   push_swap.c
 
@@ -45,7 +48,7 @@ $(NAME) : $(LIBFT) $(OBJ) push_swap.c checker.c
 	# ar rc $(NAME) $(OBJ)
 	# ranlib $(NAME)
 	$(CC) $(CF) -o $(NAME) push_swap.c -g $(OBJ) -L libft/ -lft
-	$(CC) $(CF) -o $(CHECKER) checker.c -L libft/ -lft
+	$(CC) $(CF) -o $(CHECKER) checker.c -g $(OBJ) -L libft/ -lft
 clean:
 	make clean -C libft/
 	rm -f $(OBJ)

@@ -12,6 +12,11 @@
 
 #include "push_swap.h"
 
+static int	*ft_partition(int *left, int *right, int pivot)
+{
+
+}	
+
 static void	ft_quick_sort(int *tab, int len)
 {
 	
