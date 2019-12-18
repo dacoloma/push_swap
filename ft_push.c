@@ -19,6 +19,7 @@ void	ft_pb(t_piles *pile)
 
 	if (pile->len > 0 && pile->len_b < pile->len)
 	{
+		PUSH_B;
 		i = pile->len_b;
 		j = pile->len - 1 - pile->len_b;
 		(pile->b)[j] = (pile->a)[i];
@@ -33,6 +34,7 @@ void	ft_pa(t_piles *pile)
 	
 	if (pile->len > 0 && pile->len_b > 0)
 	{
+		PUSH_A;
 		i = pile->len_b - 1;
 		j = pile->len - pile->len_b;
 		(pile->a)[i] = (pile->b)[j];
