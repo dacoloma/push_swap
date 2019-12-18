@@ -12,20 +12,115 @@
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+int		ft_print_int_tab(int *tab, int len)
 {
-	// if (!ft_is_valid())
-	// {
-
-	// }
 	int	i;
 
-	i = 1;
-	while (i < ac)
+	i = 0;
+	while (i < len)
 	{
-		printf("%s\n", av[i]);
+		printf("%d\n", tab[i++]);
 		fflush(stdout);
+	}
+	return (i);
+}
+
+int		ft_print_char_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		printf("%s\n", tab[i++]);
+		fflush(stdout);
+	}
+	return (i);
+}
+
+int		ft_tablen(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
 		i++;
 	}
+	return (i);
+}
+
+void	ft_putstr_err(char *err)
+{
+	int	i;
+
+	i = 0;
+	while (err[i])
+		write(2, &err[i++], 1);
+}
+
+int		ft_init(t_piles **pile, char **tab)
+{
+	int	i;
+
+	if (!(*pile = (t_piles *)malloc(sizeof(t_piles))))
+		return (0);
+	(*pile)->len = ft_tablen(tab);
+	if (!((*pile)->a = (int *)malloc(sizeof(int) * ((*pile)->len))))
+		return (0);
+	if (!((*pile)->b = (int *)malloc(sizeof(int) * ((*pile)->len))))
+		return (0);
+	i = 0;
+	while (tab[i])
+	{
+		((*pile)->a)[i] = ft_atoi(tab[i]);
+		i++;
+	}
+	(*pile)->len = i;
+	(*pile)->len_b = 0;
+	return (1);
+}
+
+int	main(int ac, char **av)
+{
+	char	**args;
+	t_piles	*pile;
+	
+	if (ac < 2)
+		return (0);
+	if (ac == 2)
+		args = ft_strsplit(av[1], ' ');
+	else
+		args = av + 1;
+	if (ft_is_valid(args) == 0)
+	{
+		ft_putstr_err("Error\n");
+		exit(-1);
+	}
+	// ft_print_char_tab(args);
+	if (!ft_init(&pile, args))
+	{
+		exit(-1);
+		DEBUG;
+	}
+	// ft_print_int_tab(pile->a, pile->len);
+	// ft_sort(&pile_a, )
+	ft_print_piles(pile);
+	ft_pb(pile);
+	ft_pb(pile);
+	ft_pb(pile);
+	ft_print_piles(pile);
+	// ft_pb(pile);
+	// ft_pb(pile);
+	// ft_pb(pile);
+	ft_pa(pile);
+	ft_pa(pile);
+	ft_pa(pile);
+	// ft_sa(pile);
+	// ft_ra(pile);
+	// ft_sa(pile);
+	ft_print_piles(pile);
+	// ft_pa(pile);
+	// ft_print_piles(pile);
 	return (0);
 }
