@@ -10,4 +10,46 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 
+void	ft_ra(t_piles *pile)
+{
+	int	i;
+	int	tmp;
+
+	if (pile->len > 1)
+	{
+		i = pile->len_b + 1;
+		tmp = (pile->a)[i - 1];
+		while (i < pile->len)
+		{
+			(pile->a)[i - 1] = (pile->a)[i];
+			i++;
+		}
+		(pile->a)[i - 1] = tmp;
+	}
+}
+
+void	ft_rb(t_piles *pile)
+{
+	int	i;
+	int	tmp;
+
+	if (pile->len > 1)
+	{
+		i = pile->len - pile->len_b  +1;
+		tmp = (pile->a)[pile->len_b];
+		while (i < pile->len)
+		{
+			(pile->a)[i - 1] = (pile->a)[i];
+			i++;
+		}
+		(pile->a)[i - 1] = tmp;
+	}
+}
+
+void	ft_rr(t_piles *pile)
+{
+	ft_ra(pile);
+	ft_rb(pile);
+}
