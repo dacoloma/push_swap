@@ -81,6 +81,30 @@ int		ft_init(t_piles **pile, char **tab)
 	return (1);
 }
 
+void	push_n_times(void (*push)(t_piles *), t_piles *pile, unsigned int n)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (i < n)
+	{
+		(*push)(pile);
+		i++;
+	}
+}
+
+// void	rotate_n_times(void (*rotate)(t_piles *), t_piles *pile, unsigned int n)
+// {
+// 	unsigned int	i;
+
+// 	i = 0;
+// 	while (i < n)
+// 	{
+// 		(*rotate)(pile);
+// 		i++;
+// 	}
+// }
+
 int	main(int ac, char **av)
 {
 	char	**args;
@@ -114,34 +138,20 @@ int	main(int ac, char **av)
 	// ft_sb(pile);
 	// ft_print_piles(pile);
 	ft_pb(pile);
+	ft_sb(pile);
+	ft_pb(pile);
+	ft_sb(pile);
+	ft_pb(pile);
+	ft_print_piles(pile);
+	ft_ss(pile);
 	ft_print_piles(pile);
 	ft_sb(pile);
 	ft_print_piles(pile);
-	ft_pb(pile);
+	push_n_times(&ft_pa, pile, 3);
 	ft_print_piles(pile);
-	ft_sb(pile);
+	push_n_times(&ft_pa, pile, 3);
 	ft_print_piles(pile);
-	ft_pb(pile);
-	ft_print_piles(pile);
-	ft_pb(pile);
-	ft_pb(pile);
-	ft_pb(pile);
-	ft_pb(pile);
-	ft_pb(pile);
-	ft_pb(pile);
-	ft_pb(pile);
-	ft_print_piles(pile);
-	ft_pa(pile);
-	ft_pa(pile);
-	ft_pa(pile);
-	ft_print_piles(pile);
-	ft_pa(pile);
-	ft_pa(pile);
-	ft_pa(pile);
-	ft_print_piles(pile);
-	ft_pa(pile);
-	ft_pa(pile);
-	ft_pa(pile);
+	push_n_times(&ft_pa, pile, 3);
 	ft_print_piles(pile);
 	// ft_sa(pile);
 	// ft_ra(pile);
