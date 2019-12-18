@@ -14,6 +14,12 @@
 # define PUSH_SWAP_H
 # define QUICK_SORT 1
 # define DEBUG printf("DEBUG\n");fflush(stdout)
+# define SWAP_A printf("SA\n");fflush(stdout)
+# define SWAP_B printf("SB\n");fflush(stdout)
+# define PUSH_A printf("PA\n");fflush(stdout)
+# define PUSH_B printf("PB\n");fflush(stdout)
+# define ROTATE_A printf("RA\n");fflush(stdout)
+# define ROTATE_B printf("RB\n");fflush(stdout)
 # include "libft/includes/libft.h"
 # include <unistd.h>
 # include <stdlib.h>
