@@ -12,18 +12,18 @@
 
 #include "push_swap.h"
 
-// int		ft_print_int_tab(int *tab, int len)
-// {
-// 	int	i;
+int		ft_print_int_tab(int *tab, int len)
+{
+	int	i;
 
-// 	i = 0;
-// 	while (i < len)
-// 	{
-// 		printf("%d\n", tab[i++]);
-// 		fflush(stdout);
-// 	}
-// 	return (i);
-// }
+	i = 0;
+	while (i < len)
+	{
+		printf("%d\n", tab[i++]);
+		fflush(stdout);
+	}
+	return (i);
+}
 
 int		ft_print_char_tab(char **tab)
 {
@@ -59,14 +59,23 @@ void	ft_putstr_err(char *err)
 		write(2, &err[i++], 1);
 }
 
-int		ft_init(t_piles **pile, int len)
+int		ft_init(t_piles **pile, char **tab)
 {
+	int	i;
+
 	if (!(*pile = (t_piles *)malloc(sizeof(t_piles))))
 		return (0);
-	if (!((*pile)->a = (int *)malloc(sizeof(int) * (len))))
+	(*pile)->len = ft_tablen(tab);
+	if (!((*pile)->a = (int *)malloc(sizeof(int) * ((*pile)->len))))
 		return (0);
-	if (!((*pile)->b = (int *)malloc(sizeof(int) * (len))))
+	if (!((*pile)->b = (int *)malloc(sizeof(int) * ((*pile)->len))))
 		return (0);
+	i = 0;
+	while (tab[i])
+	{
+		((*pile)->a)[i] = ft_atoi(tab[i]);
+		i++;
+	}
 	return (1);
 }
 
@@ -74,8 +83,6 @@ int	main(int ac, char **av)
 {
 	char	**args;
 	t_piles	*pile;
-	// int	i;
-	// int	j;
 	
 	if (ac < 2)
 		return (0);
@@ -88,26 +95,13 @@ int	main(int ac, char **av)
 		ft_putstr_err("Error\n");
 		exit(-1);
 	}
-	ft_print_char_tab(args);
-	if (!ft_init(&pile, ft_tablen(args)))
+	// ft_print_char_tab(args);
+	if (!ft_init(&pile, args))
 	{
 		exit(-1);
 		DEBUG;
 	}
-
-
-	// i = 1;
-	// j = 0;
-	// while (i < ac)
-	// 	pile_a[j++] = ft_atoi(av[i++]);
-	// j = 0;
-	// while (j < ac - 1)
-	// {
-	// 	printf("%d\n", pile_a[j]);
-	// 	fflush(stdout);
-	// 	j++;
-
-	// }
+	ft_print_int_tab(pile->a, pile->len);
 	// ft_sort(&pile_a, )
 	return (0);
 }
