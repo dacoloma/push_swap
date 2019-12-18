@@ -35,7 +35,7 @@ void	ft_rb(t_piles *pile)
 	int	i;
 	int	tmp;
 
-	if (pile->len > 1)
+	if (pile->len_b > 1)
 	{
 		i = pile->len - pile->len_b  +1;
 		tmp = (pile->a)[pile->len_b];
