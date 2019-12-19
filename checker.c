@@ -67,9 +67,16 @@ int		ft_init(t_piles **pile, char **tab)
 		return (0);
 	(*pile)->len = ft_tablen(tab);
 	if (!((*pile)->a = (int *)malloc(sizeof(int) * ((*pile)->len))))
+	{
+		free(*pile);
 		return (0);
+	}
 	if (!((*pile)->b = (int *)malloc(sizeof(int) * ((*pile)->len))))
+	{
+		free((*pile)->a);
+		free(*pile);
 		return (0);
+	}
 	i = 0;
 	while (tab[i])
 	{
@@ -81,35 +88,40 @@ int		ft_init(t_piles **pile, char **tab)
 	return (1);
 }
 
-void	push_n_times(void (*push)(t_piles *), t_piles *pile, unsigned int n)
-{
-	unsigned int	i;
+// void	push_n_times(void (*push)(t_piles *), t_piles *pile, unsigned int n)
+// {
+// 	unsigned int	i;
 
-	i = 0;
-	while (i < n)
-	{
-		(*push)(pile);
-		i++;
-	}
-}
+// 	i = 0;
+// 	while (i < n)
+// 	{
+// 		(*push)(pile);
+// 		i++;
+// 	}
+// }
 
-void	rotate_n_times(void (*rotate)(t_piles *), t_piles *pile, unsigned int n)
-{
-	unsigned int	i;
+// void	rotate_n_times(void (*rotate)(t_piles *), t_piles *pile, unsigned int n)
+// {
+// 	unsigned int	i;
 
-	i = 0;
-	while (i < n)
-	{
-		(*rotate)(pile);
-		i++;
-	}
-}
+// 	i = 0;
+// 	while (i < n)
+// 	{
+// 		(*rotate)(pile);
+// 		i++;
+// 	}
+// }
 
 int	main(int ac, char **av)
 {
 	char	**args;
 	t_piles	*pile;
-	
+	int		ret;
+	char	buf[4096];
+	char	**instruction;
+	int		fd;
+
+	fd = open("test", O_RDONLY);
 	if (ac < 2)
 		return (0);
 	if (ac == 2)
@@ -126,6 +138,21 @@ int	main(int ac, char **av)
 		exit(-1);
 		DEBUG;
 	}
+	ret = read(fd, buf, 4095);
+	buf[ret] = '\0';
+	instruction = ft_strsplit(buf, '\n');
+	int 	i;
+
+	i = 0;
+	while (instruction[i])
+		printf("%s\n", instruction[i++]);
+	close(fd);
+	free(pile->a);
+	free(pile->b);
+	free(pile);
+	return (0);
+}
+/*
 	ft_putchar('\n');
 	// ft_print_piles(pile);
 	// ft_pb(pile);
@@ -148,5 +175,4 @@ int	main(int ac, char **av)
 	// rotate_n_times(&ft_rb, pile, 3);
 	rotate_n_times(&ft_rrb, pile, 3);
 	ft_print_piles(pile);
-	return (0);
-}
+*/
