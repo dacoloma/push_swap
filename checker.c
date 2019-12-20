@@ -12,16 +12,6 @@
 
 #include "push_swap.h"
 
-void	ft_putstr_err(char *err)
-{
-	int	i;
-
-	i = 0;
-	while (err[i])
-		write(2, &err[i++], 1);
-}
-
-
 void	ft_do_instructions(t_piles *pile, t_checker checker)
 {
 	int	i;
@@ -38,6 +28,20 @@ void	ft_do_instructions(t_piles *pile, t_checker checker)
 		ft_print_piles(pile);
 		i++;
 	}
+}
+
+int		ft_check_sort(t_piles *pile)
+{
+	int	i;
+
+	i = 1;
+	while (i < pile->len)
+	{
+		if (pile->a[i - 1] > pile->a[i])
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 int	main(int ac, char **av)
@@ -71,6 +75,10 @@ int	main(int ac, char **av)
 	buf[ret] = '\0';
 	ft_init_checker(&checker, buf);
 	ft_do_instructions(pile, checker);
+	if (ft_check_sort(pile))
+		ft_putstr("OK\n");
+	else
+		ft_putstr("KO\n");
 	close(fd);
 	free(pile->a);
 	free(pile->b);

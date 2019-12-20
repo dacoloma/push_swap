@@ -48,6 +48,7 @@ typedef struct	s_checker
 // 	int	pivot;
 
 // }				t_quicksort;
+void	ft_putstr_err(char *err);
 int		ft_init(t_piles **pile, char **tab);
 void	ft_init_checker(t_checker *checker, char *buf);
 void	ft_print_piles(t_piles *pile);

@@ -1,40 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_err.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcoloma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/06 16:48:27 by dcoloma           #+#    #+#             */
-/*   Updated: 2019/12/06 16:48:29 by dcoloma          ###   ########.fr       */
+/*   Created: 2019/12/20 17:04:49 by dcoloma           #+#    #+#             */
+/*   Updated: 2019/12/20 17:05:12 by dcoloma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+void	ft_putstr_err(char *err)
 {
-	char	**args;
-	t_piles	*pile;
-	
-	if (ac < 2)
-		return (0);
-	if (ac == 2)
-		args = ft_strsplit(av[1], ' ');
-	else
-		args = av + 1;
-	if (ft_is_valid(args) == 0)
-	{
-		ft_putstr_err("Error\n");
-		exit(-1);
-	}
-	// ft_print_char_tab(args);
-	if (!ft_init(&pile, args))
-	{
-		exit(-1);
-		DEBUG;
-	}
-	// ft_print_int_tab(pile->a, pile->len);
-	// ft_sort(&pile_a, )
-	return (0);
+	int	i;
+
+	i = 0;
+	while (err[i])
+		write(2, &err[i++], 1);
 }
+
