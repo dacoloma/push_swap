@@ -29,18 +29,27 @@
 
 typedef struct	s_piles
 {
-	int	*a;
-	int	*b;
-	int	len;
-	int	len_b;
+	int		*a;
+	int		*b;
+	int		len;
+	int		len_b;
 }				t_piles;
-typedef struct	s_quicksort
+typedef struct	s_checker
 {
-	int	left;
-	int	right;
-	int	pivot;
+	void	(*ptr[11])(t_piles *);
+	char	*instructions[11];
+	char	**to_check;
 
-}				t_quicksort;
+}				t_checker;
+// typedef struct	s_quicksort
+// {
+// 	int	left;
+// 	int	right;
+// 	int	pivot;
+
+// }				t_quicksort;
+int		ft_init(t_piles **pile, char **tab);
+void	ft_init_checker(t_checker *checker, char *buf);
 void	ft_print_piles(t_piles *pile);
 int		ft_is_valid(char **tab);
 void	ft_pa(t_piles *pile);

@@ -24,7 +24,8 @@ CC = gcc
 
 CF = -Wall -Wextra -Werror -I $(HEADER)
 
-SRC =	ft_is_valid.c\
+SRC =	ft_init.c\
+		ft_is_valid.c\
 		ft_swap.c\
 		ft_push.c\
 		ft_rotate.c\

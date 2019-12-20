@@ -59,25 +59,25 @@ void	ft_putstr_err(char *err)
 		write(2, &err[i++], 1);
 }
 
-int		ft_init(t_piles **pile, char **tab)
-{
-	int	i;
+// int		ft_init(t_piles **pile, char **tab)
+// {
+// 	int	i;
 
-	if (!(*pile = (t_piles *)malloc(sizeof(t_piles))))
-		return (0);
-	(*pile)->len = ft_tablen(tab);
-	if (!((*pile)->a = (int *)malloc(sizeof(int) * ((*pile)->len))))
-		return (0);
-	if (!((*pile)->b = (int *)malloc(sizeof(int) * ((*pile)->len))))
-		return (0);
-	i = 0;
-	while (tab[i])
-	{
-		((*pile)->a)[i] = ft_atoi(tab[i]);
-		i++;
-	}
-	return (1);
-}
+// 	if (!(*pile = (t_piles *)malloc(sizeof(t_piles))))
+// 		return (0);
+// 	(*pile)->len = ft_tablen(tab);
+// 	if (!((*pile)->a = (int *)malloc(sizeof(int) * ((*pile)->len))))
+// 		return (0);
+// 	if (!((*pile)->b = (int *)malloc(sizeof(int) * ((*pile)->len))))
+// 		return (0);
+// 	i = 0;
+// 	while (tab[i])
+// 	{
+// 		((*pile)->a)[i] = ft_atoi(tab[i]);
+// 		i++;
+// 	}
+// 	return (1);
+// }
 
 int	main(int ac, char **av)
 {
