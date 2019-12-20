@@ -41,13 +41,15 @@ typedef struct	s_checker
 	char	**to_check;
 
 }				t_checker;
-// typedef struct	s_quicksort
-// {
-// 	int	left;
-// 	int	right;
-// 	int	pivot;
+typedef struct	s_quicksort
+{
+	int	*tab;
+	int	len;
+	int	left;
+	int	right;
+	int	pivot;
 
-// }				t_quicksort;
+}				t_quicksort;
 void	ft_putstr_err(char *err);
 int		ft_init(t_piles **pile, char **tab);
 void	ft_init_checker(t_checker *checker, char *buf);

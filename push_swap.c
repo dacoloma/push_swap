@@ -34,7 +34,11 @@ int	main(int ac, char **av)
 		exit(-1);
 		DEBUG;
 	}
+	ft_print_piles(pile);
 	// ft_print_int_tab(pile->a, pile->len);
-	// ft_sort(&pile_a, )
+	ft_sort(pile);
+	free(pile->a);
+	free(pile->b);
+	free(pile);
 	return (0);
 }
