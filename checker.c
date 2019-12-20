@@ -12,44 +12,6 @@
 
 #include "push_swap.h"
 
-int		ft_print_int_tab(int *tab, int len)
-{
-	int	i;
-
-	i = 0;
-	while (i < len)
-	{
-		printf("%d\n", tab[i++]);
-		fflush(stdout);
-	}
-	return (i);
-}
-
-int		ft_print_char_tab(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i])
-	{
-		printf("%s\n", tab[i++]);
-		fflush(stdout);
-	}
-	return (i);
-}
-
-int		ft_tablen(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i])
-	{
-		i++;
-	}
-	return (i);
-}
-
 void	ft_putstr_err(char *err)
 {
 	int	i;
@@ -59,67 +21,33 @@ void	ft_putstr_err(char *err)
 		write(2, &err[i++], 1);
 }
 
-int		ft_init(t_piles **pile, char **tab)
+
+void	ft_do_instructions(t_piles *pile, t_checker checker)
 {
 	int	i;
+	int	j;
 
-	if (!(*pile = (t_piles *)malloc(sizeof(t_piles))))
-		return (0);
-	(*pile)->len = ft_tablen(tab);
-	if (!((*pile)->a = (int *)malloc(sizeof(int) * ((*pile)->len))))
-	{
-		free(*pile);
-		return (0);
-	}
-	if (!((*pile)->b = (int *)malloc(sizeof(int) * ((*pile)->len))))
-	{
-		free((*pile)->a);
-		free(*pile);
-		return (0);
-	}
 	i = 0;
-	while (tab[i])
+	(void)pile;
+	while (checker.to_check[i])
 	{
-		((*pile)->a)[i] = ft_atoi(tab[i]);
+		j = 0;
+		while (j < 11 && ft_strcmp(checker.to_check[i], checker.instructions[j]))
+			j++;
+		checker.ptr[j](pile);
+		ft_print_piles(pile);
 		i++;
 	}
-	(*pile)->len = i;
-	(*pile)->len_b = 0;
-	return (1);
 }
-
-// void	push_n_times(void (*push)(t_piles *), t_piles *pile, unsigned int n)
-// {
-// 	unsigned int	i;
-
-// 	i = 0;
-// 	while (i < n)
-// 	{
-// 		(*push)(pile);
-// 		i++;
-// 	}
-// }
-
-// void	rotate_n_times(void (*rotate)(t_piles *), t_piles *pile, unsigned int n)
-// {
-// 	unsigned int	i;
-
-// 	i = 0;
-// 	while (i < n)
-// 	{
-// 		(*rotate)(pile);
-// 		i++;
-// 	}
-// }
 
 int	main(int ac, char **av)
 {
-	char	**args;
-	t_piles	*pile;
-	int		ret;
-	char	buf[4096];
-	char	**instruction;
-	int		fd;
+	char		**args;
+	t_piles		*pile;
+	t_checker	checker;
+	int			ret;
+	char		buf[4096];
+	int		fd;		// A SUPPRIMER
 
 	fd = open("test", O_RDONLY);
 	if (ac < 2)
@@ -138,41 +66,14 @@ int	main(int ac, char **av)
 		exit(-1);
 		DEBUG;
 	}
+	ft_print_piles(pile);
 	ret = read(fd, buf, 4095);
 	buf[ret] = '\0';
-	instruction = ft_strsplit(buf, '\n');
-	int 	i;
-
-	i = 0;
-	while (instruction[i])
-		printf("%s\n", instruction[i++]);
+	ft_init_checker(&checker, buf);
+	ft_do_instructions(pile, checker);
 	close(fd);
 	free(pile->a);
 	free(pile->b);
 	free(pile);
 	return (0);
 }
-/*
-	ft_putchar('\n');
-	// ft_print_piles(pile);
-	// ft_pb(pile);
-	// ft_sb(pile);
-	// ft_pb(pile);
-	// ft_sb(pile);
-	// ft_pb(pile);
-	// ft_print_piles(pile);
-	// ft_ss(pile);
-	// ft_print_piles(pile);
-	// ft_sb(pile);
-	// ft_print_piles(pile);
-	// push_n_times(&ft_pa, pile, 8);
-	ft_print_piles(pile);
-	// rotate_n_times(&ft_ra, pile, 3);
-	rotate_n_times(&ft_rra, pile, 3);
-	ft_print_piles(pile);
-	push_n_times(&ft_pb, pile, 4);
-	ft_print_piles(pile);
-	// rotate_n_times(&ft_rb, pile, 3);
-	rotate_n_times(&ft_rrb, pile, 3);
-	ft_print_piles(pile);
-*/
