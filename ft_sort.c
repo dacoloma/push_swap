@@ -60,25 +60,16 @@ static int	*ft_tabdup(int *tab, int len)
 		dup[i] = tab[i];
 		i++;
 	}
-	return (tab);
+	return (dup);
 }
 
-void		ft_sort(t_piles *pile, int sort)
+t_quicksort	ft_sort(t_piles *pile, int sort)
 {
 	t_quicksort	quick;
-	int	i;
-
+	
 	quick.tab = ft_tabdup(pile->a, pile->len);
 	quick.len = pile->len;
 	if (sort == QUICK_SORT)
 		ft_quick_sort(&quick, 0, quick.len - 1);
-	// PRINT sorted tab
-	i = 0;
-	printf("QUICK:\t");
-	while (i < quick.len)
-	{
-		printf("%d\t", quick.tab[i++]);
-		fflush(stdout);
-	}
-	ft_putstr("\n\n");
+	return (quick);
 }
