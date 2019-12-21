@@ -19,7 +19,7 @@ void	ft_ra(t_piles *pile)
 
 	if (pile->len > 1)
 	{
-		ROTATE_A;
+		// ROTATE_A;
 		i = pile->len_b + 1;
 		tmp = (pile->a)[i - 1];
 		while (i < pile->len)
@@ -38,7 +38,7 @@ void	ft_rb(t_piles *pile)
 
 	if (pile->len_b > 1)
 	{
-		ROTATE_B;
+		// ROTATE_B;
 		i = pile->len - pile->len_b  + 1;
 		tmp = (pile->b)[i - 1];
 		while (i < pile->len)
