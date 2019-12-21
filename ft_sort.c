@@ -12,13 +12,13 @@
 
 #include "push_swap.h"
 
-static int	*ft_partition(t_quicksort *quick, int pivot)
+static int	ft_partition(t_quicksort *quick, int pivot, int left, int right)
 {
 	int	left_ptr;
 	int	right_ptr;
 
-	left_ptr = quick->left;
-	right_ptr = quick->right - 1;
+	left_ptr = left;
+	right_ptr = right - 1;
 	while (1)
 	{
 		while (quick->tab[left_ptr] < pivot)
@@ -30,16 +30,21 @@ static int	*ft_partition(t_quicksort *quick, int pivot)
 		else                
         	ft_swap(&(quick->tab[left_ptr]),&(quick->tab[right_ptr]));
 	}
-}	
+	ft_swap(&(quick->tab[left_ptr]),&(quick->tab[right]));
+	return (left_ptr);
+}
 
-static void	ft_quick_sort(t_quicksort *quick)
+static void	ft_quick_sort(t_quicksort *quick, int left, int right)
 {
 	int	pivot;
+	int	partition;
 
-	if (quick->right - quick->left <= 0)
+	if (right - left <= 0)
 		return ;
-	pivot = quick->tab[quick->right];
-
+	pivot = quick->tab[right];
+	partition = ft_partition(quick, pivot, left, right);
+	ft_quick_sort(quick, left, partition - 1);
+	ft_quick_sort(quick, partition + 1, right);
 }
 
 static int	*ft_tabdup(int *tab, int len)
@@ -58,15 +63,22 @@ static int	*ft_tabdup(int *tab, int len)
 	return (tab);
 }
 
-void		ft_sort(t_pile *pile)
+void		ft_sort(t_piles *pile, int sort)
 {
 	t_quicksort	quick;
+	int	i;
 
 	quick.tab = ft_tabdup(pile->a, pile->len);
 	quick.len = pile->len;
-	quick.pivot = quick.len - 1;
-	quick.left = 0;
-	quick.right = quick.len - 1;
 	if (sort == QUICK_SORT)
-		ft_quick_sort(&quick);
+		ft_quick_sort(&quick, 0, quick.len - 1);
+	// PRINT sorted tab
+	i = 0;
+	printf("QUICK:\t");
+	while (i < quick.len)
+	{
+		printf("%d\t", quick.tab[i++]);
+		fflush(stdout);
+	}
+	ft_putstr("\n\n");
 }
