@@ -18,7 +18,7 @@ void	ft_sa(t_piles *pile)
 	
 	if (pile->len > 1)
 	{
-		SWAP_A;
+		// SWAP_A;
 		i = pile->len_b;
 		ft_swap(&(pile->a)[i], &(pile->a)[i + 1]);
 	}
@@ -30,7 +30,7 @@ void	ft_sb(t_piles *pile)
 
 	if (pile->len_b > 1)
 	{
-		SWAP_B;
+		// SWAP_B;
 		i = pile->len - pile->len_b;
 		ft_swap(&(pile->b)[i], &(pile->b)[i + 1]);
 	}
