@@ -16,7 +16,7 @@ void	ft_sa(t_piles *pile)
 {
 	int	i;
 	
-	if (pile->len > 1)
+	if (pile->len > 1 && pile->len - pile->len_b > 1)
 	{
 		// SWAP_A;
 		i = pile->len_b;
