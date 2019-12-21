@@ -25,23 +25,9 @@ void	ft_do_instructions(t_piles *pile, t_checker checker)
 		while (j < 11 && ft_strcmp(checker.to_check[i], checker.instructions[j]))
 			j++;
 		checker.ptr[j](pile);
-		ft_print_piles(pile);
+		// ft_print_piles(pile);
 		i++;
 	}
-}
-
-int		ft_check_sort(t_piles *pile)
-{
-	int	i;
-
-	i = 1;
-	while (i < pile->len)
-	{
-		if (pile->a[i - 1] > pile->a[i])
-			return (0);
-		i++;
-	}
-	return (1);
 }
 
 int	main(int ac, char **av)
@@ -51,9 +37,9 @@ int	main(int ac, char **av)
 	t_checker	checker;
 	int			ret;
 	char		buf[4096];
-	int		fd;		// A SUPPRIMER
+	// int		fd;		// A SUPPRIMER
 
-	fd = open("test", O_RDONLY);
+	// fd = open("test", O_RDONLY);
 	if (ac < 2)
 		return (0);
 	if (ac == 2)
@@ -70,8 +56,9 @@ int	main(int ac, char **av)
 		exit(-1);
 		DEBUG;
 	}
-	ft_print_piles(pile);
-	ret = read(fd, buf, 4095);
+	// ft_print_piles(pile);
+	// ret = read(fd, buf, 4095);	// 
+	ret = read(0, buf, 4095);
 	buf[ret] = '\0';
 	ft_init_checker(&checker, buf);
 	ft_do_instructions(pile, checker);
@@ -79,7 +66,7 @@ int	main(int ac, char **av)
 		ft_putstr("OK\n");
 	else
 		ft_putstr("KO\n");
-	close(fd);
+	// close(fd);
 	free(pile->a);
 	free(pile->b);
 	free(pile);
