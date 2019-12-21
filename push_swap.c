@@ -12,22 +12,69 @@
 
 #include "push_swap.h"
 
+static void	ft_pb_min(t_piles *pile)
+{
+	int	i;
+
+	if (pile->i_min <= 1)
+		return ;
+	i = 0;
+	if (pile->i_min <= pile->len - pile->i_min)
+	{
+		while (i < pile->i_min)
+		{
+			ft_putstr("ra\n");
+			ft_ra(pile);
+			i++;
+		}
+	}
+	else
+	{
+		while (i < pile->len - pile->i_min)
+		{
+			ft_putstr("rra\n");
+			ft_rra(pile);
+			i++;
+		}
+	}
+	ft_pb(pile);
+}
+
 void	ft_sort_stack(t_piles *pile)
 {
 	int	i;
 
 	// if (ft_check_sort(pile))
 	// 	return ;
-	i = pile->len_b;
-	while (!ft_check_sort(pile))
+	ft_pb_min(pile);
+	if (pile->i_max == 0)
 	{
-		while (i < pile->len && pile->a[i] < pile->a[i + 1])
+		ft_putstr("ra\n");
+		ft_ra(pile);
+	}
+	i = pile->len_b;
+	// printf("i = %d\n", pile->a[i]);
+	// fflush(stdout);
+	while (!ft_check_sort(pile) || pile->len_b != 0)
+	{
+		// DEBUG;
+		if (ft_check_sort(pile))
+		{
+			while (pile->len_b > 0)
+			{
+				ft_putstr("pa\n");
+				ft_pa(pile);
+			}
+		}
+		while (i < pile->len && pile->a[i] < pile->a[i + 1]
+			&& !ft_check_sort(pile))
 		{
 			ft_putstr("pb\n");
 			ft_pb(pile);
 			i = pile->len_b;
 		}
-		if (pile->a[i] > pile->a[i + 1])
+		if (pile->len - pile->len_b > 1
+			&& pile->a[i] > pile->a[i + 1])
 		{
 			ft_putstr("sa\n");
 			ft_sa(pile);
@@ -75,3 +122,6 @@ int	main(int ac, char **av)
 	free(pile);
 	return (0);
 }
+
+// Chercher le mini et le maxi
+// placer le mini dans stack b
