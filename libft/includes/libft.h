@@ -92,4 +92,6 @@ int				*ft_range(int min, int max);
 void			ft_putnbr_base(int nbr, char *base);
 int				ft_is_prime(int i);
 int				get_next_line(const int fd, char **line);
+int				ft_get_min_index(int *tab, int len);
+int				ft_get_max_index(int *tab, int len);
 #endif

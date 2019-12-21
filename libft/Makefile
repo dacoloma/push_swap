@@ -22,6 +22,8 @@ CFLAGS = -Wall -Wextra -Werror -I $(INCLUDES) -g
 
 SRC =	ft_atoi.c \
 	  	ft_bzero.c \
+		ft_get_min_index.c \
+		ft_get_max_index.c \
 		ft_is_prime.c \
 		ft_isalnum.c \
 		ft_isalpha.c \
