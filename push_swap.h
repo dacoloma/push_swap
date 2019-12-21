@@ -12,7 +12,7 @@
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# define QUICK_SORT 1
+# define QUICK_SORT 0
 # define DEBUG printf("DEBUG\n");fflush(stdout)
 # define SWAP_A printf("SA\n");fflush(stdout)
 # define SWAP_B printf("SB\n");fflush(stdout)
@@ -53,6 +53,7 @@ typedef struct	s_quicksort
 void	ft_putstr_err(char *err);
 int		ft_init(t_piles **pile, char **tab);
 void	ft_init_checker(t_checker *checker, char *buf);
+int		ft_check_sort(t_piles *pile);
 void	ft_print_piles(t_piles *pile);
 int		ft_is_valid(char **tab);
 void	ft_pa(t_piles *pile);
@@ -66,4 +67,5 @@ void	ft_rr(t_piles *pile);
 void	ft_rra(t_piles *pile);
 void	ft_rrb(t_piles *pile);
 void	ft_rrr(t_piles *pile);
+void	ft_sort(t_piles *pile, int sort);
 #endif
