@@ -23,7 +23,12 @@ void	ft_pb(t_piles *pile)
 		i = pile->len_b;
 		j = pile->len - 1 - pile->len_b;
 		(pile->b)[j] = (pile->a)[i];
+		if (pile->len_b == 0 || pile->a[i] > pile->limit_b)
+			pile->limit_b = (pile->a)[i];
+		// else if (pile->a[i] > pile->limit_b)
+		// 	pile->limit_b = (pile->a)[i];
 		pile->len_b++;
+		pile->med_index--;
 	}
 }
 
