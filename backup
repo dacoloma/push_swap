@@ -1,3 +1,4 @@
+/*
 void	ft_sort_stack(t_piles *pile)
 {
 	int	i;
@@ -50,3 +51,4 @@ void	ft_sort_stack(t_piles *pile)
 		}
 	}
 }
+*/
