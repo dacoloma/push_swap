@@ -31,6 +31,8 @@ typedef struct	s_piles
 {
 	int		*a;
 	int		*b;
+	int		i_min;
+	int		i_max;
 	int		len;
 	int		len_b;
 }				t_piles;

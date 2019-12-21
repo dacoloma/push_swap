@@ -24,10 +24,20 @@ static int	ft_tablen(char **tab)
 	return (i);
 }
 
-int			ft_init(t_piles **pile, char **tab)
+static void	ft_char_to_int(t_piles *pile, char **tab)
 {
 	int	i;
+	
+	i = 0;
+	while (tab[i])
+	{
+		(pile->a)[i] = ft_atoi(tab[i]);
+		i++;
+	}
+}
 
+int			ft_init(t_piles **pile, char **tab)
+{
 	if (!(*pile = (t_piles *)malloc(sizeof(t_piles))))
 		return (0);
 	(*pile)->len = ft_tablen(tab);
@@ -42,13 +52,9 @@ int			ft_init(t_piles **pile, char **tab)
 		free(*pile);
 		return (0);
 	}
-	i = 0;
-	while (tab[i])
-	{
-		((*pile)->a)[i] = ft_atoi(tab[i]);
-		i++;
-	}
-	(*pile)->len = i;
+	ft_char_to_int(*pile, tab);
+	(*pile)->i_min = ft_get_min_index((*pile)->a, (*pile)->len);
+	(*pile)->i_max = ft_get_max_index((*pile)->a, (*pile)->len);
 	(*pile)->len_b = 0;
 	return (1);
 }
