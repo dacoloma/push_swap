@@ -28,6 +28,10 @@ void	ft_ra(t_piles *pile)
 			i++;
 		}
 		(pile->a)[i - 1] = tmp;
+		if (pile->med_index == pile->len_b)
+			pile->med_index = pile->len - 1;
+		else
+			pile->med_index--;
 	}
 }
 
@@ -47,6 +51,10 @@ void	ft_rb(t_piles *pile)
 			i++;
 		}
 		(pile->b)[i - 1] = tmp;
+		if (pile->limit_b == pile->len - pile->len_b)
+			pile->limit_b = pile->len - 1;
+		else
+			pile->limit_b--;
 	}
 }
 
