@@ -62,7 +62,7 @@ int	main(int ac, char **av)
 	buf[ret] = '\0';
 	ft_init_checker(&checker, buf);
 	ft_do_instructions(pile, checker);
-	if (ft_check_sort(pile))
+	if (ft_check_sort(pile, 0))
 		ft_putstr("OK\n");
 	else
 		ft_putstr("KO\n");
