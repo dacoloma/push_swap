@@ -14,6 +14,6 @@ void	ft_get_med(t_piles *pile)
 	}
 	pile->med_index = i;
 	free(quick.tab);
-	printf("med = %d\nindex = %d\n", pile->med, pile->med_index);
-	fflush(stdout);
+	// printf("med = %d\nindex = %d\n", pile->med, pile->med_index);
+	// fflush(stdout);
 }
