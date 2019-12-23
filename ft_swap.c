@@ -20,6 +20,10 @@ void	ft_sa(t_piles *pile)
 	{
 		// SWAP_A;
 		i = pile->len_b;
+		if (pile->med_index == i + 1)
+			pile->med_index--;
+		else if (pile->med_index == i)
+			pile->med_index++;
 		ft_swap(&(pile->a)[i], &(pile->a)[i + 1]);
 	}
 }
