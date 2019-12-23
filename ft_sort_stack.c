@@ -6,11 +6,17 @@ int		ft_get_sorted_pos_B(t_piles *pile)
 	int	j;
 
 	i = pile->len_b;
-	j = pile->len - pile->len_b;
+	j = pile->limit_b;
 	if (pile->len_b > 0)
 	{
-		while (j < pile->len && pile->a[i] < pile->b[j])
+		while (pile->a[i] < pile->b[j])
+		{
+			if (j == pile->len)
+				j = pile->len - pile->len_b;
 			j++;
+			if (j == pile->limit_b)
+				break;
+		}
 	}
 	return (j);
 }
@@ -22,16 +28,14 @@ int		ft_get_sorted_pos_A(t_piles *pile)
 
 	i = pile->len_b;
 	j = pile->med_index + 1;
-	while (j < pile->len && pile->a[i] < pile->a[j])
+	while (pile->a[i] < pile->a[j])
 	{
 		if (j == pile->len)
-			j = 0;
+			j = pile->len_b;
 		if (pile->a[j] < pile->med)
 			break;
 		j++;
 	}
-	if (j == pile->len)
-		return (0);
 	return (j);
 }
 
@@ -41,9 +45,9 @@ void 	ft_get_best_rot_B(t_piles *pile, int pos)
 	int	limit;
 
 	i = 0;
-	if (pos > (pile->len_b) / 2)
+	if (pos > pile->len - pile->len_b / 2)
 	{
-		limit = pile->len_b - pos;
+		limit = pile->len - pos;
 		while (i < limit)
 		{
 			ft_putstr("rrb\n");
@@ -53,7 +57,8 @@ void 	ft_get_best_rot_B(t_piles *pile, int pos)
 	}
 	else
 	{
-		while (i < pos)
+		limit = pos - (pile->len - pile->len_b);
+		while (i < limit)
 		{
 			ft_putstr("rb\n");
 			ft_rb(pile);
@@ -68,9 +73,9 @@ void 	ft_get_best_rot_A(t_piles *pile, int pos)
 	int	limit;
 
 	i = 0;
-	if (pos > (pile->len - pile->len_b) / 2)
+	if (pos > (pile->len + pile->len_b) / 2)
 	{
-		limit = (pile->len - pile->len_b) - pos;
+		limit = pile->len - pos;
 		while (i < limit)
 		{
 			ft_putstr("rra\n");
@@ -80,7 +85,8 @@ void 	ft_get_best_rot_A(t_piles *pile, int pos)
 	}
 	else
 	{
-		while (i < pos)
+		limit = pos - pile->len_b;
+		while (i < limit)
 		{
 			ft_putstr("ra\n");
 			ft_ra(pile);
@@ -118,7 +124,7 @@ void	ft_sort_right(t_piles *pile)
 		ft_putstr("ra\n");
 		ft_ra(pile);
 	}
-	if (sorted_pos_a < pile->len - 1)
+	if (sorted_pos_a > pile->len_b + 2 && sorted_pos_a < pile->len - 1)
 	{
 		ft_putstr("pb\n");
 		ft_pb(pile);
@@ -126,7 +132,7 @@ void	ft_sort_right(t_piles *pile)
 		ft_putstr("pa\n");
 		ft_pa(pile);
 	}
-	else
+	else if (sorted_pos_a == pile->len - 1)
 	{
 		ft_putstr("rra\n");
 		ft_rra(pile);
@@ -134,15 +140,27 @@ void	ft_sort_right(t_piles *pile)
 		ft_sa(pile);
 		ft_putstr("ra\n");
 		ft_ra(pile);
+		ft_putstr("ra\n");
+		ft_ra(pile);
 	}
-	
+	else if (sorted_pos_a == pile->len_b + 2)
+	{
+		ft_putstr("sa\n");
+		ft_sa(pile);
+		ft_putstr("ra\n");
+		ft_ra(pile);
+		ft_putstr("ra\n");
+		ft_ra(pile);
+	}
 }
 
 void	ft_sort_stack(t_piles *pile)
 {
 
 	ft_get_med(pile);
-	while (!ft_check_sort(pile, 0) && !ft_check_sort(pile, 1))//(pile->a[pile->len_b] < pile->med)
+	ft_putstr("START\n");
+	ft_print_piles(pile);
+	while (!ft_check_sort(pile, 0) || !ft_check_sort(pile, 1))//(pile->a[pile->len_b] < pile->med)
 	{
 		if (pile->a[pile->len_b] < pile->med)
 			ft_sort_left(pile);
@@ -155,26 +173,49 @@ void	ft_sort_stack(t_piles *pile)
 		// 	ft_sb(pile);	
 		// }
 	}
-	//get med_index = 0
-	while (pile->len_b)
+	ft_putstr("STEP 1\n");
+	ft_print_piles(pile);
+	/*
+	//Rearrange stack A
+	if (pile->med_index <= (pile->len + pile->len_b) / 2)
 	{
-		if (pile->med_index <= (pile->len - pile->len_b) / 2)
+		while (pile->med_index != pile->len_b)
 		{
-			while (pile->med_index != 0)
-			{
-				ft_putstr("ra\n");
-				ft_ra(pile);
-			}
+			ft_putstr("ra\n");
+			ft_ra(pile);
 		}
-		else
-		{
-			while (pile->med_index != 0)
-			{
-				ft_putstr("rra\n");
-				ft_rra(pile);
-			}
-		}
-		
 	}
-
+	else
+	{
+		while (pile->med_index != pile->len_b)
+		{
+			ft_putstr("rra\n");
+			ft_rra(pile);
+		}
+	}
+	ft_putstr("STEP 2\n");
+	ft_print_piles(pile);
+	//Rearrange stack B
+	if (pile->limit_b <= pile->len - pile->len_b / 2)
+	{
+		while (pile->limit_b != pile->len - pile->len_b)
+		{
+			ft_putstr("ra\n");
+			ft_ra(pile);
+		}
+	}
+	else
+	{
+		while (pile->limit_b != pile->len - pile->len_b)
+		{
+			ft_putstr("rra\n");
+			ft_rra(pile);
+		}
+	}
+	ft_putstr("STEP 3\n");
+	ft_print_piles(pile);
+	// while (pile->len_b)
+	// {
+	// }
+*/
 }
