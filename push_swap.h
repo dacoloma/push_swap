@@ -13,9 +13,13 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # define QUICK_SORT 0
-# define DEBUG printf("DEBUG\n");fflush(stdout)
+# define DEBUG ft_print_piles(pile)
 # define LEN printf("LEN = %d\n", pile->len);fflush(stdout)
 # define LEN_B printf("LEN_B = %d\n", pile->len_b);fflush(stdout)
+# define POS_A printf("POS_A = %d\n", sorted_pos_a);fflush(stdout)
+# define POS_B printf("POS_B = %d\n", sorted_pos_b);fflush(stdout)
+# define MAX_B printf("MAX_B = %d\n", pile->limit_b);fflush(stdout)
+# define MED printf("\nmed = %d\nindex = %d\n", pile->med, pile->med_index);fflush(stdout)
 # define SWAP_A printf("SA\n");fflush(stdout)
 # define SWAP_B printf("SB\n");fflush(stdout)
 # define PUSH_A printf("PA\n");fflush(stdout)
