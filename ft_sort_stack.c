@@ -4,18 +4,22 @@ int		ft_get_sorted_pos_B(t_piles *pile)
 {
 	int	i;
 	int	j;
+	int	count;
 
 	i = pile->len_b;
+	count = pile->len_b;
 	j = pile->limit_b;
+	// MAX_B;
 	if (pile->len_b > 0)
 	{
-		while (pile->a[i] < pile->b[j])
+		while (count != 0 && pile->a[i] < pile->b[j])
 		{
+			j++;
+			count--;
 			if (j == pile->len)
 				j = pile->len - pile->len_b;
-			j++;
-			if (j == pile->limit_b)
-				break;
+			// if (j == pile->limit_b)
+			// 	break;
 		}
 	}
 	return (j);
@@ -109,6 +113,7 @@ void	ft_sort_left(t_piles *pile)
 	int	sorted_pos_b;
 	
 	sorted_pos_b = ft_get_sorted_pos_B(pile);
+	// POS_B;
 	if (sorted_pos_b < 1)
 	{
 		ft_putstr("pb\n");
@@ -136,7 +141,7 @@ void	ft_sort_right(t_piles *pile)
 		ft_putstr("ra\n");
 		ft_ra(pile);
 	}
-	if (sorted_pos_a > pile->len_b + 2 && sorted_pos_a < pile->len - 1)
+	else if (sorted_pos_a > pile->len_b + 2 && sorted_pos_a < pile->len - 1)
 	{
 		ft_putstr("pb\n");
 		ft_pb(pile);
@@ -171,28 +176,26 @@ void	ft_sort_right(t_piles *pile)
 
 void	ft_sort_stack(t_piles *pile)
 {
-	// int 	i = 0;
+	int 	count;
 
+	count = pile->len - 1;
 	ft_get_med(pile);
+	// MED;
 	// ft_putstr("START\n");
-	// ft_print_piles(pile);
-	// while (i<8)
-	while (!ft_check_sort(pile, 0) || !ft_check_sort(pile, 1))//(pile->a[pile->len_b] < pile->med)
+	// DEBUG;
+	while (count > 0)
+	// while (!ft_check_sort(pile, 0) || !ft_check_sort(pile, 1))//(pile->a[pile->len_b] < pile->med)
 	{
 		if (pile->a[pile->len_b] < pile->med)
 			ft_sort_left(pile);
 		else
 			ft_sort_right(pile);
-		// i++;
-		// if (pile->len_b == 2 && !ft_check_sort(pile, 1))
-		// {
-		// 	ft_putstr("sb\n");
-		// 	ft_sb(pile);	
-		// }
-		// ft_print_piles(pile);
+		count--;
+		// DEBUG;
 	}
 	// ft_putstr("STEP 1\n");
-	// ft_print_piles(pile);
+	// DEBUG;
+
 	//Rearrange stack A
 	if (pile->med_index <= (pile->len + pile->len_b) / 2)
 	{
@@ -214,37 +217,34 @@ void	ft_sort_stack(t_piles *pile)
 		}
 	}
 	// ft_putstr("STEP 2\n");
-	// ft_print_piles(pile);
-
-	// printf("maxB: %d\n", pile->limit_b);
-	// fflush(stdout);
-
+	// DEBUG;
+	// MAX_B;
 	//Rearrange stack B
 	if (pile->limit_b <= pile->len - pile->len_b / 2)
 	{
 		while (pile->limit_b != pile->len - pile->len_b)
 		{
-			ft_putstr("ra\n");
-			ft_ra(pile);
+			ft_putstr("rb\n");
+			ft_rb(pile);
 		}
 	}
 	else
 	{
 		while (pile->limit_b != pile->len - pile->len_b)
 		{
-			ft_putstr("rra\n");
-			ft_rra(pile);
+			ft_putstr("rrb\n");
+			ft_rrb(pile);
 		}
 	}
 	// ft_putstr("STEP 3\n");
-	// ft_print_piles(pile);
+	// DEBUG;
 	while (pile->len_b)
 	{
 		ft_putstr("pa\n");
 		ft_pa(pile);
 	}
 	// ft_putstr("STEP 4\n");
-	// ft_print_piles(pile);
+	// DEBUG;
 	/*
 */
 }
