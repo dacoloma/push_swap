@@ -208,7 +208,7 @@ void	ft_sort_stack(t_piles *pile)
 
 	//Rearrange stack A
 	if (!pile->len_b)
-		pile->med_index = pile->i_min;
+		pile->med_index = pile->min_index;
 	if (pile->med_index <= (pile->len + pile->len_b) / 2)
 	{
 		// printf("index: %d\n", pile->med_index);
