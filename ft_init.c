@@ -53,9 +53,10 @@ int			ft_init(t_piles **pile, char **tab)
 		return (0);
 	}
 	ft_char_to_int(*pile, tab);
-	(*pile)->i_min = ft_get_min_index((*pile)->a, (*pile)->len);
-	(*pile)->i_max = ft_get_max_index((*pile)->a, (*pile)->len);
+	(*pile)->min_index = ft_get_min_index((*pile)->a, (*pile)->len);
+	(*pile)->max_index = ft_get_max_index((*pile)->a, (*pile)->len);
 	(*pile)->len_b = 0;
+	ft_get_med(*pile);
 	return (1);
 }
 
