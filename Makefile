@@ -33,6 +33,8 @@ SRC =	ft_init.c\
 		ft_rrotate.c\
 		ft_check_sort.c\
 		ft_get_med.c\
+		ft_get_sorted_pos.c\
+		ft_get_best_rot.c\
 		ft_sort.c\
 		ft_sort_stack.c\
 		print_piles.c
