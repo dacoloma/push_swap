@@ -32,6 +32,13 @@ void	ft_rra(t_piles *pile)
 			pile->med_index = pile->len_b;
 		else
 			pile->med_index++;
+		if (pile->min_index >= pile->len_b)
+		{
+			if (pile->min_index == pile->len - 1)
+				pile->min_index = pile->len_b;
+			else
+				pile->min_index++;
+		}
 		
 	}
 }

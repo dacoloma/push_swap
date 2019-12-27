@@ -24,6 +24,13 @@ void	ft_sa(t_piles *pile)
 			pile->med_index--;
 		else if (pile->med_index == i)
 			pile->med_index++;
+		if (pile->min_index >= pile->len_b)
+		{
+			if (pile->min_index == i + 1)
+				pile->min_index--;
+			else if (pile->min_index == i)
+				pile->min_index++;
+		}
 		ft_swap(&(pile->a)[i], &(pile->a)[i + 1]);
 	}
 }
