@@ -9,16 +9,16 @@ int		ft_check_sort(t_piles *pile, int desc)
 	if (!desc)
 	{
 		// i = pile->len_b + 1;
-		pile->i_min = ft_get_min_index(pile->a, pile->len);
+		pile->min_index = ft_get_min_index(pile->a, pile->len);
 		count = pile->len - pile->len_b - 1;
 		if (pile->len_b)
 			i = (pile->med_index + 1 < pile->len) ? pile->med_index + 1 : pile->len_b;
 		else
-			i = (pile->i_min + 1 < pile->len) ? pile->i_min + 1 : pile->len_b;
+			i = (pile->min_index + 1 < pile->len) ? pile->min_index + 1 : pile->len_b;
 		// while (i < pile->len)
 		// LEN_B;
 		// MED;
-		// printf("i_min = %d\n", pile->i_min);
+		// printf("min_index = %d\n", pile->min_index);
 		// fflush(stdout);
 		while (count > 0)
 		{
