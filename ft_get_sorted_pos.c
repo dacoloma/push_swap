@@ -8,7 +8,7 @@ int		ft_get_sorted_pos_B(t_piles *pile)
 
 	i = pile->len_b;
 	count = pile->len_b;
-	j = pile->limit_b;
+	j = pile->max_index_b;
 	// MAX_B;
 	if (pile->len_b > 0)
 	{

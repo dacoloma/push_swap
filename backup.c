@@ -8,7 +8,7 @@ int		ft_get_sorted_pos_B(t_piles *pile)
 
 	i = pile->len_b;
 	count = pile->len_b;
-	j = pile->limit_b;
+	j = pile->max_index_b;
 	// MAX_B;
 	if (pile->len_b > 0)
 	{
@@ -234,9 +234,9 @@ void	ft_sort_stack(t_piles *pile)
 	//Rearrange stack B
 	if (pile->len_b)
 	{
-		if (pile->limit_b <= pile->len - pile->len_b / 2)
+		if (pile->max_index_b <= pile->len - pile->len_b / 2)
 		{
-			while (pile->limit_b != pile->len - pile->len_b)
+			while (pile->max_index_b != pile->len - pile->len_b)
 			{
 				ft_putstr("rb\n");
 				ft_rb(pile);
@@ -244,7 +244,7 @@ void	ft_sort_stack(t_piles *pile)
 		}
 		else
 		{
-			while (pile->limit_b != pile->len - pile->len_b)
+			while (pile->max_index_b != pile->len - pile->len_b)
 			{
 				ft_putstr("rrb\n");
 				ft_rrb(pile);

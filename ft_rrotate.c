@@ -59,10 +59,10 @@ void	ft_rrb(t_piles *pile)
 			i--;
 		}
 		(pile->b)[i] = tmp;
-		if (pile->limit_b == pile->len - 1)
-			pile->limit_b = pile->len - pile->len_b;
+		if (pile->max_index_b == pile->len - 1)
+			pile->max_index_b = pile->len - pile->len_b;
 		else
-			pile->limit_b++;
+			pile->max_index_b++;
 	}
 }
 

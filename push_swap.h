@@ -46,7 +46,7 @@ typedef struct	s_piles
 	int		len_b;
 	int		med;
 	int		med_index;
-	int		limit_b;
+	int		max_index_b;
 }				t_piles;
 typedef struct	s_checker
 {

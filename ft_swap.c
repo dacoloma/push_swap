@@ -43,6 +43,10 @@ void	ft_sb(t_piles *pile)
 	{
 		// SWAP_B;
 		i = pile->len - pile->len_b;
+		if (pile->max_index_b == i + 1)
+			pile->max_index_b--;
+		else if (pile->max_index_b == i)
+			pile->max_index_b++;
 		ft_swap(&(pile->b)[i], &(pile->b)[i + 1]);
 	}
 }
