@@ -52,10 +52,10 @@ int			ft_init(t_piles **pile, char **tab)
 		free(*pile);
 		return (0);
 	}
-	ft_char_to_int(*pile, tab);
-	(*pile)->min_index = ft_get_min_index((*pile)->a, (*pile)->len);
-	(*pile)->max_index = ft_get_max_index((*pile)->a, (*pile)->len);
 	(*pile)->len_b = 0;
+	ft_char_to_int(*pile, tab);
+	ft_get_min_index(*pile);
+	ft_get_max_index(*pile);
 	ft_get_med(*pile);
 	return (1);
 }
