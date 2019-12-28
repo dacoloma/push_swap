@@ -46,42 +46,57 @@ void	ft_sort_right(t_piles *pile)
 			ft_ra(pile);
 		}
 	}
-	else if (pile->len_b == pile->med_index)
+	else if (pile->len_b == pile->med_index || sorted_pos_a == pile->len_b)
 	{
 		ft_putstr("ra\n");
 		ft_ra(pile);
+	}
+	else if (sorted_pos_a == pile->len - 1)
+	{
+		ft_putstr("rra\n");
+		ft_rra(pile);
+		ft_putstr("sa\n");
+		ft_sa(pile);
+		// DEBUG;
+		if (!ft_check_sort(pile, 0))
+		{
+			ft_putstr("ra\n");
+			ft_ra(pile);
+			ft_putstr("ra\n");
+			ft_ra(pile);
+		}
 	}
 }
 
 void	ft_sort_stack(t_piles *pile)
 {
-	int	count;
+	// int	count;
 
-	count = pile->len;
-	ft_print_piles(pile);
+	// count = pile->len;
+	// ft_print_piles(pile);
 	if (pile->len <= 3)
 	{
 		ft_short_stack(pile);
 		return ;
 	}
 	// MED;
-	while (count > 0 && (!ft_check_sort(pile, 0)))// || !ft_check_sort(pile, 1)))
-	// while (!ft_check_sort(pile, 0))// || !ft_check_sort(pile, 1))//(pile->a[pile->len_b] < pile->med)
+	// while (count > 0 && (!ft_check_sort(pile, 0)))// || !ft_check_sort(pile, 1)))
+	while (!ft_check_sort(pile, 0))// || !ft_check_sort(pile, 1))//(pile->a[pile->len_b] < pile->med)
 	{
 		if (pile->a[pile->len_b] < pile->med)
 			ft_sort_left(pile);
 		else
 			ft_sort_right(pile);
-		count--;
+		// count--;
 		// DEBUG;
 	}
-		ft_print_piles(pile);
-	MED;
+	// ft_print_piles(pile);
 	//REARRANGE STACK A
-	if (pile->len_b)
-		ft_get_best_rot_A(pile, pile->med_index);
-	else
+	if (!pile->len_b
+		|| (pile->len_b && pile->b[pile->max_index_b] < pile->a[pile->min_index]))
 		ft_get_best_rot_A(pile, pile->min_index);
+	else
+		ft_get_best_rot_A(pile, pile->med_index);
 	//REARRANGE STACK B
 	ft_get_best_rot_B(pile, pile->max_index_b);
 	// ft_print_piles(pile);
@@ -92,5 +107,8 @@ void	ft_sort_stack(t_piles *pile)
 		ft_putstr("pa\n");
 		ft_pa(pile);
 	}
-	ft_print_piles(pile);
+	ft_get_min_index(pile);
+	// MIN_INDEX;
+	ft_get_best_rot_A(pile, pile->min_index);
+	// ft_print_piles(pile);
 }

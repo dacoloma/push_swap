@@ -8,7 +8,7 @@ int		ft_check_sort(t_piles *pile, int desc)
 
 	if (!desc)
 	{
-		pile->min_index = ft_get_min_index(pile->a, pile->len);
+		ft_get_min_index(pile);
 		count = pile->len - pile->len_b - 1;
 		if (pile->len_b)
 			i = (pile->med_index + 1 < pile->len) ? pile->med_index + 1 : pile->len_b;
@@ -24,20 +24,22 @@ int		ft_check_sort(t_piles *pile, int desc)
 				i = pile->len_b;
 			count--;
 		}
-		return (1);
+		if (pile->len_b && pile->b[pile->max_index_b] > pile->a[pile->min_index])
+			return (0);
 	}
-	else
-	{
-		if (pile->len_b)
-		{
-			i = pile->len - pile->len_b + 1;
-			while (i < pile->len)
-			{
-				if (pile->b[i - 1] < pile->b[i])
-					return (0);
-				i++;
-			}
-		}
-		return (1);
-	}
+	// else
+	// {
+	// 	if (pile->len_b)
+	// 	{
+	// 		i = pile->len - pile->len_b + 1;
+	// 		while (i < pile->len)
+	// 		{
+	// 			if (pile->b[i - 1] < pile->b[i])
+	// 				return (0);
+	// 			i++;
+	// 		}
+	// 	}
+	// 	return (1);
+	// }
+	return (1);
 }

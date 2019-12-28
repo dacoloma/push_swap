@@ -1,7 +1,9 @@
 RED="\033[1;31m"
 GREEN="\033[1;32m"
+ORANGE="\033[1;33m"
 NOCOLOR="\033[0m"
 
+clear
 
 # testing3=(
 # 	"1 2 3"
@@ -18,7 +20,9 @@ NOCOLOR="\033[0m"
 # ./push_swap ${testing3[i]} > tmp
 # test_pushswap=$(./push_swap ${testing3[i]} | ./checker ${testing3[i]})
 # if [ "$test_pushswap" = "OK" ] ; then
-# 	echo "${GREEN}${test_pushswap}${NOCOLOR}"
+# 	echo "${GREEN}${test_pushswap}${NOCOLOR}
+# nb_instructions=$(cat tmp | wc -l)
+
 # elif [ "$test_pushswap" = "KO" ] ; then
 # 	echo "${RED}${test_pushswap}${NOCOLOR}"
 # fi
@@ -58,7 +62,16 @@ printf "\n#-----------------#\n#test %d => ${testing4[i]}: " $i
 ./push_swap ${testing4[i]} > tmp
 test_pushswap=$(./push_swap ${testing4[i]} | ./checker ${testing4[i]})
 if [ "$test_pushswap" = "OK" ] ; then
-	echo "${GREEN}${test_pushswap}${NOCOLOR}"
+	printf "${GREEN}${test_pushswap}${NOCOLOR}"
+	nb_instructions=$(wc -l < tmp)
+	# echo "TEST : $nb_instructions"
+	if (( "$nb_instructions" < 5 )) ; then
+		echo "${GREEN}${nb_instructions}${NOCOLOR}"
+	elif (( "$nb_instructions" < 12 )) ; then
+		echo "${ORANGE}${nb_instructions}${NOCOLOR}"
+	else
+		echo "${RED}${nb_instructions}${NOCOLOR}"
+	fi
 elif [ "$test_pushswap" = "KO" ] ; then
 	echo "${RED}${test_pushswap}${NOCOLOR}"
 fi
