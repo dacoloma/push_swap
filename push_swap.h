@@ -85,6 +85,8 @@ t_quicksort	ft_sort(t_piles *pile, int sort);
 void	ft_get_med(t_piles *pile);
 int		ft_get_sorted_pos_A(t_piles *pile);
 int		ft_get_sorted_pos_B(t_piles *pile);
+void	ft_get_min_index(t_piles *pile);
+void	ft_get_max_index(t_piles *pile);
 void	ft_get_best_rot_A(t_piles *pile, int pos);
 void	ft_get_best_rot_B(t_piles *pile, int pos);
 void	ft_sort_stack(t_piles *pile);

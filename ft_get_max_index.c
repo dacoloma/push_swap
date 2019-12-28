@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int	ft_get_max_index(t_piles *pile)
+void	ft_get_max_index(t_piles *pile)
 {
 	int i;
 	int	max;
