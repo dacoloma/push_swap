@@ -42,8 +42,8 @@ void	ft_sort_right(t_piles *pile)
 		{
 			ft_putstr("ra\n");
 			ft_ra(pile);
-			ft_putstr("ra\n");
-			ft_ra(pile);
+			// ft_putstr("ra\n");
+			// ft_ra(pile);
 		}
 	}
 	else if (pile->len_b == pile->med_index || sorted_pos_a == pile->len_b)
@@ -62,10 +62,21 @@ void	ft_sort_right(t_piles *pile)
 		{
 			ft_putstr("ra\n");
 			ft_ra(pile);
-			ft_putstr("ra\n");
-			ft_ra(pile);
+			// ft_putstr("ra\n");
+			// ft_ra(pile);
 		}
 	}
+	else
+	{
+		ft_putstr("pb\n");
+		ft_pb(pile);
+		ft_get_best_rot_A(pile, sorted_pos_a - 1);
+		ft_putstr("pa\n");
+		ft_pa(pile);
+		ft_putstr("ra\n");
+		ft_ra(pile);
+	}
+	
 }
 
 void	ft_sort_stack(t_piles *pile)
@@ -73,7 +84,7 @@ void	ft_sort_stack(t_piles *pile)
 	// int	count;
 
 	// count = pile->len;
-	// ft_print_piles(pile);
+	ft_print_piles(pile);
 	if (pile->len <= 3)
 	{
 		ft_short_stack(pile);
@@ -88,7 +99,7 @@ void	ft_sort_stack(t_piles *pile)
 		else
 			ft_sort_right(pile);
 		// count--;
-		// DEBUG;
+		DEBUG;
 	}
 	// ft_print_piles(pile);
 	//REARRANGE STACK A
