@@ -57,10 +57,11 @@ testing4=(
 )
 
 for (( i=0; i < ${#testing4[@]}; i++ )); 
+# for (( i=10; i < 20; i++ )); 
 do 
 printf "\n#-----------------#\n#test %d => ${testing4[i]}: " $i
 ./push_swap ${testing4[i]} > tmp
-test_pushswap=$(./push_swap ${testing4[i]} | ./checker ${testing4[i]})
+test_pushswap=$(cat tmp | ./checker ${testing4[i]})
 if [ "$test_pushswap" = "OK" ] ; then
 	printf "${GREEN}${test_pushswap}${NOCOLOR}"
 	nb_instructions=$(wc -l < tmp)
