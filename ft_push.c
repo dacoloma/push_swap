@@ -19,16 +19,13 @@ void	ft_pb(t_piles *pile)
 
 	if (pile->len > 0 && pile->len_b < pile->len)
 	{
-		// PUSH_B;
 		i = pile->len_b;
 		j = pile->len - 1 - pile->len_b;
 		(pile->b)[j] = (pile->a)[i];
 		if (pile->len_b == 0 || pile->a[i] > pile->b[pile->max_index_b])
 			pile->max_index_b = j;
 		pile->len_b++;
-		// pile->med_index--;
-		// printf("index = %d\n", pile->med_index);
-		// fflush(stdout);
+		ft_get_min_index(pile);
 	}
 }
 
@@ -39,10 +36,10 @@ void	ft_pa(t_piles *pile)
 	
 	if (pile->len > 0 && pile->len_b > 0)
 	{
-		// PUSH_A;
 		i = pile->len_b - 1;
 		j = pile->len - pile->len_b;
 		(pile->a)[i] = (pile->b)[j];
 		pile->len_b--;
+		ft_get_min_index(pile);
 	}
 }
