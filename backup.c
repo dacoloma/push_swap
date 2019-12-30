@@ -2,7 +2,7 @@
 
 void	ft_short_stack(t_piles *pile)
 {
-	while (!ft_check_sort(pile, ASC))
+	while (!ft_check_sort(pile))
 	{
 		ft_putstr("sa\n");
 		ft_sa(pile);
@@ -38,7 +38,7 @@ void	ft_sort_right(t_piles *pile)
 	{
 		ft_putstr("sa\n");
 		ft_sa(pile);
-		if (!ft_check_sort(pile, 0))
+		if (!ft_check_sort(pile))
 		{
 			ft_putstr("ra\n");
 			ft_ra(pile);
@@ -58,7 +58,7 @@ void	ft_sort_right(t_piles *pile)
 		ft_putstr("sa\n");
 		ft_sa(pile);
 		// DEBUG;
-		if (!ft_check_sort(pile, 0))
+		if (!ft_check_sort(pile))
 		{
 			ft_putstr("ra\n");
 			ft_ra(pile);
@@ -90,9 +90,7 @@ void	ft_sort_stack(t_piles *pile)
 		ft_short_stack(pile);
 		return ;
 	}
-	// MED;
-	// while (count > 0 && (!ft_check_sort(pile, 0)))// || !ft_check_sort(pile, 1)))
-	while (!ft_check_sort(pile, 0))// || !ft_check_sort(pile, 1))//(pile->a[pile->len_b] < pile->med)
+	while (!ft_check_sort(pile))
 	{
 		if (pile->a[pile->len_b] < pile->med)
 			ft_sort_left(pile);
