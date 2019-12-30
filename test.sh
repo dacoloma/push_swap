@@ -202,9 +202,13 @@ testing5=(
 
 )
 
-# for (( i=0; i < ${#testing5[@]}; i++ )); 
-for (( i=90; i < ${#testing5[@]}; i++ )); 
+for (( i=0; i < ${#testing5[@]}; i++ )); 
 do 
+if ((i == 20)) || ((i == 40)) || ((i == 60)) || ((i == 80)) || ((i == 100)); then
+	read -n 1 -s -r -p "
+Press any key to continue"
+	printf "===================================\n"
+fi
 printf "\n#-----------------#\n#test %d => ${testing5[i]}: " $i
 ./push_swap ${testing5[i]} > tmp
 test_pushswap=$(cat tmp | ./checker ${testing5[i]})
@@ -223,6 +227,7 @@ elif [ "$test_pushswap" = "KO" ] ; then
 	echo "${RED}${test_pushswap}${NOCOLOR}"
 fi
 cat tmp | tr '\n' ' ' | cat
+# printf "\n"
 done
 
 rm tmp
