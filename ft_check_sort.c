@@ -10,9 +10,9 @@ int		ft_check_sort(t_piles *pile, int desc)
 	{
 		ft_get_min_index(pile);
 		count = pile->len - pile->len_b - 1;
-		if (pile->len_b)
-			i = (pile->med_index + 1 < pile->len) ? pile->med_index + 1 : pile->len_b;
-		else
+		// if (pile->len_b)
+		// 	i = (pile->med_index + 1 < pile->len) ? pile->med_index + 1 : pile->len_b;
+		// else
 			i = (pile->min_index + 1 < pile->len) ? pile->min_index + 1 : pile->len_b;
 		while (count > 0)
 		{
