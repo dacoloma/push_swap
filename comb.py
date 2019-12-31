@@ -29,7 +29,7 @@ def heapPermutation(a, size, n):
 		
 
 # Driver code 
-a = [1, 2, 3, 4, 5] 
+a = [1, 2, 3, 4, 5, 6] 
 n = len(a) 
 heapPermutation(a, n, n) 
 
