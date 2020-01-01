@@ -17,7 +17,7 @@ def heapPermutation(a, size, n):
 		return
 
 	for i in range(size): 
-		heapPermutation(a,size-1,n); 
+		heapPermutation(a,size-1,n)
 
 		# if size is odd, swap first and last 
 		# element 
