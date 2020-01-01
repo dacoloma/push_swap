@@ -18,4 +18,4 @@ if (ck == false):
 	print("ERROR")
 else:
 	for i in arr:
-		print(i)
+		print(i, end=' ')
