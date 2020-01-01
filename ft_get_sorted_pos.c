@@ -9,7 +9,6 @@ int		ft_get_sorted_pos_B(t_piles *pile)
 	i = pile->len_b;
 	count = pile->len_b;
 	j = pile->max_index_b;
-	// MAX_B;
 	if (pile->len_b > 0)
 	{
 		while (count != 0 && pile->a[i] < pile->b[j])
@@ -38,7 +37,6 @@ int		ft_get_sorted_pos_A(t_piles *pile)
 	}
 	else
 	{
-		MIN_INDEX;
 		if (pile->min_index + 1 == pile->len)
 			j = pile->len_b;
 		else
