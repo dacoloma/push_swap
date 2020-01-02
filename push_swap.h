@@ -20,7 +20,7 @@
 # define LEN_B printf("LEN_B = %d\n", pile->len_b);fflush(stdout)
 # define POS_A printf("POS_A = %d\n", sorted_pos_a);fflush(stdout)
 # define POS_B printf("POS_B = %d\n", sorted_pos_b);fflush(stdout)
-# define MAX_B printf("MAX_B = %d\n", pile->max_index_b);fflush(stdout)
+# define MAX_B printf("maxB = %d\tindex = %d\n", pile->b[pile->max_index_b],pile->max_index_b);fflush(stdout)
 # define MED printf("\nmed = %d\tindex = %d\n", pile->med, pile->med_index);fflush(stdout)
 # define MIN_A printf("minA = %d\tindex = %d\n", pile->a[pile->min_index],pile->min_index);fflush(stdout)
 # define SWAP_A printf("SA\n");fflush(stdout)
@@ -47,6 +47,7 @@ typedef struct	s_piles
 	int		med;
 	int		med_index;
 	int		max_index_b;
+	int		sorted_index_a;
 }				t_piles;
 typedef struct	s_checker
 {
@@ -85,6 +86,7 @@ t_quicksort	ft_sort(t_piles *pile, int sort);
 void	ft_get_med(t_piles *pile);
 int		ft_get_sorted_pos_A(t_piles *pile);
 int		ft_get_sorted_pos_B(t_piles *pile);
+int		ft_get_final_pos_A(t_piles *pile);
 void	ft_get_min_index(t_piles *pile);
 void	ft_get_max_index(t_piles *pile);
 void	ft_get_best_rot_A(t_piles *pile, int pos);

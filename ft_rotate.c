@@ -17,29 +17,28 @@ void	ft_ra(t_piles *pile)
 	int	i;
 	int	tmp;
 
-	if (pile->len > 1)
+	if (pile->len < 2)
+		return ;
+	i = pile->len_b + 1;
+	tmp = (pile->a)[i - 1];
+	while (i < pile->len)
 	{
-		// ROTATE_A;
-		i = pile->len_b + 1;
-		tmp = (pile->a)[i - 1];
-		while (i < pile->len)
-		{
-			(pile->a)[i - 1] = (pile->a)[i];
-			i++;
-		}
-		(pile->a)[i - 1] = tmp;
-		if (pile->med_index == pile->len_b)
-			pile->med_index = pile->len - 1;
-		else
-			pile->med_index--;
-		if (pile->min_index >= pile->len_b)
-		{
-			if (pile->min_index == pile->len_b)
-				pile->min_index = pile->len - 1;
-			else
-				pile->min_index--;
-		}
+		(pile->a)[i - 1] = (pile->a)[i];
+		i++;
 	}
+	(pile->a)[i - 1] = tmp;
+	if (pile->med_index == pile->len_b)
+		pile->med_index = pile->len - 1;
+	else
+		pile->med_index--;
+	if (pile->min_index >= pile->len_b)
+	{
+		if (pile->min_index == pile->len_b)
+			pile->min_index = pile->len - 1;
+		else
+			pile->min_index--;
+	}
+	pile->sorted_index_a--;
 }
 
 void	ft_rb(t_piles *pile)
