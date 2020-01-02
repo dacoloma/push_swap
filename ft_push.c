@@ -22,7 +22,8 @@ void	ft_pb(t_piles *pile)
 		i = pile->len_b;
 		j = pile->len - 1 - pile->len_b;
 		(pile->b)[j] = (pile->a)[i];
-		if (pile->len_b == 0 || pile->a[i] > pile->b[pile->max_index_b])
+		if (pile->len_b == 0 || (pile->a[i] > pile->b[pile->max_index_b]
+			&& pile->a[i] < pile->med))
 			pile->max_index_b = j;
 		pile->len_b++;
 		ft_get_min_index(pile);
@@ -39,6 +40,8 @@ void	ft_pa(t_piles *pile)
 		i = pile->len_b - 1;
 		j = pile->len - pile->len_b;
 		(pile->a)[i] = (pile->b)[j];
+		if (pile->a[i] == pile->med)
+			pile->med_index = i;
 		pile->len_b--;
 		ft_get_min_index(pile);
 	}
