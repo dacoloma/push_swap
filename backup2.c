@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sort_stack.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dcoloma <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/02 10:54:32 by dcoloma           #+#    #+#             */
+/*   Updated: 2020/01/02 10:54:35 by dcoloma          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	ft_short_stack(t_piles *pile)
@@ -55,6 +67,7 @@ void		ft_sort_stack(t_piles *pile)
 		}
 	}
 	ft_left_right_sort(pile);
+	DEBUG;
 	sleep(1);
 	ft_sort_stack(pile);
 }

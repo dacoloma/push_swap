@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sort_stack.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dcoloma <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/02 10:54:32 by dcoloma           #+#    #+#             */
+/*   Updated: 2020/01/02 10:54:35 by dcoloma          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ft_short_stack(t_piles *pile)
@@ -38,13 +50,11 @@ void	ft_sort_right(t_piles *pile)
 	{
 		ft_putstr("sa\n");
 		ft_sa(pile);
-		if (!ft_check_sort(pile))
-		{
-			ft_putstr("ra\n");
-			ft_ra(pile);
-			// ft_putstr("ra\n");
-			// ft_ra(pile);
-		}
+		// if (!ft_check_sort(pile))
+		// {
+		// 	ft_putstr("ra\n");
+		// 	ft_ra(pile);
+		// }
 	}
 	else if (pile->len_b == pile->med_index || sorted_pos_a == pile->len_b)
 	{
@@ -57,14 +67,11 @@ void	ft_sort_right(t_piles *pile)
 		ft_rra(pile);
 		ft_putstr("sa\n");
 		ft_sa(pile);
-		// DEBUG;
-		if (!ft_check_sort(pile))
-		{
-			ft_putstr("ra\n");
-			ft_ra(pile);
-			// ft_putstr("ra\n");
-			// ft_ra(pile);
-		}
+		// if (!ft_check_sort(pile))
+		// {
+		// 	ft_putstr("ra\n");
+		// 	ft_ra(pile);
+		// }
 	}
 	else
 	{
@@ -73,8 +80,8 @@ void	ft_sort_right(t_piles *pile)
 		ft_get_best_rot_A(pile, sorted_pos_a);
 		ft_putstr("pa\n");
 		ft_pa(pile);
-		ft_putstr("ra\n");
-		ft_ra(pile);
+		// ft_putstr("ra\n");
+		// ft_ra(pile);
 	}
 	
 }
@@ -98,6 +105,8 @@ void	ft_sort_stack(t_piles *pile)
 			ft_sort_right(pile);
 		// count--;
 		// DEBUG;
+		// MIN_A;
+		// sleep(1);
 	}
 	// ft_print_piles(pile);
 	//REARRANGE STACK A
