@@ -6,7 +6,13 @@ void	ft_print_piles(t_piles *pile)
 
 	printf("PILE_A:\t");
 	fflush(stdout);
-	i = pile->len_b;
+	i = 0;
+	while (i < pile->len_b)
+	{
+		printf(".\t");
+		fflush(stdout);
+		i++;
+	}
 	while (i < pile->len)
 	{
 		printf("%d\t", (pile->a)[i++]);
@@ -14,7 +20,13 @@ void	ft_print_piles(t_piles *pile)
 	}
 	printf("\nPILE_B:\t");
 	fflush(stdout);
-	i = pile->len - pile->len_b;
+	i = 0;
+	while (i < pile->len - pile->len_b)
+	{
+		printf(".\t");
+		fflush(stdout);
+		i++;
+	}
 	while (i < pile->len)
 	{
 		printf("%d\t", (pile->b)[i]);
