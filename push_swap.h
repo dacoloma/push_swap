@@ -68,6 +68,7 @@ typedef struct	s_quicksort
 void	ft_putstr_err(char *err);
 int		ft_init(t_piles **pile, char **tab);
 void	ft_init_checker(t_checker *checker, char *buf);
+int		ft_check_split(t_piles *pile);
 int		ft_check_sort(t_piles *pile);
 void	ft_print_piles(t_piles *pile);
 int		ft_is_valid(char **tab);
@@ -92,4 +93,5 @@ void	ft_get_max_index(t_piles *pile);
 void	ft_get_best_rot_A(t_piles *pile, int pos);
 void	ft_get_best_rot_B(t_piles *pile, int pos);
 void	ft_sort_stack(t_piles *pile);
+void	ft_sort_stack_a(t_piles *pile);
 #endif
