@@ -33,7 +33,7 @@ int		ft_get_sorted_pos_B(t_piles *pile)
 	}
 	return (j);
 }
-
+/*
 int		ft_get_sorted_pos_A(t_piles *pile)
 {
 	int	i;
@@ -87,33 +87,33 @@ int		ft_get_final_pos_A(t_piles *pile)
 	}
 	return (j);
 }
+*/
+int		ft_get_sorted_pos_A(t_piles *pile)
+{
+	int	i;
+	int	j;
 
-// int		ft_get_sorted_pos_A(t_piles *pile)
-// {
-// 	int	i;
-// 	int	j;
-
-// 	i = pile->len_b;
-// 	if (pile->len > 3)
-// 	{
-// 		if (pile->med_index + 1 == pile->len)
-// 			j = pile->len_b;
-// 		else
-// 			j = pile->med_index + 1;
-// 	}
-// 	else
-// 	{
-// 		if (pile->min_index + 1 == pile->len)
-// 			j = pile->len_b;
-// 		else
-// 			j = pile->min_index + 1;
-// 	}
+	i = pile->len_b;
+	if (pile->len > 3)
+	{
+		if (pile->med_index + 1 == pile->len)
+			j = pile->len_b;
+		else
+			j = pile->med_index + 1;
+	}
+	else
+	{
+		if (pile->min_index + 1 == pile->len)
+			j = pile->len_b;
+		else
+			j = pile->min_index + 1;
+	}
 	
-// 	while (pile->a[i] > pile->a[j] && pile->a[j] > pile->med)
-// 	{
-// 		j++;
-// 		if (j == pile->len)
-// 			j = pile->len_b;
-// 	}
-// 	return (j);
-// }
+	while (pile->a[i] > pile->a[j] && pile->a[j] > pile->med)
+	{
+		j++;
+		if (j == pile->len)
+			j = pile->len_b;
+	}
+	return (j);
+}
