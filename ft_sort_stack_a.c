@@ -12,33 +12,33 @@
 
 #include "push_swap.h"
 
-void	ft_short_stack(t_piles *pile)
-{
-	while (!ft_check_sort(pile))
-	{
-		ft_putstr("sa\n");
-		ft_sa(pile);
-	}
-	ft_get_best_rot_A(pile, pile->min_index);
-}
+// void	ft_short_stack(t_piles *pile)
+// {
+// 	while (!ft_check_sort(pile))
+// 	{
+// 		ft_putstr("sa\n");
+// 		ft_sa(pile);
+// 	}
+// 	ft_get_best_rot_A(pile, pile->min_index);
+// }
 
-void	ft_sort_left(t_piles *pile)
-{
-	int	sorted_pos_b;
+// void	ft_sort_left(t_piles *pile)
+// {
+// 	int	sorted_pos_b;
 	
-	sorted_pos_b = ft_get_sorted_pos_B(pile);
-	if (sorted_pos_b < 1)
-	{
-		ft_putstr("pb\n");
-		ft_pb(pile);
-	}
-	else
-	{
-		ft_get_best_rot_B(pile, sorted_pos_b);
-		ft_putstr("pb\n");
-		ft_pb(pile);
-	}
-}
+// 	sorted_pos_b = ft_get_sorted_pos_B(pile);
+// 	if (sorted_pos_b < 1)
+// 	{
+// 		ft_putstr("pb\n");
+// 		ft_pb(pile);
+// 	}
+// 	else
+// 	{
+// 		ft_get_best_rot_B(pile, sorted_pos_b);
+// 		ft_putstr("pb\n");
+// 		ft_pb(pile);
+// 	}
+// }
 
 void	ft_sort_right(t_piles *pile)
 {
@@ -86,22 +86,22 @@ void	ft_sort_right(t_piles *pile)
 	
 }
 
-void	ft_sort_stack(t_piles *pile)
+void	ft_sort_stack_a(t_piles *pile)
 {
 	// int	count;
 
 	// count = pile->len;
 	// ft_print_piles(pile);
-	if (pile->len <= 3)
-	{
-		ft_short_stack(pile);
-		return ;
-	}
+	// if (pile->len <= 3)
+	// {
+	// 	ft_short_stack(pile);
+	// 	return ;
+	// }
 	while (!ft_check_sort(pile))
 	{
-		if (pile->a[pile->len_b] < pile->med)
-			ft_sort_left(pile);
-		else
+		// if (pile->a[pile->len_b] < pile->med)
+		// 	ft_sort_left(pile);
+		// else
 			ft_sort_right(pile);
 		// count--;
 		// DEBUG;
@@ -109,6 +109,7 @@ void	ft_sort_stack(t_piles *pile)
 		// sleep(1);
 	}
 	// ft_print_piles(pile);
+	/*
 	//REARRANGE STACK A
 	if (!pile->len_b
 		|| (pile->len_b && pile->b[pile->max_index_b] < pile->a[pile->min_index]))
@@ -128,5 +129,7 @@ void	ft_sort_stack(t_piles *pile)
 	ft_get_min_index(pile);
 	// MIN_INDEX;
 	ft_get_best_rot_A(pile, pile->min_index);
+	// MIN_A;
 	// ft_print_piles(pile);
+	*/
 }
