@@ -4,7 +4,7 @@ ORANGE="\033[1;33m"
 NOCOLOR="\033[0m"
 
 clear
-make fclean && rm -rf checker.dSYM push_swap.dSYM
+make && make clean && clear
 testing3=(
 	"1 2 3"
 	"1 3 2"
