@@ -51,7 +51,7 @@ void	ft_rrb(t_piles *pile)
 		// RROTATE_B;
 		i = pile->len - 1;
 		tmp = (pile->b)[i];
-		while (i > pile->len_b)
+		while (i > pile->len - pile->len_b)
 		{
 			(pile->b)[i] = (pile->b)[i - 1];
 			i--;
