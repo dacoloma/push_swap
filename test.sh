@@ -953,9 +953,13 @@ printf "===================================\n"
 # 5 NUMBERS
 for (( i=0; i < ${#testing5[@]}; i++ )); 
 do 
-if ((i == 20)) || ((i == 40)) || ((i == 60)) || ((i == 80)) || ((i == 100)); then
-	read -n 1 -s -r -p "
-Press any key to continue"
+if ((i != 0)) && ((i % 20 == 0)) ; then
+	read -n 1 -s -p "
+Continue ?(y/n)" var
+	if [ "$var" = "n" ]; then
+		rm tmp
+		exit
+	fi
 	printf "===================================\n"
 fi
 printf "\n#-----------------#\n#test %d => ${testing5[i]}: " $i
@@ -989,7 +993,7 @@ printf "===================================\n"
 # 6 NUMBERS
 for (( i=0; i < ${#testing6[@]}; i++ )); 
 do 
-if ((i % 20 == 0)) ; then
+if ((i != 0)) && ((i % 20 == 0)) ; then
 	read -n 1 -s -p "
 Continue ?(y/n)" var
 	if [ "$var" = "n" ]; then
