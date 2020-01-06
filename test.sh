@@ -916,110 +916,110 @@ read -n 1 -s -p "
 Press any key to continue TEST 4 NUMBERS ?(y/n)" var
 if [ "$var" = "n" ] ; then
 	rm tmp
-	exit
-fi
-printf "===================================\n"
+else
+	printf "===================================\n"
 
-# 4 NUMBERS
-for (( i=0; i < ${#testing4[@]}; i++ )); 
-do 
-printf "\n#-----------------#\n#test %d => ${testing4[i]}: " $i
-./push_swap ${testing4[i]} > tmp
-test_pushswap=$(cat tmp | ./checker ${testing4[i]})
-if [ "$test_pushswap" = "OK" ] ; then
-	printf "${GREEN}${test_pushswap}${NOCOLOR}"
-	nb_instructions=$(wc -l < tmp)
-	if (( "$nb_instructions" < 5 )) ; then
-		echo "${GREEN}${nb_instructions}${NOCOLOR}"
-	elif (( "$nb_instructions" < 8 )) ; then
-		echo "${ORANGE}${nb_instructions}${NOCOLOR}"
-	else
-		echo "${RED}${nb_instructions}${NOCOLOR}"
+	# 4 NUMBERS
+	for (( i=0; i < ${#testing4[@]}; i++ )); 
+	do 
+	printf "\n#-----------------#\n#test %d => ${testing4[i]}: " $i
+	./push_swap ${testing4[i]} > tmp
+	test_pushswap=$(cat tmp | ./checker ${testing4[i]})
+	if [ "$test_pushswap" = "OK" ] ; then
+		printf "${GREEN}${test_pushswap}${NOCOLOR}"
+		nb_instructions=$(wc -l < tmp)
+		if (( "$nb_instructions" < 5 )) ; then
+			echo "${GREEN}${nb_instructions}${NOCOLOR}"
+		elif (( "$nb_instructions" < 8 )) ; then
+			echo "${ORANGE}${nb_instructions}${NOCOLOR}"
+		else
+			echo "${RED}${nb_instructions}${NOCOLOR}"
+		fi
+	elif [ "$test_pushswap" = "KO" ] ; then
+		echo "${RED}${test_pushswap}${NOCOLOR}"
 	fi
-elif [ "$test_pushswap" = "KO" ] ; then
-	echo "${RED}${test_pushswap}${NOCOLOR}"
+	cat tmp | tr '\n' ' ' | cat
+	done
 fi
-cat tmp | tr '\n' ' ' | cat
-done
 
 read -n 1 -s -p "
 Press any key to continue TEST 5 NUMBERS ?(y/n)" var
 if [ "$var" = "n" ]; then
 	rm tmp
-	exit
-fi
-printf "===================================\n"
-
-# 5 NUMBERS
-for (( i=0; i < ${#testing5[@]}; i++ )); 
-do 
-if ((i != 0)) && ((i % 20 == 0)) ; then
-	read -n 1 -s -p "
-Continue ?(y/n)" var
-	if [ "$var" = "n" ]; then
-		rm tmp
-		exit
-	fi
+else
 	printf "===================================\n"
-fi
-printf "\n#-----------------#\n#test %d => ${testing5[i]}: " $i
-./push_swap ${testing5[i]} > tmp
-test_pushswap=$(cat tmp | ./checker ${testing5[i]})
-if [ "$test_pushswap" = "OK" ] ; then
-	printf "${GREEN}${test_pushswap}${NOCOLOR}"
-	nb_instructions=$(wc -l < tmp)
-	if (( "$nb_instructions" < 5 )) ; then
-		echo "${GREEN}${nb_instructions}${NOCOLOR}"
-	elif (( "$nb_instructions" < 12 )) ; then
-		echo "${ORANGE}${nb_instructions}${NOCOLOR}"
-	else
-		echo "${RED}${nb_instructions}${NOCOLOR}"
+
+	# 5 NUMBERS
+	for (( i=0; i < ${#testing5[@]}; i++ )); 
+	do 
+	if ((i != 0)) && ((i % 20 == 0)) ; then
+		read -n 1 -s -p "
+	Continue ?(y/n)" var
+		if [ "$var" = "n" ]; then
+			rm tmp
+			exit
+		fi
+		printf "===================================\n"
 	fi
-elif [ "$test_pushswap" = "KO" ] ; then
-	echo "${RED}${test_pushswap}${NOCOLOR}"
+	printf "\n#-----------------#\n#test %d => ${testing5[i]}: " $i
+	./push_swap ${testing5[i]} > tmp
+	test_pushswap=$(cat tmp | ./checker ${testing5[i]})
+	if [ "$test_pushswap" = "OK" ] ; then
+		printf "${GREEN}${test_pushswap}${NOCOLOR}"
+		nb_instructions=$(wc -l < tmp)
+		if (( "$nb_instructions" < 5 )) ; then
+			echo "${GREEN}${nb_instructions}${NOCOLOR}"
+		elif (( "$nb_instructions" < 12 )) ; then
+			echo "${ORANGE}${nb_instructions}${NOCOLOR}"
+		else
+			echo "${RED}${nb_instructions}${NOCOLOR}"
+		fi
+	elif [ "$test_pushswap" = "KO" ] ; then
+		echo "${RED}${test_pushswap}${NOCOLOR}"
+	fi
+	cat tmp | tr '\n' ' ' | cat
+	# printf "\n"
+	done
 fi
-cat tmp | tr '\n' ' ' | cat
-# printf "\n"
-done
 
 read -n 1 -s -p "
 Press any key to continue TEST 6 NUMBERS ?(y/n)" var
 if [ "$var" = "n" ]; then
 	rm tmp
-	exit
-fi
-printf "===================================\n"
-
-# 6 NUMBERS
-for (( i=0; i < ${#testing6[@]}; i++ )); 
-do 
-if ((i != 0)) && ((i % 20 == 0)) ; then
-	read -n 1 -s -p "
-Continue ?(y/n)" var
-	if [ "$var" = "n" ]; then
-		rm tmp
-		exit
-	fi
+else
 	printf "===================================\n"
-fi
-printf "\n#-----------------#\n#test %d => ${testing6[i]}: " $i
-./push_swap ${testing6[i]} > tmp
-test_pushswap=$(cat tmp | ./checker ${testing6[i]})
-if [ "$test_pushswap" = "OK" ] ; then
-	printf "${GREEN}${test_pushswap}${NOCOLOR}"
-	nb_instructions=$(wc -l < tmp)
-	if (( "$nb_instructions" < 15 )) ; then
-		echo "${GREEN}${nb_instructions}${NOCOLOR}"
-	elif (( "$nb_instructions" < 20 )) ; then
-		echo "${ORANGE}${nb_instructions}${NOCOLOR}"
-	else
-		echo "${RED}${nb_instructions}${NOCOLOR}"
+
+	# 6 NUMBERS
+	for (( i=0; i < ${#testing6[@]}; i++ )); 
+	do 
+	if ((i != 0)) && ((i % 20 == 0)) ; then
+		read -n 1 -s -p "
+	Continue ?(y/n)" var
+		if [ "$var" = "n" ]; then
+			rm tmp
+			exit
+		fi
+		printf "===================================\n"
 	fi
-elif [ "$test_pushswap" = "KO" ] ; then
-	echo "${RED}${test_pushswap}${NOCOLOR}"
+	printf "\n#-----------------#\n#test %d => ${testing6[i]}: " $i
+	./push_swap ${testing6[i]} > tmp
+	test_pushswap=$(cat tmp | ./checker ${testing6[i]})
+	if [ "$test_pushswap" = "OK" ] ; then
+		printf "${GREEN}${test_pushswap}${NOCOLOR}"
+		nb_instructions=$(wc -l < tmp)
+		if (( "$nb_instructions" < 15 )) ; then
+			echo "${GREEN}${nb_instructions}${NOCOLOR}"
+		elif (( "$nb_instructions" < 20 )) ; then
+			echo "${ORANGE}${nb_instructions}${NOCOLOR}"
+		else
+			echo "${RED}${nb_instructions}${NOCOLOR}"
+		fi
+	elif [ "$test_pushswap" = "KO" ] ; then
+		echo "${RED}${test_pushswap}${NOCOLOR}"
+	fi
+	cat tmp | tr '\n' ' ' | cat
+	done
 fi
-cat tmp | tr '\n' ' ' | cat
-done
 
 read -n 1 -s -p "
 Press any key to continue TEST 100 NUMBERS ?(y/n)" var
@@ -1032,24 +1032,15 @@ printf "===================================\n"
 # 100 NUMBERS
 for (( i=0; i < ${#testing100[@]}; i++ )); 
 do 
-# if ((i % 20 == 0)) ; then
-# 	read -n 1 -s -p "
-# Continue ?(y/n)" var
-# 	if [ "$var" = "n" ]; then
-# 		rm tmp
-# 		exit
-# 	fi
-# 	printf "===================================\n"
-# fi
 printf "\n#-----------------#\n#test %d => ${testing100[i]}: " $i
 ./push_swap ${testing100[i]} > tmp
 test_pushswap=$(cat tmp | ./checker ${testing100[i]})
 if [ "$test_pushswap" = "OK" ] ; then
 	printf "${GREEN}${test_pushswap}${NOCOLOR}"
 	nb_instructions=$(wc -l < tmp)
-	if (( "$nb_instructions" < 15 )) ; then
+	if (( "$nb_instructions" < 350 )) ; then
 		echo "${GREEN}${nb_instructions}${NOCOLOR}"
-	elif (( "$nb_instructions" < 20 )) ; then
+	elif (( "$nb_instructions" < 700 )) ; then
 		echo "${ORANGE}${nb_instructions}${NOCOLOR}"
 	else
 		echo "${RED}${nb_instructions}${NOCOLOR}"
@@ -1057,7 +1048,7 @@ if [ "$test_pushswap" = "OK" ] ; then
 elif [ "$test_pushswap" = "KO" ] ; then
 	echo "${RED}${test_pushswap}${NOCOLOR}"
 fi
-cat tmp | tr '\n' ' ' | cat
+# cat tmp | tr '\n' ' ' | cat
 done
 
 rm tmp
