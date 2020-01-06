@@ -41,6 +41,8 @@ SRC =	ft_init.c\
 		ft_sort.c\
 		ft_sort_stack.c\
 		ft_sort_stack_a.c\
+		ft_medium_stack.c\
+		ft_long_stack.c\
 		print_piles.c
 	# 	checker.c\
 	#   push_swap.c

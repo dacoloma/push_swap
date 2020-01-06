@@ -36,26 +36,6 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-typedef struct	s_piles
-{
-	int		*a;
-	int		*b;
-	int		min_index;
-	int		max_index;
-	int		len;
-	int		len_b;
-	int		med;
-	int		med_index;
-	int		max_index_b;
-	int		sorted_index_a;
-}				t_piles;
-typedef struct	s_checker
-{
-	void	(*ptr[11])(t_piles *);
-	char	*instructions[11];
-	char	**to_check;
-
-}				t_checker;
 typedef struct	s_quicksort
 {
 	int	*tab;
@@ -65,6 +45,27 @@ typedef struct	s_quicksort
 	int	pivot;
 
 }				t_quicksort;
+typedef struct	s_piles
+{
+	int			*a;
+	int			*b;
+	int			min_index;
+	int			max_index;
+	int			len;
+	int			len_b;
+	int			med;
+	int			med_index;
+	int			max_index_b;
+	int			sorted_index_a;
+	t_quicksort	quick;
+}				t_piles;
+typedef struct	s_checker
+{
+	void	(*ptr[11])(t_piles *);
+	char	*instructions[11];
+	char	**to_check;
+
+}				t_checker;
 void	ft_putstr_err(char *err);
 int		ft_init(t_piles **pile, char **tab);
 void	ft_init_checker(t_checker *checker, char *buf);
@@ -94,4 +95,8 @@ void	ft_get_best_rot_A(t_piles *pile, int pos);
 void	ft_get_best_rot_B(t_piles *pile, int pos);
 void	ft_sort_stack(t_piles *pile);
 void	ft_sort_stack_a(t_piles *pile);
+void	ft_short_stack(t_piles *pile);
+void	ft_medium_stack(t_piles *pile);
+void	ft_long_stack(t_piles *pile);
+void	ft_sort_left(t_piles *pile);
 #endif
