@@ -57,6 +57,7 @@ int			ft_init(t_piles **pile, char **tab)
 	ft_char_to_int(*pile, tab);
 	ft_get_min_index(*pile);
 	ft_get_max_index(*pile);
+	(*pile)->quick = ft_sort(*pile, QUICK_SORT);
 	ft_get_med(*pile);
 	return (1);
 }
