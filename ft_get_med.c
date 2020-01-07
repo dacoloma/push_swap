@@ -14,17 +14,16 @@
 
 void	ft_get_med(t_piles *pile)
 {
-	int			i;
 	int			med;
 
 	med = pile->len / 2 + pile->len_b / 2;
 	pile->med = pile->quick.tab[med];
-	i = 0;
-	while (pile->a[i] && pile->a[i] != pile->med)
-	{
-		i++;
-	}
-	pile->med_index = i;
+	// i = 0;
+	// while (pile->a[i] && pile->a[i] != pile->med)
+	// {
+	// 	i++;
+	// }
+	pile->med_index = ft_get_index(pile->a, pile->med);
 	// printf("med = %d\nindex = %d\n", pile->med, pile->med_index);
 	// fflush(stdout);
 }
