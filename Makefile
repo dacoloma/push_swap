@@ -33,6 +33,7 @@ SRC =	ft_init.c\
 		ft_rrotate.c\
 		ft_check_sort.c\
 		ft_check_split.c\
+		ft_get_index.c\
 		ft_get_max_index.c\
 		ft_get_med.c\
 		ft_get_min_index.c\

@@ -22,6 +22,7 @@
 # define POS_B printf("POS_B = %d\n", sorted_pos_b);fflush(stdout)
 # define MAX_B printf("maxB = %d\tindex = %d\n", pile->b[pile->max_index_b],pile->max_index_b);fflush(stdout)
 # define MED printf("\nmed = %d\tindex = %d\n", pile->med, pile->med_index);fflush(stdout)
+# define SUB_MED printf("\nsub_med = %d\tindex = %d\n", sub_med, sub_med_index);fflush(stdout)
 # define MIN_A printf("minA = %d\tindex = %d\n", pile->a[pile->min_index],pile->min_index);fflush(stdout)
 # define SWAP_A printf("SA\n");fflush(stdout)
 # define SWAP_B printf("SB\n");fflush(stdout)
@@ -89,6 +90,7 @@ void	ft_get_med(t_piles *pile);
 int		ft_get_sorted_pos_A(t_piles *pile);
 int		ft_get_sorted_pos_B(t_piles *pile);
 int		ft_get_final_pos_A(t_piles *pile);
+int		ft_get_index(int *tab, int val);
 void	ft_get_min_index(t_piles *pile);
 void	ft_get_max_index(t_piles *pile);
 void	ft_get_best_rot_A(t_piles *pile, int pos);
