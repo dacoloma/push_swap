@@ -3,7 +3,7 @@ import random
 false = 0
 true = 1
 def generator(min, max, n):
-	arr = random.sample(range(1, 110), 100)
+	arr = random.sample(range(min, max), n)
 	return arr
 def check(arr):
 	sort_arr = sorted(arr)
