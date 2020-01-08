@@ -56,6 +56,7 @@ int			ft_partition(t_piles *pile)
 		// sleep(1);
 	}
 	// MED;
+	// DEBUG;
 	// sleep(1);
 	ft_partition(pile);
 	return (0);
@@ -140,6 +141,7 @@ void		ft_long_stack(t_piles *pile)
 
 	// Split
 	ft_partition(pile);
+	ft_short_stack(pile);
 	// DEBUG;
 	// sleep(1);
 	while (pile->len_b)
