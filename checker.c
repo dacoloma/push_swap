@@ -75,11 +75,21 @@ int	main(int ac, char **av)
 	ret = read(0, buf, 4095);
 	buf[ret] = '\0';
 	ft_init_checker(&checker, buf);
-	ft_do_instructions(pile, checker);
-	if (ft_check(pile))
-		ft_putstr("OK\n");
+	if (checker.to_check == NULL)
+	{
+		if (ft_check(pile))
+			ft_putstr("OK\n");
+		else
+			ft_putstr("KO\n");
+	}
 	else
-		ft_putstr("KO\n");
+	{
+		ft_do_instructions(pile, checker);
+		if (ft_check(pile))
+			ft_putstr("OK\n");
+		else
+			ft_putstr("KO\n");
+	}
 	// close(fd);
 	free(pile->a);
 	free(pile->b);
