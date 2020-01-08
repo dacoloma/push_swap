@@ -20,19 +20,24 @@ static int		ft_check(t_piles *pile)
 	while (i < pile->len)
 	{
 		if (pile->a[i - 1] > pile->a[i])
+		{
+			printf("a[%d] = %d\na[%d] = %d\n", i - 1, pile->a[i - 1], i, pile->a[i]);
 			return (0);
+		}
 		i++;
 	}
+	printf("a[0] = %d\na[1] = %d\n", pile->a[0], pile->a[1]);
 	return (1);
 }
 
+
+// BUG ICI 
 void	ft_do_instructions(t_piles *pile, t_checker checker)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	(void)pile;
 	while (checker.to_check[i])
 	{
 		j = 0;
@@ -81,6 +86,7 @@ int	main(int ac, char **av)
 			ft_putstr("OK\n");
 		else
 			ft_putstr("KO\n");
+		printf("BOUCLE 1\n");
 	}
 	else
 	{
@@ -89,10 +95,13 @@ int	main(int ac, char **av)
 			ft_putstr("OK\n");
 		else
 			ft_putstr("KO\n");
+		printf("BOUCLE 2\n");
 	}
+	// printf("DEBUG\n");
 	// close(fd);
-	free(pile->a);
-	free(pile->b);
-	free(pile);
+	// free(pile->a);
+	// free(pile->b);
+	// free(pile);
+	// printf("FREE\n");
 	return (0);
 }
