@@ -12,7 +12,7 @@ def check(arr):
 			return false
 	return true
 
-arr = generator(1, 120, 100)
+arr = generator(1, 520, 42)
 ck = check(arr)
 if (ck == false):
 	print("ERROR")
