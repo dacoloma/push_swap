@@ -21,12 +21,12 @@ static int		ft_check(t_piles *pile)
 	{
 		if (pile->a[i - 1] > pile->a[i])
 		{
-			printf("a[%d] = %d\na[%d] = %d\n", i - 1, pile->a[i - 1], i, pile->a[i]);
+			// printf("a[%d] = %d\na[%d] = %d\n", i - 1, pile->a[i - 1], i, pile->a[i]);
 			return (0);
 		}
 		i++;
 	}
-	printf("a[0] = %d\na[1] = %d\n", pile->a[0], pile->a[1]);
+	// printf("a[0] = %d\na[1] = %d\n", pile->a[0], pile->a[1]);
 	return (1);
 }
 
@@ -58,6 +58,7 @@ int	main(int ac, char **av)
 	char		buf[4096];
 	// int		fd;		// A SUPPRIMER
 
+	// printf("DEBUG\n");
 	// fd = open("test", O_RDONLY);
 	if (ac < 2)
 		return (0);
@@ -72,8 +73,8 @@ int	main(int ac, char **av)
 	}
 	if (!ft_init(&pile, args))
 	{
+		// DEBUG;
 		exit(-1);
-		DEBUG;
 	}
 	// ft_print_piles(pile);
 	// ret = read(fd, buf, 4095);	// 
@@ -86,7 +87,7 @@ int	main(int ac, char **av)
 			ft_putstr("OK\n");
 		else
 			ft_putstr("KO\n");
-		printf("BOUCLE 1\n");
+		// printf("BOUCLE 1\n");
 	}
 	else
 	{
@@ -95,13 +96,12 @@ int	main(int ac, char **av)
 			ft_putstr("OK\n");
 		else
 			ft_putstr("KO\n");
-		printf("BOUCLE 2\n");
+		// printf("BOUCLE 2\n");
 	}
 	// printf("DEBUG\n");
-	// close(fd);
-	// free(pile->a);
-	// free(pile->b);
-	// free(pile);
+	// close(0);
+	ft_free(pile, ac, args);
+	ft_free_checker(checker.to_check);
 	// printf("FREE\n");
 	return (0);
 }

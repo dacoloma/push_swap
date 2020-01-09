@@ -31,8 +31,6 @@ int	main(int ac, char **av)
 	if (!ft_init(&pile, args))
 		exit(-1);
 	ft_sort_stack(pile);
-	free(pile->a);
-	free(pile->b);
-	free(pile);
+	ft_free(pile, ac, args);
 	return (0);
 }
