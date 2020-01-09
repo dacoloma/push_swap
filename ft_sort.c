@@ -26,11 +26,11 @@ static int	ft_partition(t_quicksort *quick, int pivot, int left, int right)
 		while (right_ptr > 0 && quick->tab[right_ptr] > pivot)
 			right_ptr--;
 		if (left_ptr >= right_ptr)
-        	break;
-		else                
-        	ft_swap(&(quick->tab[left_ptr]),&(quick->tab[right_ptr]));
+			break ;
+		else
+			ft_swap(&(quick->tab[left_ptr]), &(quick->tab[right_ptr]));
 	}
-	ft_swap(&(quick->tab[left_ptr]),&(quick->tab[right]));
+	ft_swap(&(quick->tab[left_ptr]), &(quick->tab[right]));
 	return (left_ptr);
 }
 
@@ -66,7 +66,7 @@ static int	*ft_tabdup(int *tab, int len)
 t_quicksort	ft_sort(t_piles *pile, int sort)
 {
 	t_quicksort	quick;
-	
+
 	quick.tab = ft_tabdup(pile->a, pile->len);
 	quick.len = pile->len;
 	if (sort == QUICK_SORT)

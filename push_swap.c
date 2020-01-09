@@ -16,7 +16,7 @@ int	main(int ac, char **av)
 {
 	char	**args;
 	t_piles	*pile;
-	
+
 	if (ac < 2)
 		return (0);
 	if (ac == 2)

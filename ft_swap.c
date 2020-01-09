@@ -15,7 +15,7 @@
 void	ft_sa(t_piles *pile)
 {
 	int	i;
-	
+
 	if (pile->len > 1 && pile->len - pile->len_b > 1)
 	{
 		i = pile->len_b;
