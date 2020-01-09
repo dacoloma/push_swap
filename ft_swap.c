@@ -18,7 +18,6 @@ void	ft_sa(t_piles *pile)
 	
 	if (pile->len > 1 && pile->len - pile->len_b > 1)
 	{
-		// SWAP_A;
 		i = pile->len_b;
 		if (pile->med_index == i + 1)
 			pile->med_index--;
@@ -41,7 +40,6 @@ void	ft_sb(t_piles *pile)
 
 	if (pile->len_b > 1)
 	{
-		// SWAP_B;
 		i = pile->len - pile->len_b;
 		if (pile->max_index_b == i + 1)
 			pile->max_index_b--;

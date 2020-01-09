@@ -30,9 +30,7 @@ int	main(int ac, char **av)
 	}
 	if (!ft_init(&pile, args))
 		exit(-1);
-	// DEBUG;
 	ft_sort_stack(pile);
-	// DEBUG;
 	free(pile->a);
 	free(pile->b);
 	free(pile);

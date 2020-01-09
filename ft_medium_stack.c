@@ -45,13 +45,11 @@ void		ft_medium_stack(t_piles *pile)
 	}
 	if  (ft_check_sort(pile))
 	{
-		//REARRANGE STACK A
 		if (!pile->len_b
 			|| (pile->len_b && pile->b[pile->max_index_b] < pile->a[pile->min_index]))
 			ft_get_best_rot_A(pile, pile->min_index);
 		else
 			ft_get_best_rot_A(pile, pile->med_index);
-		//REARRANGE STACK B
 		ft_get_best_rot_B(pile, pile->max_index_b);
 		while (pile->len_b)
 		{
@@ -60,7 +58,5 @@ void		ft_medium_stack(t_piles *pile)
 		}
 	}
 	ft_left_right_sort(pile);
-	// DEBUG;
-	// sleep(1);
 	ft_medium_stack(pile);
 }

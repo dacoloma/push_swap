@@ -22,6 +22,4 @@ int	ft_get_index(int *tab, int val)
 		i++;
 	}
 	return (i);
-	// printf("med = %d\nindex = %d\n", pile->med, pile->med_index);
-	// fflush(stdout);
 }
