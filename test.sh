@@ -1072,9 +1072,9 @@ test_pushswap=$(cat tmp | ./checker ${testing500[i]})
 if [ "$test_pushswap" = "OK" ] ; then
 	printf "${GREEN}${test_pushswap}${NOCOLOR}"
 	nb_instructions=$(wc -l < tmp)
-	if (( "$nb_instructions" < 350 )) ; then
+	if (( "$nb_instructions" < 5000 )) ; then
 		echo "${GREEN}${nb_instructions}${NOCOLOR}"
-	elif (( "$nb_instructions" < 700 )) ; then
+	elif (( "$nb_instructions" < 5300 )) ; then
 		echo "${ORANGE}${nb_instructions}${NOCOLOR}"
 	else
 		echo "${RED}${nb_instructions}${NOCOLOR}"
