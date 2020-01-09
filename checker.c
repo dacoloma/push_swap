@@ -32,6 +32,7 @@ static int		ft_check(t_piles *pile)
 
 
 // BUG ICI 
+/*
 void	ft_do_instructions(t_piles *pile, t_checker checker)
 {
 	int	i;
@@ -48,14 +49,70 @@ void	ft_do_instructions(t_piles *pile, t_checker checker)
 		i++;
 	}
 }
+*/
+
+void	ft_do_instructions(t_piles *pile, t_checker checker)
+{
+	// char **instruction;
+	int	i;
+
+	i = 0;
+	while (i < 11 && ft_strcmp(checker.ps_instruction, checker.instructions[i]))
+		i++;
+	if (i == 11)
+	{
+		ft_putstr_err("Error\n");
+		exit(-1);
+	}
+	checker.ptr[i](pile);
+}
 
 int	main(int ac, char **av)
 {
 	char		**args;
 	t_piles		*pile;
 	t_checker	checker;
+
+	if (ac < 2)
+		return (0);
+	if (ac == 2)
+		args = ft_strsplit(av[1], ' ');
+	else
+		args = av + 1;
+	if (ft_is_valid(args) == 0)
+	{
+		ft_putstr_err("Error\n");
+		exit(-1);
+	}
+	if (!ft_init(&pile, args))
+	{
+		// DEBUG;
+		exit(-1);
+	}
+	// ft_print_piles(pile);
+	ft_init_checker(&checker);
+	while (get_next_line(0, &(checker.ps_instruction)) == 1)
+	{
+		// printf("DEBUG: %s\n", checker.ps_instruction);
+		ft_do_instructions(pile, checker);
+	}
+	if (ft_check(pile))
+		ft_putstr("OK\n");
+	else
+		ft_putstr("KO\n");
+	ft_free(pile, ac, args);
+	return (0);
+}
+
+/*
+int	main(int ac, char **av)
+{
+	char		**args;
+	t_piles		*pile;
+	t_checker	checker;
+	char		*str;
 	int			ret;
-	char		buf[4096];
+	char		buf[10000];
 	// int		fd;		// A SUPPRIMER
 
 	// printf("DEBUG\n");
@@ -78,9 +135,11 @@ int	main(int ac, char **av)
 	}
 	// ft_print_piles(pile);
 	// ret = read(fd, buf, 4095);	// 
-	ret = read(0, buf, 4095);
+	
+	ret = read(0, buf, 9999);
 	buf[ret] = '\0';
 	ft_init_checker(&checker, buf);
+
 	if (checker.to_check == NULL)
 	{
 		if (ft_check(pile))
@@ -98,6 +157,7 @@ int	main(int ac, char **av)
 			ft_putstr("KO\n");
 		// printf("BOUCLE 2\n");
 	}
+	
 	// printf("DEBUG\n");
 	// close(0);
 	ft_free(pile, ac, args);
@@ -105,3 +165,4 @@ int	main(int ac, char **av)
 	// printf("FREE\n");
 	return (0);
 }
+*/
