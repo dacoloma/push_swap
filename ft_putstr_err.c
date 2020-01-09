@@ -20,4 +20,3 @@ void	ft_putstr_err(char *err)
 	while (err[i])
 		write(2, &err[i++], 1);
 }
-

@@ -12,11 +12,8 @@
 
 #include "push_swap.h"
 
-static void	ft_sort_right(t_piles *pile)
+static void	ft_sort_right(t_piles *pile, int sorted_pos_a)
 {
-	int	sorted_pos_a;
-
-	sorted_pos_a = ft_get_sorted_pos_A(pile);
 	if (sorted_pos_a == pile->len_b + 2)
 	{
 		ft_putstr("sa\n");
@@ -38,7 +35,7 @@ static void	ft_sort_right(t_piles *pile)
 	{
 		ft_putstr("pb\n");
 		ft_pb(pile);
-		ft_get_best_rot_A(pile, sorted_pos_a);
+		ft_get_best_rot_a(pile, sorted_pos_a);
 		ft_putstr("pa\n");
 		ft_pa(pile);
 	}
@@ -46,8 +43,11 @@ static void	ft_sort_right(t_piles *pile)
 
 void		ft_sort_stack_a(t_piles *pile)
 {
+	int	sorted_pos_a;
+
 	while (!ft_check_sort(pile))
 	{
-		ft_sort_right(pile);
+		sorted_pos_a = ft_get_sorted_pos_a(pile);
+		ft_sort_right(pile, sorted_pos_a);
 	}
 }

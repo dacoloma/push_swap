@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int		ft_get_sorted_pos_B(t_piles *pile)
+int		ft_get_sorted_pos_b(t_piles *pile)
 {
 	int	i;
 	int	j;
@@ -34,7 +34,7 @@ int		ft_get_sorted_pos_B(t_piles *pile)
 	return (j);
 }
 
-int		ft_get_sorted_pos_A(t_piles *pile)
+int		ft_get_sorted_pos_a(t_piles *pile)
 {
 	int	i;
 	int	j;

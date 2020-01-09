@@ -34,7 +34,7 @@ void	ft_pa(t_piles *pile)
 {
 	int	i;
 	int	j;
-	
+
 	if (pile->len > 0 && pile->len_b > 0)
 	{
 		i = pile->len_b - 1;

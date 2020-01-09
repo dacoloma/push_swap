@@ -82,10 +82,10 @@ void		ft_long_stack(t_piles *pile)
 	while (pile->len_b)
 	{
 		sorted_pos_a = ft_get_pos(pile);
-		ft_get_best_rot_A(pile, sorted_pos_a);
+		ft_get_best_rot_a(pile, sorted_pos_a);
 		ft_putstr("pa\n");
 		ft_pa(pile);
 	}
 	ft_get_min_index(pile);
-	ft_get_best_rot_A(pile, pile->min_index);
+	ft_get_best_rot_a(pile, pile->min_index);
 }

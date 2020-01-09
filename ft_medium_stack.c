@@ -28,35 +28,35 @@ static void	ft_left_right_sort(t_piles *pile)
 	}
 }
 
+static void	ft_merge(t_piles *pile)
+{
+	if (!pile->len_b || (pile->len_b
+		&& pile->b[pile->max_index_b] < pile->a[pile->min_index]))
+		ft_get_best_rot_a(pile, pile->min_index);
+	else
+		ft_get_best_rot_a(pile, pile->med_index);
+	ft_get_best_rot_b(pile, pile->max_index_b);
+	while (pile->len_b)
+	{
+		ft_putstr("pa\n");
+		ft_pa(pile);
+	}
+}
+
 void		ft_medium_stack(t_piles *pile)
 {
-	// MED;
 	if (pile->min_index == 0 && ft_check_sort(pile))
 		return ;
 	if (ft_check_split(pile))
-	{
 		ft_sort_stack_a(pile);
-	}
 	if (pile->len - pile->len_b <= 3)
 	{
 		if (!pile->len_b || (pile->len_b
 			&& pile->a[pile->min_index] > pile->b[pile->max_index_b]))
 			ft_short_stack(pile);
 	}
-	if  (ft_check_sort(pile))
-	{
-		if (!pile->len_b
-			|| (pile->len_b && pile->b[pile->max_index_b] < pile->a[pile->min_index]))
-			ft_get_best_rot_A(pile, pile->min_index);
-		else
-			ft_get_best_rot_A(pile, pile->med_index);
-		ft_get_best_rot_B(pile, pile->max_index_b);
-		while (pile->len_b)
-		{
-			ft_putstr("pa\n");
-			ft_pa(pile);
-		}
-	}
+	if (ft_check_sort(pile))
+		ft_merge(pile);
 	ft_left_right_sort(pile);
 	ft_medium_stack(pile);
 }

@@ -137,11 +137,11 @@ void		ft_long_stack(t_piles *pile)
 	while (pile->len_b)
 	{
 		best_move = ft_find_best_move(pile);
-		ft_get_best_rot_B(pile, best_move);
-		ft_get_best_rot_A(pile, ft_get_pos(pile));
+		ft_get_best_rot_b(pile, best_move);
+		ft_get_best_rot_a(pile, ft_get_pos(pile));
 		ft_putstr("pa\n");
 		ft_pa(pile);
 	}
 	ft_get_min_index(pile);
-	ft_get_best_rot_A(pile, pile->min_index);
+	ft_get_best_rot_a(pile, pile->min_index);
 }
