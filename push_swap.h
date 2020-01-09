@@ -85,5 +85,7 @@ void			ft_long_stack(t_piles *pile);
 void			ft_sort_left(t_piles *pile);
 void			ft_free(t_piles *pile, int ac, char **args);
 void			ft_free_checker(char **to_check);
+int				ft_rot_count_a(t_piles *pile, int index);
+int				ft_rot_count_b(t_piles *pile, int index);
 void			ft_print_piles(t_piles *pile);
 #endif
