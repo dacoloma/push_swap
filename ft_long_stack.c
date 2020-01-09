@@ -28,7 +28,7 @@ static int	ft_count(t_piles *pile)
 	return (count);
 }
 
-int			ft_partition(t_piles *pile)
+static int	ft_partition(t_piles *pile)
 {
 	int	count;
 
@@ -55,7 +55,7 @@ int			ft_partition(t_piles *pile)
 	return (0);
 }
 
-static int			ft_get_pos(t_piles *pile)
+static int	ft_get_pos(t_piles *pile)
 {
 	int	i;
 	int	j;
@@ -72,39 +72,6 @@ static int			ft_get_pos(t_piles *pile)
 	return (i);
 }
 
-static int	ft_rot_count_A(t_piles *pile, int index)
-{
-	int	i;
-	int	j;
-	int count;
-
-	ft_get_min_index(pile);
-	i = pile->min_index;
-	j = index;
-	while (pile->a[i] < pile->b[j])
-	{
-		i++;
-		if (i == pile->len)
-			i = pile->len_b;
-	}
-	if (i > (pile->len + pile->len_b) / 2)
-		count = pile->len - i;
-	else
-		count = i - pile->len_b;
-	return (count);
-}
-
-static int	ft_rot_count_B(t_piles *pile, int index)
-{
-	int count;
-
-	if (index > pile->len - pile->len_b / 2)
-		count = pile->len - index;
-	else
-		count = index - (pile->len - pile->len_b);
-	return (count);
-}
-
 static int	ft_find_best_move(t_piles *pile)
 {
 	int	count;
@@ -117,7 +84,7 @@ static int	ft_find_best_move(t_piles *pile)
 	best_move = 0;
 	while (i < pile->len)
 	{
-		count = ft_rot_count_B(pile, i) + ft_rot_count_A(pile, i) + 1;
+		count = ft_rot_count_b(pile, i) + ft_rot_count_a(pile, i) + 1;
 		if (!best_move || count < best_move)
 		{
 			best_move = count;

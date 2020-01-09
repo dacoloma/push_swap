@@ -54,7 +54,6 @@ int		ft_get_sorted_pos_a(t_piles *pile)
 		else
 			j = pile->min_index + 1;
 	}
-	
 	while (pile->a[i] > pile->a[j] && pile->a[j] > pile->med)
 	{
 		j++;

@@ -14,8 +14,8 @@
 
 int	ft_get_index(int *tab, int val)
 {
-	int			i;
-	
+	int	i;
+
 	i = 0;
 	while (tab[i] && tab[i] != val)
 	{

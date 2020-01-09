@@ -28,5 +28,5 @@ void	ft_get_min_index(t_piles *pile)
 			min = pile->a[i];
 		}
 		i++;
-	}	
+	}
 }

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void 	ft_get_best_rot_b(t_piles *pile, int pos)
+void	ft_get_best_rot_b(t_piles *pile, int pos)
 {
 	int	i;
 	int	limit;
@@ -40,7 +40,7 @@ void 	ft_get_best_rot_b(t_piles *pile, int pos)
 	}
 }
 
-void 	ft_get_best_rot_a(t_piles *pile, int pos)
+void	ft_get_best_rot_a(t_piles *pile, int pos)
 {
 	int	i;
 	int	limit;

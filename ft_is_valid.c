@@ -60,6 +60,6 @@ static int	ft_check_duplicate(char **tab)
 int			ft_is_valid(char **tab)
 {
 	if (!ft_check_entry(tab) || !ft_check_duplicate(tab))
-		return(0);
+		return (0);
 	return (1);
 }
