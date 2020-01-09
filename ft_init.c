@@ -62,9 +62,9 @@ int			ft_init(t_piles **pile, char **tab)
 	return (1);
 }
 
-void		ft_init_checker(t_checker *checker, char *buf)
+void		ft_init_checker(t_checker *checker)//, char *buf)
 {
-	checker->to_check = ft_strsplit(buf, '\n');
+	// checker->to_check = ft_strsplit(buf, '\n');
 	checker->ptr[0] = &ft_pa;
 	checker->ptr[1] = &ft_pb;
 	checker->ptr[2] = &ft_sa;

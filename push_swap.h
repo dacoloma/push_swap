@@ -64,12 +64,13 @@ typedef struct	s_checker
 {
 	void	(*ptr[11])(t_piles *);
 	char	*instructions[11];
-	char	**to_check;
+	// char	**to_check;
+	char	*ps_instruction;
 
 }				t_checker;
 void	ft_putstr_err(char *err);
 int		ft_init(t_piles **pile, char **tab);
-void	ft_init_checker(t_checker *checker, char *buf);
+void	ft_init_checker(t_checker *checker);//, char *buf);
 int		ft_check_split(t_piles *pile);
 int		ft_check_sort(t_piles *pile);
 int		ft_is_valid(char **tab);
