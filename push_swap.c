@@ -36,11 +36,11 @@ static int	ft_get_arg(int ac, char **av, char ***args)
 	return (ret);
 }
 
-int	main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	char	**args;
 	t_piles	*pile;
-	int			ret;
+	int		ret;
 
 	ret = ft_get_arg(ac, av, &args);
 	if (ret == -1 || ft_is_valid(args) == 0)
