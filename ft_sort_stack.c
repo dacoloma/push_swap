@@ -37,8 +37,7 @@ void	ft_sort_stack(t_piles *pile)
 	if (ft_check_sort(pile) && pile->min_index == 0)
 		return ;
 	if (pile->len < 7)
-		ft_long_stack(pile);
-		// ft_medium_stack(pile);
+		ft_medium_stack(pile);
 	else
 	{
 		ft_long_stack(pile);
