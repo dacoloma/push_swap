@@ -888,9 +888,10 @@ testing6=(
 printf "===================================\n"
 for (( i=0; i < 10; i++ )); 
 do 
-entries=$(python3 gen5.py)
-printf "\n#-----------------#\n#test %d => ${entries}: " $i
-./push_swap ${entries} > tmp
+entries="$(python3 gen5.py)"
+printf "\n#-----------------#\n#test %d => $entries:\t" $i
+./push_swap $entries > tmp
+# cat tmp
 test_pushswap=$(cat tmp | ./checker ${entries})
 if [ "$test_pushswap" = "OK" ] ; then
 	printf "${GREEN}${test_pushswap}${NOCOLOR}"
@@ -923,7 +924,7 @@ else
 	printf "===================================\n"
 	for (( i=0; i < ${#testing3[@]}; i++ )); 
 	do
-	printf "\n#-----------------#\n#test %d => ${testing3[i]}: " $i
+	printf "\n#-----------------#\n#test %d => ${testing3[i]}:\t" $i
 	./push_swap ${testing3[i]} > tmp
 	test_pushswap=$(./push_swap ${testing3[i]} | ./checker ${testing3[i]})
 	if [ "$test_pushswap" = "OK" ] ; then
@@ -953,7 +954,7 @@ else
 	# 4 NUMBERS
 	for (( i=0; i < ${#testing4[@]}; i++ )); 
 	do 
-	printf "\n#-----------------#\n#test %d => ${testing4[i]}: " $i
+	printf "\n#-----------------#\n#test %d => ${testing4[i]}:\t" $i
 	./push_swap ${testing4[i]} > tmp
 	test_pushswap=$(cat tmp | ./checker ${testing4[i]})
 	if [ "$test_pushswap" = "OK" ] ; then
@@ -992,7 +993,7 @@ else
 		fi
 		printf "===================================\n"
 	fi
-	printf "\n#-----------------#\n#test %d => ${testing5[i]}: " $i
+	printf "\n#-----------------#\n#test %d => ${testing5[i]}:\t" $i
 	./push_swap ${testing5[i]} > tmp
 	test_pushswap=$(cat tmp | ./checker ${testing5[i]})
 	if [ "$test_pushswap" = "OK" ] ; then
@@ -1032,7 +1033,7 @@ else
 		fi
 		printf "===================================\n"
 	fi
-	printf "\n#-----------------#\n#test %d => ${testing6[i]}: " $i
+	printf "\n#-----------------#\n#test %d => ${testing6[i]}:\t" $i
 	./push_swap ${testing6[i]} > tmp
 	test_pushswap=$(cat tmp | ./checker ${testing6[i]})
 	if [ "$test_pushswap" = "OK" ] ; then
@@ -1063,7 +1064,7 @@ else
 for (( i=0; i < 10; i++ )); 
 do 
 entries=$(python3 gen100.py)
-printf "\n#-----------------#\n#test %d => ${entries}: " $i
+printf "\n#-----------------#\n#test %d => ${entries}:\t" $i
 ./push_swap ${entries} > tmp
 test_pushswap=$(cat tmp | ./checker ${entries})
 if [ "$test_pushswap" = "OK" ] ; then
@@ -1101,7 +1102,7 @@ printf "===================================\n"
 for (( i=0; i < 10; i++ )); 
 do 
 entries=$(python3 gen500.py)
-printf "\n#-----------------#\n#test %d => ${entries}: " $i
+printf "\n#-----------------#\n#test %d => ${entries}:\t" $i
 ./push_swap ${entries} > tmp
 test_pushswap=$(cat tmp | ./checker ${entries})
 	if [ "$test_pushswap" = "OK" ] ; then
