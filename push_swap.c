@@ -12,18 +12,38 @@
 
 #include "push_swap.h"
 
+static int	ft_get_arg(int ac, char **av, char ***args)
+{
+	int	ret;
+
+	ret = 0;
+	if (ac < 2)
+		return (-1);
+	if (ac == 2)
+		*args = ft_strsplit(av[1], ' ');
+	else if (ac == 3)
+	{
+		if (!ft_strcmp(av[1], "-v"))
+			ret++;
+		else
+		{
+			return (-1);
+		}
+		*args = ft_strsplit(av[2], ' ');
+	}
+	else
+		*args = av + 1;
+	return (ret);
+}
+
 int	main(int ac, char **av)
 {
 	char	**args;
 	t_piles	*pile;
+	int			ret;
 
-	if (ac < 2)
-		return (0);
-	if (ac == 2)
-		args = ft_strsplit(av[1], ' ');
-	else
-		args = av + 1;
-	if (ft_is_valid(args) == 0)
+	ret = ft_get_arg(ac, av, &args);
+	if (ret == -1 || ft_is_valid(args) == 0)
 	{
 		ft_putstr_err("Error\n");
 		exit(-1);
