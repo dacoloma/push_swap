@@ -50,6 +50,8 @@ static int	ft_get_arg(int ac, char **av, char ***args)
 	int	ret;
 
 	ret = 0;
+	if (ac == 1)
+		exit(0);
 	if (ac < 2)
 		return (-1);
 	if (ac == 2)
