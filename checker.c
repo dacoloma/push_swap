@@ -28,7 +28,7 @@ static int	ft_check(t_piles *pile)
 	return (1);
 }
 
-static void	ft_do_instructions(t_piles *pile, t_checker checker)
+static void	ft_do_instructions(t_piles *pile, t_checker checker, int flag)
 {
 	int	i;
 
@@ -41,6 +41,32 @@ static void	ft_do_instructions(t_piles *pile, t_checker checker)
 		exit(-1);
 	}
 	checker.ptr[i](pile);
+	if (flag == 1)
+		ft_print_piles(pile);
+}
+
+static int	ft_get_arg(int ac, char **av, char ***args)
+{
+	int	ret;
+
+	ret = 0;
+	if (ac < 2 || ac > 3)
+		return (-1);
+	if (ac == 2)
+		*args = ft_strsplit(av[1], ' ');
+	else if (ac == 3)
+	{
+		if (!ft_strcmp(av[1], "-v"))
+			ret++;
+		else
+		{
+			return (-1);
+		}
+		*args = ft_strsplit(av[2], ' ');
+	}
+	else
+		*args = av + 1;
+	return (ret);
 }
 
 int			main(int ac, char **av)
@@ -48,14 +74,10 @@ int			main(int ac, char **av)
 	char		**args;
 	t_piles		*pile;
 	t_checker	checker;
+	int			ret;
 
-	if (ac < 2)
-		return (0);
-	if (ac == 2)
-		args = ft_strsplit(av[1], ' ');
-	else
-		args = av + 1;
-	if (ft_is_valid(args) == 0)
+	ret = ft_get_arg(ac, av, &args);
+	if (ret == -1 || ft_is_valid(args) == 0)
 	{
 		ft_putstr_err("Error\n");
 		exit(-1);
@@ -64,7 +86,7 @@ int			main(int ac, char **av)
 		exit(-1);
 	ft_init_checker(&checker);
 	while (get_next_line(0, &(checker.ps_instruction)) == 1)
-		ft_do_instructions(pile, checker);
+		ft_do_instructions(pile, checker, ret);
 	if (ft_check(pile))
 		ft_putstr("OK\n");
 	else
