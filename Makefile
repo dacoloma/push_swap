@@ -10,8 +10,6 @@
 #                                                                              #
 # **************************************************************************** #
 
-# gww -o test main.c libftprintf.a libft/libft.a -I libft/includes
-
 NAME = push_swap
 
 CHECKER = checker
@@ -47,8 +45,6 @@ SRC =	ft_init.c\
 		ft_free.c\
 		ft_rot_count.c\
 		ft_print_piles.c
-	# 	checker.c\
-	#   push_swap.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -63,9 +59,6 @@ $(LIBFT) :
 	$(CC) $(CF) -o $@ -c $< -g
 
 $(NAME) : $(LIBFT) $(OBJ) push_swap.c checker.c
-	#cp $(LIBFT) ./$(NAME)
-	# ar rc $(NAME) $(OBJ)
-	# ranlib $(NAME)
 	$(CC) $(CF) -o $(NAME) push_swap.c -g $(OBJ) -L libft/ -lft
 	$(CC) $(CF) -o $(CHECKER) checker.c -g $(OBJ) -L libft/ -lft
 clean:
