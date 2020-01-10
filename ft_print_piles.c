@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static void ft_print_stack(char stack, int *tab, int start, int len)
+static void	ft_print_stack(char stack, int *tab, int start, int len)
 {
 	int	i;
 
@@ -33,7 +33,7 @@ static void ft_print_stack(char stack, int *tab, int start, int len)
 	ft_putchar('\n');
 }
 
-void	ft_print_piles(t_piles *pile)
+void		ft_print_piles(t_piles *pile)
 {
 	ft_print_stack('A', pile->a, pile->len_b, pile->len);
 	ft_print_stack('B', pile->b, pile->len - pile->len_b, pile->len);
