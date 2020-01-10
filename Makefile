@@ -46,7 +46,7 @@ SRC =	ft_init.c\
 		ft_long_stack.c\
 		ft_free.c\
 		ft_rot_count.c\
-		print_piles.c
+		ft_print_piles.c
 	# 	checker.c\
 	#   push_swap.c
 
