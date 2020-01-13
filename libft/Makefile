@@ -20,7 +20,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror -I $(INCLUDES) -g
 
-vpath %c condition conv ft_printf lst mem print str .
+vpath %c condition conv ft_printf lst mem print str 
 
 SRC =	ft_format.c \
 		ft_get_flag.c \
@@ -122,7 +122,7 @@ DIR_OBJ = obj
 
 OBJ = $(SRC:%.c=$(DIR_OBJ)/%.o)
 
-$(NAME): $(DIR_OBJ) $(HEADER) $(SRC)
+$(NAME): $(DIR_OBJ) $(HEADER) $(SRC) $(OBJ)
 	@ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 .PHONY = all clean fclean re

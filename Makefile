@@ -50,7 +50,7 @@ OBJ = $(SRC:.c=.o)
 
 .PHONY = all clean fclean re
 
-all: $(LIBFT) $(NAME) $(CHECKER) $(SRC)
+all: $(LIBFT) $(NAME) $(CHECKER) $(SRC) $(OBJ)
 
 $(LIBFT) :
 	make -C libft/
