@@ -43,13 +43,11 @@ int			main(int ac, char **av)
 	int		ret;
 
 	ret = ft_get_arg(ac, av, &args);
-	if (ret == -1 || ft_is_valid(args) == 0)
+	if (ret == -1 || ft_is_valid(args) == 0 || !ft_init(&pile, args))
 	{
 		ft_putstr_err("Error\n");
 		exit(-1);
 	}
-	if (!ft_init(&pile, args))
-		exit(-1);
 	ft_sort_stack(pile);
 	ft_free(pile, ac, args);
 	return (0);
