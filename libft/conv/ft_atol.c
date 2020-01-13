@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int		ft_atol(const char *str)
+long long	ft_atol(const char *str)
 {
 	int						i;
 	int						negat;
@@ -29,7 +29,7 @@ int		ft_atol(const char *str)
 	if (str[i] == '-' || str[i] == '+')
 		i++;
 	while (ft_isdigit(str[i]))
-		res = ((res * 10) + str[i++] - '0');
+		res = ((res * 10LL) + str[i++] - '0');
 	if (negat == -1)
 		res = (res > 9223372036854775808U) ? 0 : -res;
 	else
