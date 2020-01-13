@@ -58,8 +58,9 @@ $(LIBFT) :
 %.o : %.c
 	$(CC) $(CF) -o $@ -c $< -g
 
-$(NAME) : $(LIBFT) $(OBJ) push_swap.c checker.c
+$(NAME) : $(LIBFT) $(OBJ) push_swap.c
 	$(CC) $(CF) -o $(NAME) push_swap.c -g $(OBJ) -L libft/ -lft
+$(CHECKER): $(LIBFT) $(OBJ) checker.c
 	$(CC) $(CF) -o $(CHECKER) checker.c -g $(OBJ) -L libft/ -lft
 clean:
 	make clean -C libft/
