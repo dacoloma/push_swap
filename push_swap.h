@@ -15,7 +15,8 @@
 # define QUICK_SORT 0
 # define ASC 0
 # define DESC 1
-# include "libft/includes/libft.h"
+# include "libft.h"
+# include "ft_printf.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>

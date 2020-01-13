@@ -14,7 +14,7 @@ NAME = libft.a
 
 INCLUDES = includes
 
-HEADER = includes/libft.h
+HEADER = includes/libft.h includes/ft_printf.h
 
 CC = gcc
 
@@ -26,6 +26,17 @@ DIR_LST = lst
 DIR_MEM = mem
 DIR_PRINT = print
 DIR_STR = str
+DIR_PRINTF = ft_printf
+
+PRINTF =	$(DIR_PRINTF)/ft_format.c \
+			$(DIR_PRINTF)/ft_get_flag.c \
+			$(DIR_PRINTF)/ft_init.c \
+			$(DIR_PRINTF)/ft_minilibft.c \
+			$(DIR_PRINTF)/ft_flags.c \
+			$(DIR_PRINTF)/ft_free_printf.c \
+			$(DIR_PRINTF)/ft_get_params.c \
+			$(DIR_PRINTF)/ft_prefix_signed.c \
+			$(DIR_PRINTF)/ft_wildcard.c
 
 SRC_COND =	$(DIR_COND)/ft_is_prime.c \
 			$(DIR_COND)/ft_isalnum.c \
@@ -35,7 +46,17 @@ SRC_COND =	$(DIR_COND)/ft_is_prime.c \
 			$(DIR_COND)/ft_isprint.c 
 
 SRC_CONV =	$(DIR_CONV)/ft_atoi.c \
+			$(DIR_CONV)/ft_hhtoa_base.c \
+			$(DIR_CONV)/ft_htoa_base.c \
 			$(DIR_CONV)/ft_itoa.c \
+			$(DIR_CONV)/ft_lftoa.c \
+			$(DIR_CONV)/ft_lltoa_base.c \
+			$(DIR_CONV)/ft_ltoa_base.c \
+			$(DIR_CONV)/ft_u_hhtoa_base.c \
+			$(DIR_CONV)/ft_u_htoa_base.c \
+			$(DIR_CONV)/ft_u_itoa_base.c \
+			$(DIR_CONV)/ft_u_ltoa_base.c \
+			$(DIR_CONV)/ft_u_lltoa_base.c \
 			$(DIR_CONV)/ft_tolower.c \
 			$(DIR_CONV)/ft_toupper.c
 SRC_LST =	$(DIR_LST)/ft_lstadd.c \
@@ -53,7 +74,18 @@ SRC_MEM =	$(DIR_MEM)/ft_bzero.c \
 			$(DIR_MEM)/ft_memdel.c \
 			$(DIR_MEM)/ft_memmove.c \
 			$(DIR_MEM)/ft_memset.c
-SRC_PRINT =	$(DIR_PRINT)/ft_putchar.c \
+SRC_PRINT =	$(DIR_PRINT)/ft_print_address.c \
+			$(DIR_PRINT)/ft_print_decimal.c \
+			$(DIR_PRINT)/ft_print_hexa.c \
+			$(DIR_PRINT)/ft_print_octal.c \
+			$(DIR_PRINT)/ft_print_udecimal.c \
+			$(DIR_PRINT)/ft_print_char.c \
+			$(DIR_PRINT)/ft_print_float.c \
+			$(DIR_PRINT)/ft_print_modulo.c \
+			$(DIR_PRINT)/ft_print_str.c \
+			$(DIR_PRINT)/ft_printf.c \
+			$(DIR_PRINT)/ft_putbuf.c \
+			$(DIR_PRINT)/ft_putchar.c \
 			$(DIR_PRINT)/ft_putchar_fd.c \
 			$(DIR_PRINT)/ft_putendl.c \
 			$(DIR_PRINT)/ft_putendl_fd.c \
@@ -90,7 +122,7 @@ SRC_STR =	$(DIR_STR)/ft_strcat.c \
 			$(DIR_STR)/ft_strtrim.c
 
 
-SRC =	$(SRC_COND) $(SRC_CONV) $(SRC_LST) $(SRC_MEM) $(SRC_PRINT) $(SRC_STR) \
+SRC =	$(SRC_COND) $(SRC_CONV) $(SRC_LST) $(SRC_MEM) $(SRC_PRINT) $(SRC_STR) $(PRINTF)\
 		ft_range.c \
 		ft_swap.c \
 		ft_sort_integer.c \
