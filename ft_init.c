@@ -29,6 +29,7 @@ static int	ft_convert(t_piles *pile, char **tab)
 {
 	int			i;
 	long long	tmp;
+
 	i = 0;
 	while (tab[i])
 	{
@@ -67,10 +68,7 @@ int			ft_init(t_piles **pile, char **tab)
 		free(*pile);
 		return (0);
 	}
-	ft_get_min_index(*pile);
-	ft_get_max_index(*pile);
 	(*pile)->quick = ft_sort(*pile, QUICK_SORT);
-	ft_get_med(*pile);
 	return (1);
 }
 

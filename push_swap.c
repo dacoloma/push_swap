@@ -48,6 +48,9 @@ int			main(int ac, char **av)
 		ft_putstr_err("Error\n");
 		exit(-1);
 	}
+	ft_get_min_index(pile);
+	ft_get_max_index(pile);
+	ft_get_med(pile);
 	ft_sort_stack(pile);
 	ft_free(pile, ac, args);
 	return (0);
