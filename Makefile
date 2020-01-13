@@ -46,17 +46,22 @@ SRC =	ft_init.c\
 		ft_rot_count.c\
 		ft_print_piles.c
 
-OBJ = $(SRC:.c=.o)
+DIR_OBJ = obj_push_swap
+
+OBJ = $(SRC:%.c=$(DIR_OBJ)/%.o)
 
 .PHONY = all clean fclean re
 
-all: $(LIBFT) $(NAME) $(CHECKER) $(SRC) $(OBJ)
+all: $(LIBFT) $(DIR_OBJ) $(NAME) $(CHECKER) $(SRC) $(OBJ)
+
+$(DIR_OBJ): 
+	mkdir -p $(DIR_OBJ)
 
 $(LIBFT) :
 	make -C libft/
 
-%.o : %.c
-	$(CC) $(CF) -o $@ -c $< -g
+$(DIR_OBJ)/%.o: %.c
+	$(CC) $(CF) -o $@ -c $< 
 
 $(NAME) : $(LIBFT) $(OBJ) push_swap.c
 	$(CC) $(CF) -o $(NAME) push_swap.c -g $(OBJ) -L libft/ -lft

@@ -18,7 +18,7 @@ HEADER = includes/libft.h includes/ft_printf.h
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -I $(INCLUDES) -g
+CFLAGS = -Wall -Wextra -Werror -I $(INCLUDES)
 
 vpath %c condition conv ft_printf lst mem print str 
 
