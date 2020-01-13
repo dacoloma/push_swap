@@ -69,7 +69,7 @@ $(CHECKER): $(LIBFT) $(OBJ) checker.c
 	$(CC) $(CF) -o $(CHECKER) checker.c -g $(OBJ) -L libft/ -lft
 clean:
 	make clean -C libft/
-	rm -f $(OBJ)
+	rm -rf $(DIR_OBJ)
 
 fclean: clean
 	rm -f $(NAME) $(CHECKER)
