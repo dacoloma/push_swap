@@ -20,130 +20,120 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror -I $(INCLUDES) -g
 
-DIR_COND = condition
-DIR_CONV = conv
-DIR_LST = lst
-DIR_MEM = mem
-DIR_PRINT = print
-DIR_STR = str
-DIR_PRINTF = ft_printf
+vpath %c condition conv ft_printf lst mem print str .
 
-PRINTF =	$(DIR_PRINTF)/ft_format.c \
-			$(DIR_PRINTF)/ft_get_flag.c \
-			$(DIR_PRINTF)/ft_init.c \
-			$(DIR_PRINTF)/ft_minilibft.c \
-			$(DIR_PRINTF)/ft_flags.c \
-			$(DIR_PRINTF)/ft_free_printf.c \
-			$(DIR_PRINTF)/ft_get_params.c \
-			$(DIR_PRINTF)/ft_prefix_signed.c \
-			$(DIR_PRINTF)/ft_wildcard.c
-
-SRC_COND =	$(DIR_COND)/ft_is_prime.c \
-			$(DIR_COND)/ft_isalnum.c \
-			$(DIR_COND)/ft_isalpha.c \
-			$(DIR_COND)/ft_isascii.c \
-			$(DIR_COND)/ft_isdigit.c \
-			$(DIR_COND)/ft_isprint.c 
-
-SRC_CONV =	$(DIR_CONV)/ft_atoi.c \
-			$(DIR_CONV)/ft_hhtoa_base.c \
-			$(DIR_CONV)/ft_htoa_base.c \
-			$(DIR_CONV)/ft_itoa.c \
-			$(DIR_CONV)/ft_lftoa.c \
-			$(DIR_CONV)/ft_lltoa_base.c \
-			$(DIR_CONV)/ft_ltoa_base.c \
-			$(DIR_CONV)/ft_u_hhtoa_base.c \
-			$(DIR_CONV)/ft_u_htoa_base.c \
-			$(DIR_CONV)/ft_u_itoa_base.c \
-			$(DIR_CONV)/ft_u_ltoa_base.c \
-			$(DIR_CONV)/ft_u_lltoa_base.c \
-			$(DIR_CONV)/ft_tolower.c \
-			$(DIR_CONV)/ft_toupper.c
-SRC_LST =	$(DIR_LST)/ft_lstadd.c \
-			$(DIR_LST)/ft_lstdel.c \
-			$(DIR_LST)/ft_lstdelone.c \
-			$(DIR_LST)/ft_lstiter.c \
-			$(DIR_LST)/ft_lstmap.c \
-			$(DIR_LST)/ft_lstnew.c
-SRC_MEM =	$(DIR_MEM)/ft_bzero.c \
-			$(DIR_MEM)/ft_memalloc.c \
-			$(DIR_MEM)/ft_memccpy.c \
-			$(DIR_MEM)/ft_memchr.c \
-			$(DIR_MEM)/ft_memcmp.c \
-			$(DIR_MEM)/ft_memcpy.c \
-			$(DIR_MEM)/ft_memdel.c \
-			$(DIR_MEM)/ft_memmove.c \
-			$(DIR_MEM)/ft_memset.c
-SRC_PRINT =	$(DIR_PRINT)/ft_print_address.c \
-			$(DIR_PRINT)/ft_print_decimal.c \
-			$(DIR_PRINT)/ft_print_hexa.c \
-			$(DIR_PRINT)/ft_print_octal.c \
-			$(DIR_PRINT)/ft_print_udecimal.c \
-			$(DIR_PRINT)/ft_print_char.c \
-			$(DIR_PRINT)/ft_print_float.c \
-			$(DIR_PRINT)/ft_print_modulo.c \
-			$(DIR_PRINT)/ft_print_str.c \
-			$(DIR_PRINT)/ft_printf.c \
-			$(DIR_PRINT)/ft_putbuf.c \
-			$(DIR_PRINT)/ft_putchar.c \
-			$(DIR_PRINT)/ft_putchar_fd.c \
-			$(DIR_PRINT)/ft_putendl.c \
-			$(DIR_PRINT)/ft_putendl_fd.c \
-			$(DIR_PRINT)/ft_putnbr.c \
-			$(DIR_PRINT)/ft_putnbr_fd.c \
-			$(DIR_PRINT)/ft_putstr.c \
-			$(DIR_PRINT)/ft_putstr_fd.c \
-			$(DIR_PRINT)/ft_putnbr_base.c
-SRC_STR =	$(DIR_STR)/ft_strcat.c \
-			$(DIR_STR)/ft_strchr.c \
-			$(DIR_STR)/ft_strclr.c \
-			$(DIR_STR)/ft_strcmp.c \
-			$(DIR_STR)/ft_strcpy.c \
-			$(DIR_STR)/ft_strdel.c \
-			$(DIR_STR)/ft_strdup.c \
-			$(DIR_STR)/ft_strequ.c \
-			$(DIR_STR)/ft_striter.c \
-			$(DIR_STR)/ft_striteri.c \
-			$(DIR_STR)/ft_strjoin.c \
-			$(DIR_STR)/ft_strlcat.c \
-			$(DIR_STR)/ft_strlen.c \
-			$(DIR_STR)/ft_strmap.c \
-			$(DIR_STR)/ft_strmapi.c \
-			$(DIR_STR)/ft_strncat.c \
-			$(DIR_STR)/ft_strncmp.c \
-			$(DIR_STR)/ft_strncpy.c \
-			$(DIR_STR)/ft_strnequ.c \
-			$(DIR_STR)/ft_strnew.c \
-			$(DIR_STR)/ft_strnstr.c \
-			$(DIR_STR)/ft_strrchr.c \
-			$(DIR_STR)/ft_strsplit.c \
-			$(DIR_STR)/ft_strstr.c \
-			$(DIR_STR)/ft_strsub.c \
-			$(DIR_STR)/ft_strtrim.c
-
-
-SRC =	$(SRC_COND) $(SRC_CONV) $(SRC_LST) $(SRC_MEM) $(SRC_PRINT) $(SRC_STR) $(PRINTF)\
+SRC =	ft_format.c \
+		ft_get_flag.c \
+		ft_init.c \
+		ft_minilibft.c \
+		ft_flags.c \
+		ft_free_printf.c \
+		ft_get_params.c \
+		ft_prefix_signed.c \
+		ft_wildcard.c \
+		ft_is_prime.c \
+		ft_isalnum.c \
+		ft_isalpha.c \
+		ft_isascii.c \
+		ft_isdigit.c \
+		ft_isprint.c \
+		ft_atoi.c \
+		ft_atol.c \
+		ft_hhtoa_base.c \
+		ft_htoa_base.c \
+		ft_itoa.c \
+		ft_lftoa.c \
+		ft_lltoa_base.c \
+		ft_ltoa_base.c \
+		ft_u_hhtoa_base.c \
+		ft_u_htoa_base.c \
+		ft_u_itoa_base.c \
+		ft_u_ltoa_base.c \
+		ft_u_lltoa_base.c \
+		ft_tolower.c \
+		ft_toupper.c \
+		ft_lstadd.c \
+		ft_lstdel.c \
+		ft_lstdelone.c \
+		ft_lstiter.c \
+		ft_lstmap.c \
+		ft_lstnew.c \
+		ft_bzero.c \
+		ft_memalloc.c \
+		ft_memccpy.c \
+		ft_memchr.c \
+		ft_memcmp.c \
+		ft_memcpy.c \
+		ft_memdel.c \
+		ft_memmove.c \
+		ft_memset.c \
+		ft_print_address.c \
+		ft_print_decimal.c \
+		ft_print_hexa.c \
+		ft_print_octal.c \
+		ft_print_udecimal.c \
+		ft_print_char.c \
+		ft_print_float.c \
+		ft_print_modulo.c \
+		ft_print_str.c \
+		ft_printf.c \
+		ft_putbuf.c \
+		ft_putchar.c \
+		ft_putchar_fd.c \
+		ft_putendl.c \
+		ft_putendl_fd.c \
+		ft_putnbr.c \
+		ft_putnbr_fd.c \
+		ft_putstr.c \
+		ft_putstr_fd.c \
+		ft_putnbr_base.c \
+		ft_strcat.c \
+		ft_strchr.c \
+		ft_strclr.c \
+		ft_strcmp.c \
+		ft_strcpy.c \
+		ft_strdel.c \
+		ft_strdup.c \
+		ft_strequ.c \
+		ft_striter.c \
+		ft_striteri.c \
+		ft_strjoin.c \
+		ft_strlcat.c \
+		ft_strlen.c \
+		ft_strmap.c \
+		ft_strmapi.c \
+		ft_strncat.c \
+		ft_strncmp.c \
+		ft_strncpy.c \
+		ft_strnequ.c \
+		ft_strnew.c \
+		ft_strnstr.c \
+		ft_strrchr.c \
+		ft_strsplit.c \
+		ft_strstr.c \
+		ft_strsub.c \
+		ft_strtrim.c \
 		ft_range.c \
-		ft_swap.c \
 		ft_sort_integer.c \
+		ft_swap.c \
 		get_next_line.c
+
 DIR_OBJ = obj
 
-OBJ = $(SRC:.c=.o)
+OBJ = $(SRC:%.c=$(DIR_OBJ)/%.o)
 
-$(NAME): $(DIR_OBJ) $(OBJ) $(HEADER) 
+$(NAME): $(DIR_OBJ) $(HEADER) $(SRC)
 	@ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
-	@mv $(OBJ) $(DIR_OBJ)
 .PHONY = all clean fclean re
 
 $(DIR_OBJ): 
 	mkdir -p $(DIR_OBJ)
 
-%.o: %.c
+$(DIR_OBJ)/%.o: %.c
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-all: $(NAME)
+all: $(NAME) $(OBJ)
 
 clean:
 	@rm -f $(OBJ)
