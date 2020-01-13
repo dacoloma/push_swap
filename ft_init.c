@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <limits.h>
 
 static int	ft_tablen(char **tab)
 {
@@ -24,16 +25,21 @@ static int	ft_tablen(char **tab)
 	return (i);
 }
 
-static void	ft_char_to_int(t_piles *pile, char **tab)
+static int	ft_convert(t_piles *pile, char **tab)
 {
-	int	i;
-
+	int			i;
+	long long	tmp;
 	i = 0;
 	while (tab[i])
 	{
-		(pile->a)[i] = ft_atoi(tab[i]);
+		tmp = ft_atol(tab[i]);
+		if (tmp <= 2147483647)
+			(pile->a)[i] = (int)tmp;
+		else
+			return (0);
 		i++;
 	}
+	return (1);
 }
 
 int			ft_init(t_piles **pile, char **tab)
@@ -54,7 +60,13 @@ int			ft_init(t_piles **pile, char **tab)
 	}
 	(*pile)->len_b = 0;
 	(*pile)->sorted_index_a = -1;
-	ft_char_to_int(*pile, tab);
+	if (!ft_convert(*pile, tab))
+	{
+		free((*pile)->a);
+		free((*pile)->b);
+		free(*pile);
+		return (0);
+	}
 	ft_get_min_index(*pile);
 	ft_get_max_index(*pile);
 	(*pile)->quick = ft_sort(*pile, QUICK_SORT);
