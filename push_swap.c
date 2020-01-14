@@ -14,8 +14,8 @@
 
 static int	ft_get_arg(int ac, char **av, char ***args)
 {
-	int	ret;
-	int	i;
+	int		ret;
+	int		i;
 	char	**tmp1;
 	char	**tmp2;
 
