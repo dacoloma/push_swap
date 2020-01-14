@@ -15,24 +15,26 @@
 static int	ft_get_arg(int ac, char **av, char ***args)
 {
 	int	ret;
+	int	i;
+	char	**tmp1;
+	char	**tmp2;
 
 	ret = 0;
+	if (ac == 1)
+		exit(0);
 	if (ac < 2)
 		return (-1);
-	if (ac == 2)
-		*args = ft_strsplit(av[1], ' ');
-	else if (ac == 3)
+	*args = ft_strsplit(av[1], ' ');
+	i = 2;
+	while (i < ac && av[i])
 	{
-		if (!ft_strcmp(av[1], "-v"))
-			ret++;
-		else
-		{
-			return (-1);
-		}
-		*args = ft_strsplit(av[2], ' ');
+		tmp1 = *args;
+		tmp2 = ft_strsplit(av[i], ' ');
+		*args = ft_tabjoin(tmp1, tmp2);
+		free(tmp1);
+		free(tmp2);
+		i++;
 	}
-	else
-		*args = av + 1;
 	return (ret);
 }
 
