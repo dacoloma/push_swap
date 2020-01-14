@@ -76,11 +76,11 @@ int			main(int ac, char **av)
 	char		**args;
 	t_piles		*pile;
 	t_checker	checker;
-	int			ret;
+	// int			ret;
 	int			flag;
 
-	ret = ft_get_arg(ac, av, &args);
-	if (ret == -1 || ft_is_valid(args, &flag) == 0
+	flag = ft_get_arg(ac, av, &args);
+	if (flag == -1 || ft_is_valid(args, &flag) == 0
 		|| !ft_init(&pile, args, flag))
 	{
 		ft_putstr_err("Error\n");
@@ -88,7 +88,7 @@ int			main(int ac, char **av)
 	}
 	ft_init_checker(&checker);
 	while (get_next_line(0, &(checker.ps_instruction)) == 1)
-		ft_do_instructions(pile, checker, ret);
+		ft_do_instructions(pile, checker, flag);
 	if (ft_check(pile))
 		ft_putstr("OK\n");
 	else
