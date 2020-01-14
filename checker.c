@@ -47,28 +47,42 @@ static void	ft_do_instructions(t_piles *pile, t_checker checker, int flag)
 
 static int	ft_get_arg(int ac, char **av, char ***args)
 {
-	int	ret;
+	int		i;
+	char	**tmp1;
+	char	**tmp2;
 
-	ret = 0;
 	if (ac == 1)
 		exit(0);
 	if (ac < 2)
-		return (-1);
-	if (ac == 2)
-		*args = ft_strsplit(av[1], ' ');
-	else if (ac == 3)
+		return (0);
+	*args = ft_strsplit(av[1], ' ');
+	i = 2;
+	while (i < ac && av[i])
 	{
-		if (!ft_strcmp(av[1], "-v"))
-			ret++;
-		else
-		{
-			return (-1);
-		}
-		*args = ft_strsplit(av[2], ' ');
+		tmp1 = *args;
+		tmp2 = ft_strsplit(av[i], ' ');
+		*args = ft_tabjoin(tmp1, tmp2);
+		free(tmp1);
+		free(tmp2);
+		i++;
 	}
-	else
-		*args = av + 1;
-	return (ret);
+	return (1);
+}
+
+static int	ft_precheck(t_piles *pile, t_checker checker, int flag)
+{
+	if (ft_check(pile))
+	{
+		if (get_next_line(0, &(checker.ps_instruction)) == 1)
+		{
+			ft_do_instructions(pile, checker, flag);
+			ft_putstr("KO\n");
+		}
+		else
+			ft_putstr("OK\n");
+		return (0);
+	}
+	return (1);
 }
 
 int			main(int ac, char **av)
@@ -76,23 +90,24 @@ int			main(int ac, char **av)
 	char		**args;
 	t_piles		*pile;
 	t_checker	checker;
-	// int			ret;
 	int			flag;
 
-	flag = ft_get_arg(ac, av, &args);
-	if (flag == -1 || ft_is_valid(args, &flag) == 0
+	if (!ft_get_arg(ac, av, &args) || ft_is_valid(args, &flag) == 0
 		|| !ft_init(&pile, args, flag))
 	{
 		ft_putstr_err("Error\n");
 		exit(-1);
 	}
 	ft_init_checker(&checker);
-	while (get_next_line(0, &(checker.ps_instruction)) == 1)
-		ft_do_instructions(pile, checker, flag);
-	if (ft_check(pile))
-		ft_putstr("OK\n");
-	else
-		ft_putstr("KO\n");
+	if (ft_precheck(pile, checker, flag))
+	{
+		while (get_next_line(0, &(checker.ps_instruction)) == 1)
+			ft_do_instructions(pile, checker, flag);
+		if (ft_check(pile))
+			ft_putstr("OK\n");
+		else
+			ft_putstr("KO\n");
+	}
 	ft_free(pile, ac, args);
 	return (0);
 }
