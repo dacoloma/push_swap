@@ -20,6 +20,8 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <string.h>
+# include "gnl.h"
+# include "ft_printf.h"
 
 typedef struct	s_list
 {
@@ -92,5 +94,6 @@ void			ft_putnbr_base(int nbr, char *base);
 int				ft_is_prime(int i);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
+char			**ft_tabjoin(char **tab1, char **tab2);
 int				get_next_line(const int fd, char **line);
 #endif

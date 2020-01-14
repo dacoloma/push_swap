@@ -20,7 +20,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror -I $(INCLUDES)
 
-vpath %c condition conv ft_printf lst mem print str 
+vpath %c condition conv gnl ft_printf lst mem print str 
 
 SRC =	ft_format.c \
 		ft_get_flag.c \
@@ -116,6 +116,8 @@ SRC =	ft_format.c \
 		ft_range.c \
 		ft_sort_integer.c \
 		ft_swap.c \
+		ft_elem.c \
+		ft_tabjoin.c\
 		get_next_line.c
 
 DIR_OBJ = obj
@@ -140,6 +142,6 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-	rm -fr $(DIR_OBJ)
+	rm -rf $(DIR_OBJ)
 
 re: fclean all

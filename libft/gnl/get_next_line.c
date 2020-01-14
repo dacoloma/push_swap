@@ -12,17 +12,17 @@
 
 #include "libft.h"
 
-static t_list	*ft_get_elem(t_list **head, const int fd)
+static t_gnl	*ft_get_elem(t_gnl **head, const int fd)
 {
-	t_list	*elem;
+	t_gnl	*elem;
 
 	elem = *head;
-	while (elem && elem->content_size != (size_t)fd)
+	while (elem && elem->fd != fd)
 		elem = elem->next;
 	if (elem == NULL)
 	{
-		elem = ft_lstnew("\0", fd);
-		ft_lstadd(head, elem);
+		elem = ft_new_elem(NULL, fd);
+		ft_add_elem(head, elem);
 	}
 	return (elem);
 }
@@ -35,7 +35,7 @@ static int		ft_is_valid(const int fd, char **line)
 					|| BUFF_SIZE < 1)));
 }
 
-static void		ft_get_line(char *tmp, char **line, t_list *elem)
+static void		ft_get_line(char *tmp, char **line, t_gnl *elem)
 {
 	int	i;
 
@@ -49,8 +49,8 @@ static void		ft_get_line(char *tmp, char **line, t_list *elem)
 
 int				get_next_line(const int fd, char **line)
 {
-	static t_list	*head = NULL;
-	t_list			*elem;
+	static t_gnl	*head = NULL;
+	t_gnl			*elem;
 	char			*tmp;
 	int				ret;
 	char			buf[BUFF_SIZE + 1];
