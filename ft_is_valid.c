@@ -12,26 +12,25 @@
 
 #include "push_swap.h"
 
-static int	ft_isnumber(char *str)
+int			ft_check_flag(char **tab)
 {
 	int	i;
 
 	i = 0;
-	if (str[i] == '-')
-		i++;
-	while (str[i])
+	while (tab[i] && !ft_isnumber(tab[i]))
 	{
-		if (!ft_isdigit(str[i++]))
-			return (0);
+		if (ft_strcmp(tab[i], "-v"))
+			return (-1);
+		i++;
 	}
-	return (1);
+	return (i);
 }
 
-static int	ft_check_entry(char **tab)
+static int	ft_check_entry(char **tab, int start)
 {
 	int	i;
 
-	i = 0;
+	i = start;
 	while (tab[i])
 	{
 		if (!ft_isnumber(tab[i++]))
@@ -40,12 +39,12 @@ static int	ft_check_entry(char **tab)
 	return (1);
 }
 
-static int	ft_check_duplicate(char **tab)
+static int	ft_check_duplicate(char **tab, int start)
 {
 	int	i;
 	int	j;
 
-	i = 0;
+	i = start;
 	while (tab[i])
 	{
 		j = i + 1;
@@ -59,9 +58,16 @@ static int	ft_check_duplicate(char **tab)
 	return (1);
 }
 
-int			ft_is_valid(char **tab)
+int			ft_is_valid(char **tab, int *flag)
 {
-	if (!ft_check_entry(tab) || !ft_check_duplicate(tab))
+	*flag = ft_check_flag(tab);
+	if (*flag == -1)
+	{
 		return (0);
+	}
+	if (!ft_check_entry(tab, *flag) || !ft_check_duplicate(tab, *flag))
+	{
+		return (0);
+	}
 	return (1);
 }

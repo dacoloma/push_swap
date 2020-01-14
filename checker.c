@@ -77,15 +77,15 @@ int			main(int ac, char **av)
 	t_piles		*pile;
 	t_checker	checker;
 	int			ret;
+	int			flag;
 
 	ret = ft_get_arg(ac, av, &args);
-	if (ret == -1 || ft_is_valid(args) == 0)
+	if (ret == -1 || ft_is_valid(args, &flag) == 0
+		|| !ft_init(&pile, args, flag))
 	{
 		ft_putstr_err("Error\n");
 		exit(-1);
 	}
-	if (!ft_init(&pile, args))
-		exit(-1);
 	ft_init_checker(&checker);
 	while (get_next_line(0, &(checker.ps_instruction)) == 1)
 		ft_do_instructions(pile, checker, ret);

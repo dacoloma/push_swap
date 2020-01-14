@@ -41,9 +41,10 @@ int			main(int ac, char **av)
 	char	**args;
 	t_piles	*pile;
 	int		ret;
+	int		flag;
 
 	ret = ft_get_arg(ac, av, &args);
-	if (ret == -1 || ft_is_valid(args) == 0 || !ft_init(&pile, args))
+	if (ret == -1 || ft_is_valid(args, &flag) == 0 || !ft_init(&pile, args, 0))
 	{
 		ft_putstr_err("Error\n");
 		exit(-1);

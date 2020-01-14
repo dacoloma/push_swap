@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <limits.h>
 
 static int	ft_tablen(char **tab)
 {
@@ -28,14 +27,16 @@ static int	ft_tablen(char **tab)
 static int	ft_convert(t_piles *pile, char **tab)
 {
 	int			i;
+	int			j;
 	long long	tmp;
 
-	i = 0;
+	i = ft_check_flag(tab);
+	j = 0;
 	while (tab[i])
 	{
 		tmp = ft_atol(tab[i]);
 		if (tmp <= 2147483647)
-			(pile->a)[i] = (int)tmp;
+			(pile->a)[j++] = (int)tmp;
 		else
 			return (0);
 		i++;
@@ -43,11 +44,11 @@ static int	ft_convert(t_piles *pile, char **tab)
 	return (1);
 }
 
-int			ft_init(t_piles **pile, char **tab)
+int			ft_init(t_piles **pile, char **tab, int flag)
 {
 	if (!(*pile = (t_piles *)malloc(sizeof(t_piles))))
 		return (0);
-	(*pile)->len = ft_tablen(tab);
+	(*pile)->len = ft_tablen(tab) - flag;
 	if (!((*pile)->a = (int *)malloc(sizeof(int) * ((*pile)->len))))
 	{
 		free(*pile);
