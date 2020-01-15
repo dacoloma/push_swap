@@ -77,6 +77,7 @@ static int	ft_precheck(t_piles *pile, t_checker checker, int flag)
 		{
 			ft_do_instructions(pile, checker, flag);
 			ft_putstr("KO\n");
+			ft_free_checker(&checker.ps_instruction);
 		}
 		else
 			ft_putstr("OK\n");
