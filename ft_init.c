@@ -73,28 +73,31 @@ int			ft_init(t_piles **pile, char **tab, int flag)
 	return (1);
 }
 
-void		ft_init_checker(t_checker *checker)
+int			ft_init_checker(t_checker **checker)
 {
-	checker->ptr[0] = &ft_pa;
-	checker->ptr[1] = &ft_pb;
-	checker->ptr[2] = &ft_sa;
-	checker->ptr[3] = &ft_sb;
-	checker->ptr[4] = &ft_ss;
-	checker->ptr[5] = &ft_ra;
-	checker->ptr[6] = &ft_rb;
-	checker->ptr[7] = &ft_rr;
-	checker->ptr[8] = &ft_rra;
-	checker->ptr[9] = &ft_rrb;
-	checker->ptr[10] = &ft_rrr;
-	checker->instructions[0] = "pa";
-	checker->instructions[1] = "pb";
-	checker->instructions[2] = "sa";
-	checker->instructions[3] = "sb";
-	checker->instructions[4] = "ss";
-	checker->instructions[5] = "ra";
-	checker->instructions[6] = "rb";
-	checker->instructions[7] = "rr";
-	checker->instructions[8] = "rra";
-	checker->instructions[9] = "rrb";
-	checker->instructions[10] = "rrr";
+	if (!(*checker = (t_checker *)malloc(sizeof(t_checker))))
+		return (0);
+	(*checker)->ptr[0] = &ft_pa;
+	(*checker)->ptr[1] = &ft_pb;
+	(*checker)->ptr[2] = &ft_sa;
+	(*checker)->ptr[3] = &ft_sb;
+	(*checker)->ptr[4] = &ft_ss;
+	(*checker)->ptr[5] = &ft_ra;
+	(*checker)->ptr[6] = &ft_rb;
+	(*checker)->ptr[7] = &ft_rr;
+	(*checker)->ptr[8] = &ft_rra;
+	(*checker)->ptr[9] = &ft_rrb;
+	(*checker)->ptr[10] = &ft_rrr;
+	(*checker)->instructions[0] = "pa";
+	(*checker)->instructions[1] = "pb";
+	(*checker)->instructions[2] = "sa";
+	(*checker)->instructions[3] = "sb";
+	(*checker)->instructions[4] = "ss";
+	(*checker)->instructions[5] = "ra";
+	(*checker)->instructions[6] = "rb";
+	(*checker)->instructions[7] = "rr";
+	(*checker)->instructions[8] = "rra";
+	(*checker)->instructions[9] = "rrb";
+	(*checker)->instructions[10] = "rrr";
+	return (1);
 }
