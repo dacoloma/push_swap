@@ -21,10 +21,11 @@ int	ft_isnumber(char *str)
 		i++;
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i++]))
+		if (!ft_isdigit(str[i]))
 			return (0);
+		i++;
 	}
-	if (i == 1)
+	if (str[0] == '-' && i == 1)
 		return (0);
 	return (1);
 }
