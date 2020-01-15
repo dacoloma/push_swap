@@ -12,28 +12,30 @@
 
 #include "push_swap.h"
 
-void	ft_free(t_piles *pile, int ac, char **args)
+void	ft_free_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+		free(tab[i++]);
+	free(tab);
+}
+
+void	ft_free(t_piles *pile, char **args)
 {
 	int	i;
 
 	i = 0;
 	free(pile->a);
 	free(pile->b);
-	if (ac == 2)
-	{
-		while (i < pile->len)
-			free(args[i++]);
-		free(args);
-	}
 	free(pile->quick.tab);
 	free(pile);
+	ft_free_tab(args);
 }
 
-void	ft_free_checker(char **to_check)
+void	ft_free_checker(t_piles *pile, char **args, t_checker *checker)
 {
-	int	i;
-
-	i = 0;
-	while (to_check[i])
-		free(to_check[i++]);
+	ft_free(pile, args);
+	free(checker);
 }
