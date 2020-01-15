@@ -36,5 +36,4 @@ void	ft_free_checker(char **to_check)
 	i = 0;
 	while (to_check[i])
 		free(to_check[i++]);
-	free(to_check);
 }
