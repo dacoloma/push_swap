@@ -55,6 +55,6 @@ int			main(int ac, char **av)
 	ft_get_max_index(pile);
 	ft_get_med(pile);
 	ft_sort_stack(pile);
-	ft_free(pile, ac, args);
+	ft_free(pile, args);
 	return (0);
 }

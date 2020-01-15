@@ -43,6 +43,7 @@ typedef struct	s_piles
 	int			max_index_b;
 	int			sorted_index_a;
 	t_quicksort	quick;
+	int			error;
 }				t_piles;
 typedef struct	s_checker
 {
@@ -53,7 +54,7 @@ typedef struct	s_checker
 }				t_checker;
 void			ft_putstr_err(char *err);
 int				ft_init(t_piles **pile, char **tab, int flag);
-void			ft_init_checker(t_checker *checker);
+int				ft_init_checker(t_checker **checker);
 int				ft_check_flag(char **tab);
 int				ft_check_split(t_piles *pile);
 int				ft_check_sort(t_piles *pile);
@@ -86,8 +87,9 @@ void			ft_short_stack(t_piles *pile);
 void			ft_medium_stack(t_piles *pile);
 void			ft_long_stack(t_piles *pile);
 void			ft_sort_left(t_piles *pile);
-void			ft_free(t_piles *pile, int ac, char **args);
-void			ft_free_checker(char **to_check);
+void			ft_free(t_piles *pile, char **args);
+void			ft_free_tab(char **tab);
+void			ft_free_checker(t_piles *pile, char **args, t_checker *checker);
 int				ft_rot_count_a(t_piles *pile, int index);
 int				ft_rot_count_b(t_piles *pile, int index);
 void			ft_print_piles(t_piles *pile);

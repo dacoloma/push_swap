@@ -28,21 +28,24 @@ static int	ft_check(t_piles *pile)
 	return (1);
 }
 
-static void	ft_do_instructions(t_piles *pile, t_checker checker, int flag)
+static int	ft_do_instructions(t_piles *pile, t_checker *checker, int flag)
 {
 	int	i;
 
 	i = 0;
-	while (i < 11 && ft_strcmp(checker.ps_instruction, checker.instructions[i]))
+	while (i < 11
+		&& ft_strcmp(checker->ps_instruction, checker->instructions[i]))
 		i++;
+	free(checker->ps_instruction);
 	if (i == 11)
 	{
 		ft_putstr_err("Error\n");
-		exit(-1);
+		return (1);
 	}
-	checker.ptr[i](pile);
+	checker->ptr[i](pile);
 	if (flag == 1)
 		ft_print_piles(pile);
+	return (0);
 }
 
 static int	ft_get_arg(int ac, char **av, char ***args)
@@ -62,25 +65,25 @@ static int	ft_get_arg(int ac, char **av, char ***args)
 		tmp1 = *args;
 		tmp2 = ft_strsplit(av[i], ' ');
 		*args = ft_tabjoin(tmp1, tmp2);
-		free(tmp1);
-		free(tmp2);
+		ft_free_tab(tmp1);
+		ft_free_tab(tmp2);
 		i++;
 	}
 	return (1);
 }
 
-static int	ft_precheck(t_piles *pile, t_checker checker, int flag)
+static int	ft_precheck(t_piles *pile, t_checker *checker, int f, char **args)
 {
 	if (ft_check(pile))
 	{
-		if (get_next_line(0, &(checker.ps_instruction)) == 1)
+		if (get_next_line(0, &(checker->ps_instruction)) == 1)
 		{
-			ft_do_instructions(pile, checker, flag);
-			ft_putstr("KO\n");
-			ft_free_checker(&checker.ps_instruction);
+			if (ft_do_instructions(pile, checker, f) == 0)
+				ft_putstr("KO\n");
 		}
 		else
 			ft_putstr("OK\n");
+		ft_free_checker(pile, args, checker);
 		return (0);
 	}
 	return (1);
@@ -90,25 +93,27 @@ int			main(int ac, char **av)
 {
 	char		**args;
 	t_piles		*pile;
-	t_checker	checker;
+	t_checker	*checker;
 	int			flag;
 
 	if (!ft_get_arg(ac, av, &args) || ft_is_valid(args, &flag) == 0
-		|| !ft_init(&pile, args, flag))
+		|| !ft_init(&pile, args, flag) || !ft_init_checker(&checker))
 	{
 		ft_putstr_err("Error\n");
 		exit(-1);
 	}
-	ft_init_checker(&checker);
-	if (ft_precheck(pile, checker, flag))
+	if (!ft_precheck(pile, checker, flag, args))
+		return (0);
+	while (get_next_line(0, &(checker->ps_instruction)) == 1)
 	{
-		while (get_next_line(0, &(checker.ps_instruction)) == 1)
-			ft_do_instructions(pile, checker, flag);
-		if (ft_check(pile))
-			ft_putstr("OK\n");
-		else
-			ft_putstr("KO\n");
+		pile->error = ft_do_instructions(pile, checker, flag);
+		if (pile->error)
+			break ;
 	}
-	ft_free(pile, ac, args);
+	if (!pile->error && ft_check(pile))
+		ft_putstr("OK\n");
+	else if (!pile->error)
+		ft_putstr("KO\n");
+	ft_free_checker(pile, args, checker);
 	return (0);
 }
