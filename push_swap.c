@@ -31,8 +31,8 @@ static int	ft_get_arg(int ac, char **av, char ***args)
 		tmp1 = *args;
 		tmp2 = ft_strsplit(av[i], ' ');
 		*args = ft_tabjoin(tmp1, tmp2);
-		free(tmp1);
-		free(tmp2);
+		ft_free_tab(tmp1);
+		ft_free_tab(tmp2);
 		i++;
 	}
 	return (ret);
