@@ -20,7 +20,7 @@ LIBFT = libft/libft.a
 
 CC = gcc
 
-CF = -Wall -Wextra -Werror -I $(HEADER)
+CFLAGS = -g3 -fsanitize=address,undefined -Wall -Wextra -Werror 
 
 SRC =	ft_init.c\
 		ft_putstr_err.c\
@@ -53,27 +53,31 @@ OBJ = $(SRC:%.c=$(DIR_OBJ)/%.o)
 
 .PHONY = all clean fclean re
 
-all: $(LIBFT) $(DIR_OBJ) $(NAME) $(CHECKER) $(SRC) $(OBJ)
+all: $(DIR_OBJ) $(NAME) $(CHECKER)
 
 $(DIR_OBJ): 
 	mkdir -p $(DIR_OBJ)
 
-$(LIBFT) :
-	make -C libft/
+$(LIBFT) : FORCE
+	$(MAKE) -C libft/
 
-$(DIR_OBJ)/%.o: %.c
-	$(CC) $(CF) -o $@ -c $< 
+FORCE:
+
+$(DIR_OBJ)/%.o: %.c $(HEADER)
+	$(CC) $(CFLAGS) -o $@ -c $< -I $(HEADER)
 
 $(NAME) : $(LIBFT) $(OBJ) push_swap.c
-	$(CC) $(CF) -o $(NAME) push_swap.c -g $(OBJ) -L libft/ -lft
+	$(CC) $(CFLAGS) -o $(NAME) push_swap.c -g $(OBJ) -L libft/ -lft -I $(HEADER)
+
 $(CHECKER): $(LIBFT) $(OBJ) checker.c
-	$(CC) $(CF) -o $(CHECKER) checker.c -g $(OBJ) -L libft/ -lft
+	$(CC) $(CFLAGS) -o $(CHECKER) checker.c -g $(OBJ) -L libft/ -lft -I $(HEADER)
+
 clean:
-	make clean -C libft/
-	rm -rf $(DIR_OBJ)
+	$(MAKE) clean -C libft/
+	$(RM) -r $(DIR_OBJ)
 
 fclean: clean
-	rm -f $(NAME) $(CHECKER)
-	make -C libft/ fclean
+	$(RM) $(NAME) $(CHECKER)
+	$(MAKE) -C libft/ fclean
 
 re: fclean all
