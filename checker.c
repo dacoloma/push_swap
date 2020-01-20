@@ -16,6 +16,8 @@ static int	ft_check(t_piles *pile)
 {
 	int	i;
 
+	if (pile->len_b > 0)
+		return (INVALID);
 	i = 1;
 	while (i < pile->len)
 	{
