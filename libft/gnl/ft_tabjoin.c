@@ -85,7 +85,8 @@ char		**ft_tabjoin(char **tab1, char **tab2)
 		return (NULL);
 	len1 = ft_tablen(tab1);
 	len2 = ft_tablen(tab2);
-	if (!(tab = (char **)malloc(sizeof(char *) * (len1 + len2 + 1))))
+	tab = (char **)malloc(sizeof(char *) * (len1 + len2 + 1));
+	if (tab == NULL)
 		return (NULL);
 	ft_tabcpy(tab, tab1);
 	ft_tabncat(tab, tab2, len2);
