@@ -106,23 +106,12 @@ static int		ft_get_content(const int fd, t_gnl *elem, char **tmp)
 		buf[ret] = '\0';
 		if ((int)ft_strlen(buf) != ret)
 		{
-			// ft_printf("GNL ERROR\n");
 			return (GNL_ERROR);
 		}
-		// tmp = (*tmp == '\0') ? ft_strndup(buf, ret) : ft_strjoin(elem->content, buf);
-		// *tmp = (**tmp == '\0') ? ft_strdup(buf) : ft_strjoin(elem->content, buf);
-		// i = 0;
-		// ft_printf("BUFFER : ");
-		// while (i < ret)
-		// {
-		// 	ft_putchar(buf[i++]);
-		// }
 		if (*tmp[0] == '\0')
 			*tmp = ft_strndup(buf, ret);
-			// *tmp = ft_strdup(buf);
 		else
 			*tmp = ft_strnjoin(elem->content, buf, ret);
-			// ft_strjoin(elem->content, buf);
 		ft_strdel(&elem->content);
 		elem->content = *tmp;
 		if (ft_has_new_line(buf, '\n') == VALID)
