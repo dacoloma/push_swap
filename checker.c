@@ -67,6 +67,11 @@ static int	ft_get_arg(int ac, char **av, char ***args)
 		*args = ft_tabjoin(tmp1, tmp2);
 		ft_free_tab(tmp1);
 		ft_free_tab(tmp2);
+		if (*args == NULL)
+		{
+			ft_putstr_err("Cannot allocate enough memory.\n");
+			return (INVALID);
+		}
 		i++;
 	}
 	return (VALID);
@@ -87,7 +92,7 @@ int			main(int ac, char **av)
 		ft_putstr_err("Error\n");
 		return (-1);
 	}
-	while (get_next_line(0, &(checker.ps_instruction)) == 1)
+	while (get_next_line(0, &(checker.ps_instruction)) == GNL_READ)
 	{
 		pile->error = ft_do_instructions(pile, &checker, flag);
 		if (pile->error == INVALID)
