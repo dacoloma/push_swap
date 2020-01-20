@@ -97,13 +97,11 @@ static void		ft_get_data(t_option *option, int *i, int len)
 
 void			ft_print_float(t_option *option, int *i, va_list ap)
 {
-	int		j;
 	int		len;
 
 	ft_wildcard(option, ap);
 	if ((option->data = get_number(option, ap)) == NULL)
 		return ;
-	j = 0;
 	len = (int)ft_strlen(option->data);
 	if (option->l_justify)
 	{
