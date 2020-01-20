@@ -13,7 +13,8 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 # define BUFF_SIZE 8
-
+# define LIBFT_INVALID 0
+# define LIBFT_VALID 1
 # include <stdlib.h>
 # include <unistd.h>
 # include <sys/types.h>
