@@ -12,6 +12,33 @@
 
 #include "gnl.h"
 
+static int	ft_get_content(char *content, int fd, t_gnl **list)
+{
+	if (content == NULL)
+	{
+		(*list)->content = (char *)malloc(sizeof(char));
+		if ((*list)->content == NULL)
+		{
+			free(*list);
+			return (INVALID);
+		}
+		(*list)->content[0] = '\0';
+	}
+	else
+	{
+		(*list)->content = (char *)malloc(sizeof(char) * (ft_strlen(content) + 1));
+		if ((*list)->content == NULL)
+		{
+			free(*list);
+			return (INVALID);
+		}
+		ft_strcpy((*list)->content, content);
+	}
+	(*list)->fd = fd;
+	(*list)->next = NULL;
+	return (VALID);
+}
+
 t_gnl	*ft_new_elem(char *content, int fd)
 {
 	t_gnl	*list;
@@ -19,22 +46,8 @@ t_gnl	*ft_new_elem(char *content, int fd)
 	list = (t_gnl *)malloc(sizeof(t_gnl));
 	if (list == NULL)
 		return (NULL);
-	if (content == NULL)
-	{
-		list->content = (char *)malloc(sizeof(char));
-		if (list->content == NULL)
-			return (NULL);
-		list->content[0] = '\0';
-	}
-	else
-	{
-		list->content = (char *)malloc(sizeof(char) * (ft_strlen(content) + 1));
-		if (list->content == NULL)
-			return (NULL);
-		ft_strcpy(list->content, content);
-	}
-	list->fd = fd;
-	list->next = NULL;
+	if (ft_get_content(content, fd, &list) == INVALID)
+		return (NULL);
 	return (list);
 }
 

@@ -44,30 +44,53 @@ static int	ft_char_count(char const *s, char c, int i)
 	return (count);
 }
 
+static void	ft_free_tab(char **tab, int len)
+{
+	int	i;
+
+	i = 0;
+	while (i < len)
+		ft_strdel(&tab[i++]);
+	free(tab);
+}
+
+static int	ft_get_str(char **tab, int len, char const *s, char split)
+{
+	int	i;
+	int	wd_index;
+
+	i = 0;
+	wd_index = 0;
+	while (s[i] && wd_index < len)
+	{
+		while (s[i] == split)
+			i++;
+		tab[wd_index] = ft_strsub(s, i, ft_char_count(s, split, i));
+		if (tab[wd_index] == NULL)
+		{
+			ft_free_tab(tab, wd_index);	
+			return (INVALID);
+		}
+		while (s[i] && s[i] != split)
+			i++;
+		wd_index++;
+	}
+	tab[wd_index] = NULL;
+	return (VALID);
+}
+
 char		**ft_strsplit(char const *s, char c)
 {
 	char	**tab;
-	int		i;
-	int		wd_index;
 	int		len;
 
 	if (s == NULL)
 		return (NULL);
 	len = ft_word_count(s, c);
-	if ((tab = (char **)malloc(sizeof(char *) * (len + 1))) == NULL)
+	tab = (char **)malloc(sizeof(char *) * (len + 1));
+	if (tab == NULL)
 		return (NULL);
-	i = 0;
-	wd_index = 0;
-	while (s[i] && wd_index < len)
-	{
-		while (s[i] == c)
-			i++;
-		if ((tab[wd_index] = ft_strsub(s, i, ft_char_count(s, c, i))) == NULL)
-			return (NULL);
-		while (s[i] && s[i] != c)
-			i++;
-		wd_index++;
-	}
-	tab[wd_index] = 0;
+	if (ft_get_str(tab, len, s, c) == INVALID)
+		return (NULL);
 	return (tab);
 }
