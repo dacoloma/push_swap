@@ -13,6 +13,9 @@
 #ifndef GNL_H
 # define GNL_H
 # include "libft.h"
+# define GNL_ERROR -1
+# define GNL_READ 1
+# define GNL_EOF 0
 
 typedef struct	s_gnl
 {

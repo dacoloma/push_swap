@@ -16,18 +16,20 @@ t_gnl	*ft_new_elem(char *content, int fd)
 {
 	t_gnl	*list;
 
-	if ((list = (t_gnl *)malloc(sizeof(t_gnl))) == NULL)
+	list = (t_gnl *)malloc(sizeof(t_gnl));
+	if (list == NULL)
 		return (NULL);
 	if (content == NULL)
 	{
-		if ((list->content = malloc(sizeof(char))) == NULL)
+		list->content = (char *)malloc(sizeof(char));
+		if (list->content == NULL)
 			return (NULL);
 		list->content[0] = '\0';
 	}
 	else
 	{
-		if ((list->content = malloc(sizeof(char)
-			* (ft_strlen(content) + 1))) == NULL)
+		list->content = (char *)malloc(sizeof(char) * (ft_strlen(content) + 1));
+		if (list->content == NULL)
 			return (NULL);
 		ft_strcpy(list->content, content);
 	}
