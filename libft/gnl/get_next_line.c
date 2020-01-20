@@ -22,6 +22,12 @@ static t_gnl	*ft_get_elem(t_gnl **head, const int fd)
 	if (elem == NULL)
 	{
 		elem = ft_new_elem(NULL, fd);
+		if (elem == NULL || elem->content == NULL)
+		{
+			ft_strdel(&(elem->content));
+			free(elem);
+			return (NULL);
+		}
 		ft_add_elem(head, elem);
 	}
 	return (elem);
@@ -56,13 +62,13 @@ int				get_next_line(const int fd, char **line)
 	char			buf[BUFF_SIZE + 1];
 
 	if (!ft_is_valid(fd, line))
-		return (-1);
+		return (GNL_ERROR);
 	elem = ft_get_elem(&head, fd);
 	tmp = elem->content;
 	while ((ret = read(fd, buf, BUFF_SIZE)))
 	{
 		if (ret == -1)
-			return (-1);
+			return (GNL_ERROR);
 		buf[ret] = '\0';
 		tmp = (*tmp == '\0') ? ft_strdup(buf) : ft_strjoin(elem->content, buf);
 		free(elem->content);
@@ -71,7 +77,11 @@ int				get_next_line(const int fd, char **line)
 			break ;
 	}
 	if ((ret == 0 && !elem->content) || *tmp == '\0')
-		return (0);
+	{
+		ft_strdel(&elem->content);
+		free(elem);
+		return (GNL_EOF);
+	}
 	ft_get_line(tmp, line, elem);
-	return (1);
+	return (GNL_READ);
 }
