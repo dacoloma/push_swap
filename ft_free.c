@@ -16,10 +16,13 @@ void	ft_free_tab(char **tab)
 {
 	int	i;
 
-	i = 0;
-	while (tab[i])
-		free(tab[i++]);
-	free(tab);
+	if (tab != NULL)
+	{
+		i = 0;
+		while (tab[i])
+			ft_strdel(&tab[i++]);
+		ft_memdel((void **)tab);
+	}
 }
 
 void	ft_free(t_piles *pile, char **args)
