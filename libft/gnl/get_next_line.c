@@ -12,27 +12,6 @@
 
 #include "libft.h"
 
-static t_gnl	*ft_get_elem(t_gnl **head, const int fd)
-{
-	t_gnl	*elem;
-
-	elem = *head;
-	while (elem && elem->fd != fd)
-		elem = elem->next;
-	if (elem == NULL)
-	{
-		elem = ft_new_elem(NULL, fd);
-		if (elem == NULL || elem->content == NULL)
-		{
-			ft_strdel(&(elem->content));
-			free(elem);
-			return (NULL);
-		}
-		ft_add_elem(head, elem);
-	}
-	return (elem);
-}
-
 static int		ft_is_valid(const int fd, char **line)
 {
 	char	*buf[1];
@@ -53,6 +32,24 @@ static void		ft_get_line(char *tmp, char **line, t_gnl *elem)
 	free(tmp);
 }
 
+// static char		*ft_strndup(char *src, int len)
+// {
+// 	char	*cpy;
+// 	int		i;
+
+// 	cpy = (char *)malloc(sizeof(char) * (len + 1));
+// 	if (cpy == NULL)
+// 		return (NULL);
+// 	i = 0;
+// 	while (i < len)
+// 	{
+// 		cpy[i] = src[i];
+// 		i++;
+// 	}
+// 	cpy[i] = '\0';
+// 	return (cpy);
+// }
+
 int				get_next_line(const int fd, char **line)
 {
 	static t_gnl	*head = NULL;
@@ -67,9 +64,10 @@ int				get_next_line(const int fd, char **line)
 	tmp = elem->content;
 	while ((ret = read(fd, buf, BUFF_SIZE)))
 	{
-		if (ret == -1)
+		if (ret == -1 || (ret > 0 && buf[ret - 1] == '\0'))
 			return (GNL_ERROR);
 		buf[ret] = '\0';
+		// tmp = (*tmp == '\0') ? ft_strndup(buf, ret) : ft_strjoin(elem->content, buf);
 		tmp = (*tmp == '\0') ? ft_strdup(buf) : ft_strjoin(elem->content, buf);
 		free(elem->content);
 		elem->content = tmp;

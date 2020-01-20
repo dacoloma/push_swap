@@ -56,3 +56,24 @@ void	ft_add_elem(t_gnl **alst, t_gnl *new)
 	new->next = *alst;
 	*alst = new;
 }
+
+t_gnl	*ft_get_elem(t_gnl **head, const int fd)
+{
+	t_gnl	*elem;
+
+	elem = *head;
+	while (elem && elem->fd != fd)
+		elem = elem->next;
+	if (elem == NULL)
+	{
+		elem = ft_new_elem(NULL, fd);
+		if (elem == NULL || elem->content == NULL)
+		{
+			ft_strdel(&(elem->content));
+			free(elem);
+			return (NULL);
+		}
+		ft_add_elem(head, elem);
+	}
+	return (elem);
+}
