@@ -15,6 +15,9 @@
 # define QUICK_SORT 0
 # define ASC 0
 # define DESC 1
+# define VALID 1
+# define INVALID 0
+# define NB_INSTRUCTIONS 11
 # include "libft.h"
 # include "ft_printf.h"
 # include <unistd.h>
@@ -47,14 +50,14 @@ typedef struct	s_piles
 }				t_piles;
 typedef struct	s_checker
 {
-	void	(*ptr[11])(t_piles *);
-	char	*instructions[11];
+	void	(*ptr[NB_INSTRUCTIONS])(t_piles *);
+	char	*instructions[NB_INSTRUCTIONS];
 	char	*ps_instruction;
 
 }				t_checker;
 void			ft_putstr_err(char *err);
 int				ft_init(t_piles **pile, char **tab, int flag);
-int				ft_init_checker(t_checker **checker);
+int				ft_init_checker(t_checker *checker);
 int				ft_check_flag(char **tab);
 int				ft_check_split(t_piles *pile);
 int				ft_check_sort(t_piles *pile);
