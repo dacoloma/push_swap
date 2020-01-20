@@ -35,7 +35,7 @@ static int	ft_convert(t_piles *pile, char **tab)
 	while (tab[i])
 	{
 		tmp = ft_atol(tab[i]);
-		if (tmp >= -2147483648 && tmp <= 2147483647)
+		if (tmp >= INT_MIN && tmp <= INT_MAX)
 			(pile->a)[j++] = (int)tmp;
 		else
 			return (0);
