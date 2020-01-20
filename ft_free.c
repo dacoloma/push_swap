@@ -33,9 +33,3 @@ void	ft_free(t_piles *pile, char **args)
 	free(pile);
 	ft_free_tab(args);
 }
-
-void	ft_free_checker(t_piles *pile, char **args, t_checker *checker)
-{
-	ft_free(pile, args);
-	free(checker);
-}
