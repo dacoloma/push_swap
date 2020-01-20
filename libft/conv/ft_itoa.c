@@ -33,11 +33,9 @@ char		*ft_itoa(int n)
 {
 	int				len_n;
 	char			*str;
-	int				i;
 	long long		nb;
 
 	nb = n;
-	i = 0;
 	len_n = (nb < 0) ? len_int_to_str(nb) + 1 : len_int_to_str(nb);
 	(n == 0) ? len_n++ : 0;
 	if ((str = (char *)malloc(sizeof(char) * (len_n + 1))) == NULL)
