@@ -17,6 +17,8 @@ void	ft_get_min_index(t_piles *pile)
 	int i;
 	int	min;
 
+	if (pile->len_b == pile->len)
+		return ;
 	i = pile->len_b + 1;
 	min = pile->a[pile->len_b];
 	pile->min_index = pile->len_b;
