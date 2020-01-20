@@ -24,9 +24,6 @@ void	ft_free_tab(char **tab)
 
 void	ft_free(t_piles *pile, char **args)
 {
-	int	i;
-
-	i = 0;
 	free(pile->a);
 	free(pile->b);
 	free(pile->quick.tab);
