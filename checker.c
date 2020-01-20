@@ -17,7 +17,9 @@ static int	ft_check(t_piles *pile)
 	int	i;
 
 	if (pile->len_b > 0)
+	{
 		return (INVALID);
+	}
 	i = 1;
 	while (i < pile->len)
 	{
@@ -30,10 +32,15 @@ static int	ft_check(t_piles *pile)
 	return (VALID);
 }
 
-static int	ft_do_instructions(t_piles *pile, t_checker *checker, int flag)
+static int	ft_do_instructions(t_piles *pile, t_checker *checker, int flag, int ret)
 {
 	int	i;
 
+	if (ret == GNL_ERROR)
+	{
+		ft_putstr_err("Error\n");
+		return (INVALID);
+	}
 	i = 0;
 	while (i < NB_INSTRUCTIONS
 		&& ft_strcmp(checker->ps_instruction, checker->instructions[i]))
@@ -85,6 +92,7 @@ int			main(int ac, char **av)
 	t_piles		*pile;
 	t_checker	checker;
 	int			flag;
+	int			ret;
 
 	if (ft_get_arg(ac, av, &args) == INVALID
 		|| ft_is_valid(args, &flag) == INVALID
@@ -94,9 +102,9 @@ int			main(int ac, char **av)
 		ft_putstr_err("Error\n");
 		return (-1);
 	}
-	while (get_next_line(0, &(checker.ps_instruction)) == GNL_READ)
+	while ((ret = get_next_line(0, &(checker.ps_instruction))))
 	{
-		pile->error = ft_do_instructions(pile, &checker, flag);
+		pile->error = ft_do_instructions(pile, &checker, flag, ret);
 		if (pile->error == INVALID)
 			break ;
 	}
