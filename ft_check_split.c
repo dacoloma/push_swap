@@ -17,9 +17,9 @@ int	ft_check_split(t_piles *pile)
 	int	i;
 
 	i = pile->len_b;
-	while (pile->a[i] >= pile->med)
+	while (i < pile->len && pile->a[i] >= pile->med)
 		i++;
 	if (i != pile->len)
-		return (0);
-	return (1);
+		return (INVALID);
+	return (VALID);
 }
