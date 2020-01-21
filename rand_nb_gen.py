@@ -1,4 +1,5 @@
 import random
+from sys import argv as av
 
 false = 0
 true = 1
@@ -12,7 +13,7 @@ def check(arr):
 			return false
 	return true
 
-arr = generator(-10, 10, 4)
+arr = generator(int(av[1]), int(av[2]), int(av[3]))
 ck = check(arr)
 if (ck == false):
 	print("ERROR")
