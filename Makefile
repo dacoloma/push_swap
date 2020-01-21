@@ -20,8 +20,8 @@ LIBFT = libft/libft.a
 
 CC = gcc
 
-CFLAGS = -g3 -fsanitize=address,undefined -Wall -Wextra -Werror 
-# CFLAGS = -g3 -Wall -Wextra -Werror 
+# CFLAGS = -g3 -fsanitize=address,undefined -Wall -Wextra -Werror 
+CFLAGS = -g3 -Wall -Wextra -Werror 
 
 SRC =	ft_init.c\
 		ft_putstr_err.c\
