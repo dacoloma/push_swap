@@ -64,7 +64,7 @@ static int		ft_get_content(const int fd, t_gnl *elem, char **tmp)
 			*tmp = ft_strnjoin(elem->content, buf, ret);
 		ft_strdel(&elem->content);
 		elem->content = *tmp;
-		if (ft_has_new_line(buf, '\n') == VALID)
+		if (ft_has_new_line(buf, ret) == VALID)
 			break ;
 	}
 	return (ret);
