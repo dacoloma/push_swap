@@ -6,35 +6,23 @@ NOCOLOR="\033[0m"
 clear
 make && clear
 
+limit=(
+    '3'
+	'4'
+    '5'
+	'12'
+	'700'
+	'750'
+	'5300'
+	'5400'
+)
+
 read -p "
 Enter MIN value: " MIN
 read -p "
 Enter MAX value: " MAX
 read -p "
 Enter RANGE value: " RANGE
-
-limit3=(
-	"3"
-	"4"
-)
-limit5=(
-	"5"
-	"12"
-)
-limit100=(
-	"700"
-	"750"
-)
-limit500=(
-	"5300"
-	"5400"
-)
-limit=(
-	limit3
-	limit5
-	limit100
-	limit500
-)
 i=0
 while true
 do
@@ -55,9 +43,9 @@ do
 	if [ "$test_pushswap" = "OK" ] ; then
 		printf "${GREEN}${test_pushswap}${NOCOLOR}"
 		nb_instructions=$(wc -l < tmp)
-		if (( "$nb_instructions" < ${limit[j][0]} )) ; then
+		if (( "$nb_instructions" < ${limit[($j*2)]} )) ; then
 			echo "${GREEN}${nb_instructions}${NOCOLOR}"
-		elif (( "$nb_instructions" < ${limit[j][1]} )) ; then
+		elif (( "$nb_instructions" < ${limit[($j*2+1)]} )) ; then
 			echo "${ORANGE}${nb_instructions}${NOCOLOR}"
 		else
 			echo "${RED}${nb_instructions}${NOCOLOR}"
@@ -68,7 +56,7 @@ do
 	rm -f tmp
 	read -n 1 -s -p "
 Continue with same values? (y/n or q to quit)" var
-	if [ "$var" = "n" ]; then
+	if [ "$var" = "n" ] ; then
 		clear
 		i=0
 		read -p "
@@ -77,7 +65,7 @@ Enter MIN value: " MIN
 Enter MAX value: " MAX
 		read -p "
 Enter RANGE value: " RANGE
-	elif [ "$var" = "q" ]; then
+	elif [ "$var" = "q" ] ; then
 		break
 	fi
 done
