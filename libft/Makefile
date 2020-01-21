@@ -18,8 +18,8 @@ HEADER = includes/libft.h includes/ft_printf.h
 
 CC = gcc
 
-CFLAGS = -g3 -fsanitize=address,undefined -Wall -Wextra -Werror
-# CFLAGS = -g3 -Wall -Wextra -Werror
+# CFLAGS = -g3 -fsanitize=address,undefined -Wall -Wextra -Werror
+CFLAGS = -g3 -Wall -Wextra -Werror
 
 vpath %c condition conv gnl ft_printf lst mem print str 
 
@@ -119,7 +119,6 @@ SRC =	ft_format.c \
 		ft_swap.c \
 		ft_elem.c \
 		ft_tabjoin.c\
-		ft_free_gnl.c\
 		get_next_line.c
 
 DIR_OBJ = obj

@@ -26,5 +26,5 @@ typedef struct	s_gnl
 t_gnl			*ft_new_elem(char *content, int fd);
 void			ft_add_elem(t_gnl **alst, t_gnl *new);
 t_gnl			*ft_get_elem(t_gnl **head, const int fd);
-void			ft_free_gnl(t_gnl *elem);
+void			ft_del_elem(t_gnl **head);
 #endif
