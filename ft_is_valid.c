@@ -26,7 +26,7 @@ int			ft_check_flag(char **tab)
 	return (i);
 }
 
-static int	ft_check_entry(char **tab, int start)
+static int	ft_check_number(char **tab, int start)
 {
 	int	i;
 
@@ -58,16 +58,24 @@ static int	ft_check_duplicate(char **tab, int start)
 	return (1);
 }
 
-int			ft_is_valid(char **tab, int *flag)
+int			ft_check_entry(char **tab, int *flag)
 {
 	*flag = ft_check_flag(tab);
 	if (*flag == -1)
 	{
 		return (0);
 	}
-	if (!ft_check_entry(tab, *flag) || !ft_check_duplicate(tab, *flag))
+	if (!ft_check_number(tab, *flag) || !ft_check_duplicate(tab, *flag))
 	{
 		return (0);
 	}
 	return (1);
+}
+
+int			ft_is_valid(int ac, char **av, char ***args, int *flag)
+{
+	if (ft_get_args(ac, av, args) == INVALID
+		|| ft_check_entry(*args, flag) == INVALID)
+		return (INVALID);
+	return (VALID);
 }
