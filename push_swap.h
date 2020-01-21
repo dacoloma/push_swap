@@ -45,7 +45,7 @@ typedef struct	s_piles
 	int			med_index;
 	int			max_index_b;
 	int			sorted_index_a;
-	t_quicksort	quick;
+	t_quicksort	*quick;
 	int			error;
 }				t_piles;
 typedef struct	s_checker
@@ -74,7 +74,7 @@ void			ft_rr(t_piles *pile);
 void			ft_rra(t_piles *pile);
 void			ft_rrb(t_piles *pile);
 void			ft_rrr(t_piles *pile);
-t_quicksort		ft_sort(t_piles *pile, int sort);
+t_quicksort		*ft_sort(t_piles *pile, int sort);
 void			ft_get_med(t_piles *pile);
 int				ft_get_sorted_pos_a(t_piles *pile);
 int				ft_get_sorted_pos_b(t_piles *pile);
