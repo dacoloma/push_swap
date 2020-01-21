@@ -67,7 +67,16 @@ static void	ft_result(t_piles *pile, char **args)
 	else
 	{
 		if (pile->error == VALID && ft_check(pile) == VALID)
-			ft_putstr("OK\n");
+		{
+			if (pile->len > 0)
+				ft_putstr("OK\n");
+			else
+			{
+				ft_free(pile, args);
+				ft_putstr_err("Error\n");
+				exit(EXIT_FAILURE);
+			}
+		}
 		else if (pile->error == VALID)
 			ft_putstr("KO\n");
 	}
