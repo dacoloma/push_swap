@@ -12,17 +12,18 @@
 
 #include "gnl.h"
 
-static int	ft_get_content(char *content, int fd, t_gnl **list)
+static int	ft_get_elem_content(char *content, int fd, t_gnl **list)
 {
 	if (content == NULL)
 	{
-		(*list)->content = (char *)malloc(sizeof(char));
-		if ((*list)->content == NULL)
-		{
-			free(*list);
-			return (INVALID);
-		}
-		(*list)->content[0] = '\0';
+		// (*list)->content = (char *)malloc(sizeof(char));
+		// if ((*list)->content == NULL)
+		// {
+		// 	free(*list);
+		// 	return (INVALID);
+		// }
+		// (*list)->content[0] = '\0';
+		(*list)->content = NULL;
 	}
 	else
 	{
@@ -46,7 +47,7 @@ t_gnl	*ft_new_elem(char *content, int fd)
 	list = (t_gnl *)malloc(sizeof(t_gnl));
 	if (list == NULL)
 		return (NULL);
-	if (ft_get_content(content, fd, &list) == INVALID)
+	if (ft_get_elem_content(content, fd, &list) == INVALID)
 		return (NULL);
 	return (list);
 }
@@ -55,6 +56,19 @@ void	ft_add_elem(t_gnl **alst, t_gnl *new)
 {
 	new->next = *alst;
 	*alst = new;
+}
+
+void	ft_del_elem(t_gnl **head)
+{
+	t_gnl	*tmp;
+
+	while (*head != NULL)
+	{
+		tmp = (*head)->next;
+		ft_strdel(&(*head)->content);
+		free(*head);
+		*head = tmp;
+	}
 }
 
 t_gnl	*ft_get_elem(t_gnl **head, const int fd)
@@ -67,10 +81,9 @@ t_gnl	*ft_get_elem(t_gnl **head, const int fd)
 	if (elem == NULL)
 	{
 		elem = ft_new_elem(NULL, fd);
-		if (elem == NULL || elem->content == NULL)
+		if (elem == NULL)// || elem->content == NULL)
 		{
-			ft_strdel(&(elem->content));
-			free(elem);
+			ft_del_elem(&(elem));
 			return (NULL);
 		}
 		ft_add_elem(head, elem);

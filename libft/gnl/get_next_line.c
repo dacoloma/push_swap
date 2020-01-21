@@ -99,16 +99,16 @@ static int		ft_get_content(const int fd, t_gnl *elem, char **tmp)
 	int				ret;
 	char			buf[BUFF_SIZE + 1];
 
+	
+	// ft_printf("DEBUG: %s\n", *tmp);
 	while ((ret = read(fd, buf, BUFF_SIZE)))
 	{
-		if (ret == -1)// || (ret > 0 && buf[ret - 1] == '\0'))
+		if (ret == -1)
 			return (GNL_ERROR);
 		buf[ret] = '\0';
 		if ((int)ft_strlen(buf) != ret)
-		{
 			return (GNL_ERROR);
-		}
-		if (*tmp[0] == '\0')
+		if (*tmp == NULL)
 			*tmp = ft_strndup(buf, ret);
 		else
 			*tmp = ft_strnjoin(elem->content, buf, ret);
@@ -131,13 +131,17 @@ int				get_next_line(const int fd, char **line)
 	if (!ft_is_valid(fd, line))
 		return (GNL_ERROR);
 	elem = ft_get_elem(&head, fd);
-	tmp = elem->content;
+	if (elem == NULL)
+		return (GNL_ERROR);
+	tmp = NULL;
+	if (elem->content != NULL)
+		tmp = elem->content;
 	ret = ft_get_content(fd, elem, &tmp);
 	if (ret == GNL_ERROR)
 		return (GNL_ERROR);
 	if ((ret == 0 && !elem->content) || *tmp == '\0')
 	{
-		ft_free_gnl(elem);
+		ft_del_elem(&(elem));
 		return (GNL_EOF);
 	}
 	ft_get_line(tmp, line, elem);
