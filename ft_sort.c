@@ -21,7 +21,8 @@ static int	ft_partition(t_quicksort *quick, int pivot, int left, int right)
 	{
 		while (left < quick->len && quick->tab[left] < pivot)
 			left++;
-		while (right_ptr > 0 && quick->tab[right_ptr] > pivot)
+		while (right_ptr < quick->len && right_ptr > 0
+			&& quick->tab[right_ptr] > pivot)
 			right_ptr--;
 		if (left >= right_ptr)
 			break ;
