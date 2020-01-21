@@ -49,6 +49,7 @@ static int	ft_do_instructions(t_piles *pile, t_checker *checker, int flag, int r
 		ft_putstr_err("Error\n");
 		return (INVALID);
 	}
+	ft_get_med(pile);
 	checker->ptr[i](pile);
 	if (flag == 1)
 		ft_print_piles(pile);
