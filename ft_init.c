@@ -38,27 +38,27 @@ static int	ft_convert(t_piles *pile, char **tab)
 		if (tmp >= INT_MIN && tmp <= INT_MAX)
 			(pile->a)[j++] = (int)tmp;
 		else
-			return (0);
+			return (INVALID);
 		i++;
 	}
-	return (1);
+	return (VALID);
 }
 
 int			ft_init(t_piles **pile, char **tab, int flag)
 {
 	if (!(*pile = (t_piles *)malloc(sizeof(t_piles))))
-		return (0);
+		return (INVALID);
 	(*pile)->len = ft_tablen(tab) - flag;
 	if (!((*pile)->a = (int *)malloc(sizeof(int) * ((*pile)->len))))
 	{
 		free(*pile);
-		return (0);
+		return (INVALID);
 	}
 	if (!((*pile)->b = (int *)malloc(sizeof(int) * ((*pile)->len))))
 	{
 		free((*pile)->a);
 		free(*pile);
-		return (0);
+		return (INVALID);
 	}
 	(*pile)->len_b = 0;
 	(*pile)->sorted_index_a = -1;
@@ -67,11 +67,18 @@ int			ft_init(t_piles **pile, char **tab, int flag)
 		free((*pile)->a);
 		free((*pile)->b);
 		free(*pile);
-		return (0);
+		return (INVALID);
 	}
 	(*pile)->quick = ft_sort(*pile, QUICK_SORT);
+	if ((*pile)->quick == NULL)
+	{
+		free((*pile)->a);
+		free((*pile)->b);
+		free(*pile);
+		return (INVALID);
+	}
 	(*pile)->error = VALID;
-	return (1);
+	return (VALID);
 }
 
 int			ft_init_checker(t_checker *checker)
@@ -99,5 +106,5 @@ int			ft_init_checker(t_checker *checker)
 	checker->instructions[9] = "rrb";
 	checker->instructions[10] = "rrr";
 	checker->ps_instruction = NULL;
-	return (1);
+	return (VALID);
 }
