@@ -119,6 +119,9 @@ SRC =	ft_format.c \
 		ft_swap.c \
 		ft_elem.c \
 		ft_tabjoin.c\
+		ft_strncat_gnl.c\
+		ft_strnjoin.c\
+		ft_strndup.c\
 		get_next_line.c
 
 DIR_OBJ = obj
