@@ -14,20 +14,14 @@
 
 static int	ft_get_elem_content(char *content, int fd, t_gnl **list)
 {
+	size_t	len;
+
 	if (content == NULL)
-	{
-		// (*list)->content = (char *)malloc(sizeof(char));
-		// if ((*list)->content == NULL)
-		// {
-		// 	free(*list);
-		// 	return (INVALID);
-		// }
-		// (*list)->content[0] = '\0';
 		(*list)->content = NULL;
-	}
 	else
 	{
-		(*list)->content = (char *)malloc(sizeof(char) * (ft_strlen(content) + 1));
+		len = ft_strlen(content);
+		(*list)->content = (char *)malloc(sizeof(char) * (len + 1));
 		if ((*list)->content == NULL)
 		{
 			free(*list);
@@ -40,7 +34,7 @@ static int	ft_get_elem_content(char *content, int fd, t_gnl **list)
 	return (VALID);
 }
 
-t_gnl	*ft_new_elem(char *content, int fd)
+t_gnl		*ft_new_elem(char *content, int fd)
 {
 	t_gnl	*list;
 
@@ -52,13 +46,13 @@ t_gnl	*ft_new_elem(char *content, int fd)
 	return (list);
 }
 
-void	ft_add_elem(t_gnl **alst, t_gnl *new)
+void		ft_add_elem(t_gnl **alst, t_gnl *new)
 {
 	new->next = *alst;
 	*alst = new;
 }
 
-void	ft_del_elem(t_gnl **head)
+void		ft_del_elem(t_gnl **head)
 {
 	t_gnl	*tmp;
 
@@ -71,7 +65,7 @@ void	ft_del_elem(t_gnl **head)
 	}
 }
 
-t_gnl	*ft_get_elem(t_gnl **head, const int fd)
+t_gnl		*ft_get_elem(t_gnl **head, const int fd)
 {
 	t_gnl	*elem;
 
@@ -81,7 +75,7 @@ t_gnl	*ft_get_elem(t_gnl **head, const int fd)
 	if (elem == NULL)
 	{
 		elem = ft_new_elem(NULL, fd);
-		if (elem == NULL)// || elem->content == NULL)
+		if (elem == NULL)
 		{
 			ft_del_elem(&(elem));
 			return (NULL);

@@ -32,54 +32,6 @@ static void		ft_get_line(char *tmp, char **line, t_gnl *elem)
 	ft_strdel(&tmp);
 }
 
-static char		*ft_strndup(char *src, int len)
-{
-	char	*cpy;
-	int		i;
-
-	cpy = (char *)malloc(sizeof(char) * (len + 1));
-	if (cpy == NULL)
-		return (NULL);
-	i = 0;
-	while (i < len)
-	{
-		cpy[i] = src[i];
-		i++;
-	}
-	cpy[i] = '\0';
-	return (cpy);
-}
-
-static char		*ft_strncat_gnl(char *s1, const char *s2, int len)
-{
-	int		i;
-	int		j;
-
-	i = ft_strlen(s1);
-	j = 0;
-	while (j < len)
-		s1[i++] = s2[j++];
-	s1[i] = '\0';
-	return (s1);
-}
-
-static char		*ft_strnjoin(char *s1, char *s2, int len2)
-{
-	char	*concat;
-	int		len1;
-
-	if (s1 == NULL || s2 == NULL)
-		return (NULL);
-	len1 = ft_strlen(s1);
-	concat = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
-	if (concat == NULL)
-		return (NULL);
-	ft_strcpy(concat, s1);
-	ft_strncat_gnl(concat, s2, len2);
-	concat[len1 + len2] = '\0';
-	return (concat);
-}
-
 static int		ft_has_new_line(char *buf, int len)
 {
 	int	i;
@@ -124,7 +76,6 @@ int				get_next_line(const int fd, char **line)
 	t_gnl			*elem;
 	char			*tmp;
 	int				ret;
-	
 
 	if (!ft_is_valid(fd, line))
 		return (GNL_ERROR);

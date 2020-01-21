@@ -71,7 +71,7 @@ static int	ft_get_str(char **tab, int len, char const *s, char split)
 		tab[wd_index] = ft_strsub(s, i, ft_char_count(s, split, i));
 		if (tab[wd_index] == NULL)
 		{
-			ft_free_tab(tab, wd_index);	
+			ft_free_tab(tab, wd_index);
 			return (INVALID);
 		}
 		while (s[i] && s[i] != split)
