@@ -99,8 +99,6 @@ static int		ft_get_content(const int fd, t_gnl *elem, char **tmp)
 	int				ret;
 	char			buf[BUFF_SIZE + 1];
 
-	
-	// ft_printf("DEBUG: %s\n", *tmp);
 	while ((ret = read(fd, buf, BUFF_SIZE)))
 	{
 		if (ret == -1)
