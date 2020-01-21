@@ -18,6 +18,7 @@
 # define NB_INSTRUCTIONS 11
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
+# define MEDIUM_STACK 7
 # include "libft.h"
 # include "ft_printf.h"
 # include <unistd.h>

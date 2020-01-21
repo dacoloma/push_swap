@@ -36,7 +36,7 @@ void	ft_sort_stack(t_piles *pile)
 {
 	if (ft_check_sort(pile) && pile->min_index == 0)
 		return ;
-	if (pile->len < 7)
+	if (pile->len < MEDIUM_STACK)
 		ft_medium_stack(pile);
 	else
 	{
