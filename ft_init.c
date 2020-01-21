@@ -12,29 +12,29 @@
 
 #include "push_swap.h"
 
-static int	ft_tablen(char **tab)
+static int	ft_tablen(char **args)
 {
-	int	i;
+	int	len;
 
-	i = 0;
-	while (tab[i])
+	len = 0;
+	while (args[len])
 	{
-		i++;
+		len++;
 	}
-	return (i);
+	return (len);
 }
 
-static int	ft_convert(t_piles *pile, char **tab)
+static int	ft_convert(t_piles *pile, char **args)
 {
 	int			i;
 	int			j;
 	long long	tmp;
 
-	i = ft_check_flag(tab);
+	i = ft_check_flag(args);
 	j = 0;
-	while (tab[i])
+	while (args[i])
 	{
-		tmp = ft_atol(tab[i]);
+		tmp = ft_atol(args[i]);
 		if (tmp >= INT_MIN && tmp <= INT_MAX)
 			(pile->a)[j++] = (int)tmp;
 		else
@@ -44,40 +44,40 @@ static int	ft_convert(t_piles *pile, char **tab)
 	return (VALID);
 }
 
-int			ft_init(t_piles **pile, char **tab, int flag)
+static void	ft_init_var(t_piles *pile, char **args, int flag)
+{
+	pile->len = ft_tablen(args) - flag;
+	pile->len_b = 0;
+	pile->sorted_index_a = -1;
+	pile->error = VALID;
+}
+
+int			ft_init(t_piles **pile, char **args, int flag)
 {
 	if (!(*pile = (t_piles *)malloc(sizeof(t_piles))))
 		return (INVALID);
-	(*pile)->len = ft_tablen(tab) - flag;
+	ft_init_var(*pile, args, flag);
 	if (!((*pile)->a = (int *)malloc(sizeof(int) * ((*pile)->len))))
 	{
-		free(*pile);
+		ft_free(*pile, args);
 		return (INVALID);
 	}
 	if (!((*pile)->b = (int *)malloc(sizeof(int) * ((*pile)->len))))
 	{
-		free((*pile)->a);
-		free(*pile);
+		ft_free(*pile, args);
 		return (INVALID);
 	}
-	(*pile)->len_b = 0;
-	(*pile)->sorted_index_a = -1;
-	if (!ft_convert(*pile, tab))
+	if (!ft_convert(*pile, args))
 	{
-		free((*pile)->a);
-		free((*pile)->b);
-		free(*pile);
+		ft_free(*pile, args);
 		return (INVALID);
 	}
 	(*pile)->quick = ft_sort(*pile, QUICK_SORT);
 	if ((*pile)->quick == NULL)
 	{
-		free((*pile)->a);
-		free((*pile)->b);
-		free(*pile);
+		ft_free(*pile, args);
 		return (INVALID);
 	}
-	(*pile)->error = VALID;
 	return (VALID);
 }
 

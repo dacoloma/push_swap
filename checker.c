@@ -57,6 +57,23 @@ static int	ft_do_instructions(t_piles *pile, t_checker *checker, int flag,
 	return (VALID);
 }
 
+static void	ft_result(t_piles *pile, char **args)
+{
+	if (pile->error == INVALID)
+	{
+		ft_free(pile, args);
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		if (pile->error == VALID && ft_check(pile) == VALID)
+			ft_putstr("OK\n");
+		else if (pile->error == VALID)
+			ft_putstr("KO\n");
+	}
+	ft_free(pile, args);
+}
+
 int			main(int ac, char **av)
 {
 	char		**args;
@@ -78,10 +95,6 @@ int			main(int ac, char **av)
 		if (pile->error == INVALID)
 			break ;
 	}
-	if (pile->error == VALID && ft_check(pile) == VALID)
-		ft_putstr("OK\n");
-	else if (pile->error == VALID)
-		ft_putstr("KO\n");
-	ft_free(pile, args);
+	ft_result(pile, args);
 	return (EXIT_SUCCESS);
 }
