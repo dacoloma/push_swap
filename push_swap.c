@@ -31,6 +31,11 @@ static int	ft_get_arg(int ac, char **av, char ***args)
 		*args = ft_tabjoin(tmp1, tmp2);
 		ft_free_tab(tmp1);
 		ft_free_tab(tmp2);
+		if (*args == NULL)
+		{
+			ft_putstr_err("Cannot allocate enough memory.\n");
+			return (INVALID);
+		}
 		i++;
 	}
 	return (VALID);

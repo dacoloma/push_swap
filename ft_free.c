@@ -21,7 +21,7 @@ void	ft_free_tab(char **tab)
 		i = 0;
 		while (tab[i])
 			ft_strdel(&tab[i++]);
-		ft_memdel((void **)tab);
+		free(tab);
 	}
 }
 
@@ -30,6 +30,7 @@ void	ft_free(t_piles *pile, char **args)
 	free(pile->a);
 	free(pile->b);
 	free(pile->quick->tab);
+	free(pile->quick);
 	free(pile);
 	ft_free_tab(args);
 }

@@ -48,10 +48,13 @@ static void	ft_free_tab(char **tab, int len)
 {
 	int	i;
 
-	i = 0;
-	while (i < len)
-		ft_strdel(&tab[i++]);
-	free(tab);
+	if (tab != NULL)
+	{
+		i = 0;
+		while (i < len)
+			ft_strdel(&tab[i++]);
+		free(tab);
+	}
 }
 
 static int	ft_get_str(char **tab, int len, char const *s, char split)
@@ -91,6 +94,9 @@ char		**ft_strsplit(char const *s, char c)
 	if (tab == NULL)
 		return (NULL);
 	if (ft_get_str(tab, len, s, c) == INVALID)
+	{
+		ft_free_tab(tab, len);
 		return (NULL);
+	}
 	return (tab);
 }
