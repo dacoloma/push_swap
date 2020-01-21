@@ -30,7 +30,8 @@ static int	ft_check(t_piles *pile)
 	return (VALID);
 }
 
-static int	ft_do_instructions(t_piles *pile, t_checker *checker, int flag, int ret)
+static int	ft_do_instructions(t_piles *pile, t_checker *checker, int flag,
+	int ret)
 {
 	int	i;
 
@@ -99,7 +100,7 @@ int			main(int ac, char **av)
 				|| ft_init_checker(&checker) == INVALID)
 	{
 		ft_putstr_err("Error\n");
-		return (-1);
+		return (EXIT_FAILURE);
 	}
 	while ((ret = get_next_line(0, &(checker.ps_instruction))))
 	{
@@ -112,5 +113,5 @@ int			main(int ac, char **av)
 	else if (pile->error == VALID)
 		ft_putstr("KO\n");
 	ft_free(pile, args);
-	return (0);
+	return (EXIT_SUCCESS);
 }
