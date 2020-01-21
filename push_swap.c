@@ -19,7 +19,7 @@ static int	ft_get_arg(int ac, char **av, char ***args)
 	char	**tmp2;
 
 	if (ac == 1)
-		exit(0);
+		exit(EXIT_SUCCESS);
 	if (ac < 2)
 		return (INVALID);
 	*args = ft_strsplit(av[1], ' ');
@@ -52,12 +52,12 @@ int			main(int ac, char **av)
 			|| ft_init(&pile, args, 0) == INVALID)
 	{
 		ft_putstr_err("Error\n");
-		exit(-1);
+		return (EXIT_FAILURE);
 	}
 	ft_get_min_index(pile);
 	ft_get_max_index(pile);
 	ft_get_med(pile);
 	ft_sort_stack(pile);
 	ft_free(pile, args);
-	return (0);
+	return (EXIT_SUCCESS);
 }
