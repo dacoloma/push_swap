@@ -17,6 +17,6 @@ void	ft_get_med(t_piles *pile)
 	int			med;
 
 	med = pile->len / 2 + pile->len_b / 2;
-	pile->med = pile->quick.tab[med];
+	pile->med = pile->quick->tab[med];
 	pile->med_index = ft_get_index(pile->a, pile->med);
 }

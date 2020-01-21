@@ -29,7 +29,7 @@ void	ft_free(t_piles *pile, char **args)
 {
 	free(pile->a);
 	free(pile->b);
-	free(pile->quick.tab);
+	free(pile->quick->tab);
 	free(pile);
 	ft_free_tab(args);
 }
