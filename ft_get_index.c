@@ -12,12 +12,12 @@
 
 #include "push_swap.h"
 
-int	ft_get_index(int *tab, int val)
+int	ft_get_index(t_piles *pile)
 {
 	int	i;
 
-	i = 0;
-	while (tab[i] && tab[i] != val)
+	i = pile->len_b;
+	while (i < pile->len && pile->a[i] != pile->med)
 	{
 		i++;
 	}

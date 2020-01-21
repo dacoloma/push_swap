@@ -81,7 +81,7 @@ void			ft_get_med(t_piles *pile);
 int				ft_get_sorted_pos_a(t_piles *pile);
 int				ft_get_sorted_pos_b(t_piles *pile);
 int				ft_get_final_pos_a(t_piles *pile);
-int				ft_get_index(int *tab, int val);
+int				ft_get_index(t_piles *pile);
 void			ft_get_min_index(t_piles *pile);
 void			ft_get_max_index(t_piles *pile);
 void			ft_get_best_rot_a(t_piles *pile, int pos);
