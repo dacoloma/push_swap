@@ -50,6 +50,7 @@ static void	ft_init_var(t_piles *pile, char **args, int flag)
 	pile->len_b = 0;
 	pile->sorted_index_a = -1;
 	pile->error = VALID;
+	pile->max_index_b = 0;
 }
 
 int			ft_init(t_piles **pile, char **args, int flag)

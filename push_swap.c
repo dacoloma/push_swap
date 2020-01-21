@@ -18,9 +18,12 @@ int			main(int ac, char **av)
 	t_piles	*pile;
 	int		flag;
 
+	pile = NULL;
+	args = NULL;
 	if (ft_is_valid(ac, av, &args, &flag) == INVALID
 			|| ft_init(&pile, args, flag) == INVALID)
 	{
+		ft_free(pile, args);
 		ft_putstr_err("Error\n");
 		return (EXIT_FAILURE);
 	}
