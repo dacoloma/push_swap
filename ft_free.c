@@ -38,8 +38,7 @@ void	ft_free(t_piles *pile, char **args)
 				free(pile->quick->tab);
 		if (pile->quick != NULL)
 			free(pile->quick);
-		if (pile != NULL)
-			free(pile);
+		free(pile);
 	}
 	ft_free_tab(args);
 }
