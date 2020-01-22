@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int			ft_check_flag(char **tab)
+int			ft_check_flag(char **tab, int *flag)
 {
 	int	i;
 
@@ -20,10 +20,14 @@ int			ft_check_flag(char **tab)
 	while (tab[i] && !ft_isnumber(tab[i]))
 	{
 		if (ft_strcmp(tab[i], "-v"))
-			return (-1);
+			return (INVALID);
 		i++;
 	}
-	return (i);
+	if (i > 0 && tab[i] == NULL)
+		return (INVALID);
+	if (i == 1)
+		*flag = 1;
+	return (VALID);
 }
 
 static int	ft_check_number(char **tab, int start)
@@ -60,8 +64,8 @@ static int	ft_check_duplicate(char **tab, int start)
 
 int			ft_check_entry(char **tab, int *flag)
 {
-	*flag = ft_check_flag(tab);
-	if (*flag == -1)
+	
+	if (ft_check_flag(tab, flag) == INVALID)
 	{
 		return (INVALID);
 	}
@@ -72,10 +76,10 @@ int			ft_check_entry(char **tab, int *flag)
 	return (VALID);
 }
 
-int			ft_is_valid(int ac, char **av, char ***args, int *flag)
+int			ft_is_valid(int ac, char **av, char ***args, t_piles *pile)
 {
 	if (ft_get_args(ac, av, args) == INVALID
-		|| ft_check_entry(*args, flag) == INVALID)
+		|| ft_check_entry(*args, &pile->flag) == INVALID)
 		return (INVALID);
 	return (VALID);
 }

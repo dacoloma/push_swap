@@ -48,6 +48,8 @@ typedef struct	s_piles
 	int			sorted_index_a;
 	t_quicksort	*quick;
 	int			error;
+	int			checker;
+	int			flag;
 }				t_piles;
 typedef struct	s_checker
 {
@@ -58,13 +60,14 @@ typedef struct	s_checker
 }				t_checker;
 void			ft_putstr_err(char *err);
 int				ft_get_args(int ac, char **av, char ***args);
-int				ft_init(t_piles **pile, char **tab, int flag);
+void			ft_init_var(t_piles *pile);
+int				ft_init(t_piles *pile, char **tab);
 int				ft_init_checker(t_checker *checker);
-int				ft_check_flag(char **tab);
+int				ft_check_flag(char **tab, int *flag);
 int				ft_check_split(t_piles *pile);
 int				ft_check_sort(t_piles *pile);
 int				ft_isnumber(char *str);
-int				ft_is_valid(int ac, char **av, char ***args, int *flag);
+int				ft_is_valid(int ac, char **av, char ***args, t_piles *pile);
 void			ft_pa(t_piles *pile);
 void			ft_pb(t_piles *pile);
 void			ft_sa(t_piles *pile);
