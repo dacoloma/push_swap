@@ -18,8 +18,8 @@ HEADER = includes/libft.h includes/ft_printf.h
 
 CC = gcc
 
-CFLAGS = -g3 -fsanitize=address,undefined -Wall -Wextra -Werror
-# CFLAGS = -g3 -Wall -Wextra -Werror
+# CFLAGS = -g3 -fsanitize=address,undefined -Wall -Wextra -Werror
+CFLAGS = -g3 -Wall -Wextra -Werror
 
 vpath %c condition conv gnl ft_printf lst mem print str 
 
