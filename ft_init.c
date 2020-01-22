@@ -65,23 +65,23 @@ int			ft_init(t_piles *pile, char **args)
 	pile->len = ft_tablen(args) - pile->flag;
 	if (!(pile->a = (int *)malloc(sizeof(int) * (pile->len))))
 	{
-		ft_free(pile, args);
+		// ft_free(pile, args);
 		return (INVALID);
 	}
 	if (!(pile->b = (int *)malloc(sizeof(int) * (pile->len))))
 	{
-		ft_free(pile, args);
+		// ft_free(pile, args);
 		return (INVALID);
 	}
 	if (!ft_convert(pile, args))
 	{
-		ft_free(pile, args);
+		// ft_free(pile, args);
 		return (INVALID);
 	}
 	pile->quick = ft_sort(pile, QUICK_SORT);
 	if (pile->quick == NULL)
 	{
-		ft_free(pile, args);
+		// ft_free(pile, args);
 		return (INVALID);
 	}
 	return (VALID);
