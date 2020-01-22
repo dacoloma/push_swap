@@ -88,13 +88,15 @@ int			main(int ac, char **av)
 	char		**args;
 	t_piles		*pile;
 	t_checker	checker;
-	int			flag;
 	int			ret;
 
-	pile = NULL;
+	if (!(pile = (t_piles *)malloc(sizeof(t_piles))))
+		return (EXIT_FAILURE);
+	ft_init_var(pile);
+	pile->checker = 1;
 	args = NULL;
-	if (ft_is_valid(ac, av, &args, &flag) == INVALID
-			|| ft_init(&pile, args, flag) == INVALID
+	if (ft_is_valid(ac, av, &args, pile) == INVALID
+			|| ft_init(pile, args) == INVALID
 				|| ft_init_checker(&checker) == INVALID)
 	{
 		ft_free(pile, args);
@@ -103,7 +105,7 @@ int			main(int ac, char **av)
 	}
 	while ((ret = get_next_line(0, &(checker.ps_instruction))))
 	{
-		pile->error = ft_do_instructions(pile, &checker, flag, ret);
+		pile->error = ft_do_instructions(pile, &checker, pile->flag, ret);
 		if (pile->error == INVALID)
 			break ;
 	}

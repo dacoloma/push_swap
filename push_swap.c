@@ -16,12 +16,13 @@ int			main(int ac, char **av)
 {
 	char	**args;
 	t_piles	*pile;
-	int		flag;
 
-	pile = NULL;
+	if (!(pile = (t_piles *)malloc(sizeof(t_piles))))
+		return (EXIT_FAILURE);
+	ft_init_var(pile);
 	args = NULL;
-	if (ft_is_valid(ac, av, &args, &flag) == INVALID
-			|| ft_init(&pile, args, flag) == INVALID)
+	if (ft_is_valid(ac, av, &args, pile) == INVALID
+			|| ft_init(pile, args) == INVALID)
 	{
 		ft_free(pile, args);
 		ft_putstr_err("Error\n");
