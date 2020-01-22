@@ -17,7 +17,7 @@ void	ft_ra(t_piles *pile)
 	int	i;
 	int	tmp;
 
-	if (pile->len < 2)
+	if (pile->len - pile->len_b < 2)
 		return ;
 	i = pile->len_b + 1;
 	tmp = (pile->a)[i - 1];
