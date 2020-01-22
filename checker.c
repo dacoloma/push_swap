@@ -90,6 +90,8 @@ int			main(int ac, char **av)
 	t_checker	checker;
 	int			ret;
 
+	if (ac == 1)
+		return (EXIT_SUCCESS);
 	if (!(pile = (t_piles *)malloc(sizeof(t_piles))))
 		return (EXIT_FAILURE);
 	ft_init_var(pile);

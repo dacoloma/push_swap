@@ -27,8 +27,8 @@ int			ft_get_args(int ac, char **av, char ***args)
 	char	**tmp1;
 	char	**tmp2;
 
-	if (ac == 1)
-		exit(EXIT_SUCCESS);
+	// if (ac == 1)
+	// 	exit(EXIT_SUCCESS);
 	if (ac < 2)
 		return (INVALID);
 	*args = ft_strsplit(av[1], ' ');
