@@ -30,6 +30,7 @@ static int	ft_get_elem_content(char *content, int fd, t_gnl **list)
 		ft_strcpy((*list)->content, content);
 	}
 	(*list)->fd = fd;
+	(*list)->tmp = NULL;
 	(*list)->next = NULL;
 	return (VALID);
 }
@@ -60,6 +61,7 @@ void		ft_del_elem(t_gnl **head)
 	{
 		tmp = (*head)->next;
 		ft_strdel(&(*head)->content);
+		// ft_strdel(&(*head)->tmp);
 		free(*head);
 		*head = tmp;
 	}

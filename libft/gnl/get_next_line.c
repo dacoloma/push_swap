@@ -74,25 +74,26 @@ int				get_next_line(const int fd, char **line)
 {
 	static t_gnl	*head = NULL;
 	t_gnl			*elem;
-	char			*tmp;
 	int				ret;
 
 	if (!ft_is_valid(fd, line))
+	{
+		ft_del_elem(&head);
 		return (GNL_ERROR);
+	}
 	elem = ft_get_elem(&head, fd);
 	if (elem == NULL)
 		return (GNL_ERROR);
-	tmp = NULL;
 	if (elem->content != NULL)
-		tmp = elem->content;
-	ret = ft_get_content(fd, elem, &tmp);
+		elem->tmp = elem->content;
+	ret = ft_get_content(fd, elem, &elem->tmp);
 	if (ret == GNL_ERROR)
 		return (GNL_ERROR);
-	if ((ret == 0 && !elem->content) || *tmp == '\0')
+	if ((ret == 0 && !elem->content) || *(elem->tmp) == '\0')
 	{
 		ft_del_elem(&(elem));
 		return (GNL_EOF);
 	}
-	ft_get_line(tmp, line, elem);
+	ft_get_line(elem->tmp, line, elem);
 	return (GNL_READ);
 }

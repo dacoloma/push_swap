@@ -19,8 +19,9 @@
 
 typedef struct	s_gnl
 {
-	char			*content;
 	int				fd;
+	char			*content;
+	char			*tmp;
 	struct s_gnl	*next;
 }				t_gnl;
 t_gnl			*ft_new_elem(char *content, int fd);
