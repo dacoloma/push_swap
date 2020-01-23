@@ -15,6 +15,8 @@
 # define QUICK_SORT 0
 # define ASC 0
 # define DESC 1
+# define PUSH_SWAP 0
+# define CHECKER 1
 # define NB_INSTRUCTIONS 11
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
@@ -67,7 +69,7 @@ int				ft_check_flag(char **tab, int *flag);
 int				ft_check_split(t_piles *pile);
 int				ft_check_sort(t_piles *pile);
 int				ft_isnumber(char *str);
-int				ft_is_valid(int ac, char **av, char ***args, t_piles *pile);
+int				ft_is_valid(int ac, char **av, t_piles **pile, int prog);
 void			ft_pa(t_piles *pile);
 void			ft_pb(t_piles *pile);
 void			ft_sa(t_piles *pile);
@@ -95,7 +97,7 @@ void			ft_short_stack(t_piles *pile);
 void			ft_medium_stack(t_piles *pile);
 void			ft_long_stack(t_piles *pile);
 void			ft_sort_left(t_piles *pile);
-void			ft_free(t_piles *pile, char **args);
+void			ft_free(t_piles *pile);
 void			ft_free_tab(char **tab);
 int				ft_rot_count_a(t_piles *pile, int index);
 int				ft_rot_count_b(t_piles *pile, int index);

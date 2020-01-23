@@ -14,23 +14,17 @@
 
 int			main(int ac, char **av)
 {
-	char	**args;
 	t_piles	*pile;
 
 	if (ac == 1)
 		return (EXIT_SUCCESS);
-	if (!(pile = (t_piles *)malloc(sizeof(t_piles))))
-		return (EXIT_FAILURE);
-	ft_init_var(pile);
-	args = NULL;
-	if (ft_is_valid(ac, av, &args, pile) == INVALID
-			|| ft_init(pile, args) == INVALID)
+	if (ft_is_valid(ac, av, &pile, PUSH_SWAP) == INVALID)
 	{
-		ft_free(pile, args);
+		ft_free(pile);
 		ft_putstr_err("Error\n");
 		return (EXIT_FAILURE);
 	}
 	ft_sort_stack(pile);
-	ft_free(pile, args);
+	ft_free(pile);
 	return (EXIT_SUCCESS);
 }

@@ -76,10 +76,23 @@ int			ft_check_entry(char **tab, int *flag)
 	return (VALID);
 }
 
-int			ft_is_valid(int ac, char **av, char ***args, t_piles *pile)
+int			ft_is_valid(int ac, char **av, t_piles **pile, int prog)
 {
-	if (ft_get_args(ac, av, args) == INVALID
-		|| ft_check_entry(*args, &pile->flag) == INVALID)
+	char **args;
+
+	if (!(*pile = (t_piles *)malloc(sizeof(t_piles))))
+		return (EXIT_FAILURE);
+	ft_init_var(*pile);
+	if (prog == CHECKER)
+		(*pile)->checker = 1;
+	if (ft_get_args(ac, av, &args) == INVALID
+		|| ft_check_entry(args, &(*pile)->flag) == INVALID)
 		return (INVALID);
+	if (ft_init(*pile, args) == INVALID)
+	{
+		ft_free_tab(args);
+		return (INVALID);
+	}
+	ft_free_tab(args);
 	return (VALID);
 }
