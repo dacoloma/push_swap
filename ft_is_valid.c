@@ -86,7 +86,10 @@ int			ft_is_valid(int ac, char **av, t_piles **pile, int prog)
 		(*pile)->checker = 1;
 	if (ft_get_args(ac, av, &args) == INVALID
 		|| ft_check_entry(args, &(*pile)->flag) == INVALID)
+	{
+		ft_free_tab(args);
 		return (INVALID);
+	}
 	if (ft_init(*pile, args) == INVALID)
 	{
 		ft_free_tab(args);
