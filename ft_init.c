@@ -50,7 +50,6 @@ void		ft_init_var(t_piles *pile)
 {
 	pile->a = NULL;
 	pile->b = NULL;
-	// ft_printf("DEBUG\n");
 	pile->quick = NULL;
 	pile->len_b = 0;
 	pile->sorted_index_a = -1;
@@ -64,26 +63,17 @@ int			ft_init(t_piles *pile, char **args)
 {
 	pile->len = ft_tablen(args) - pile->flag;
 	if (!(pile->a = (int *)malloc(sizeof(int) * (pile->len))))
-	{
-		// ft_free(pile, args);
 		return (INVALID);
-	}
 	if (!(pile->b = (int *)malloc(sizeof(int) * (pile->len))))
-	{
-		// ft_free(pile, args);
 		return (INVALID);
-	}
 	if (!ft_convert(pile, args))
-	{
-		// ft_free(pile, args);
 		return (INVALID);
-	}
+	ft_get_min_index(pile);
+	ft_get_max_index(pile);
 	pile->quick = ft_sort(pile, QUICK_SORT);
 	if (pile->quick == NULL)
-	{
-		// ft_free(pile, args);
 		return (INVALID);
-	}
+	ft_get_med(pile);
 	return (VALID);
 }
 
