@@ -57,11 +57,11 @@ static int	ft_do_instructions(t_piles *pile, t_checker *checker, int flag,
 	return (VALID);
 }
 
-static void	ft_result(t_piles *pile, char **args)
+static void	ft_result(t_piles *pile)//, char **args)
 {
 	if (pile->error == INVALID)
 	{
-		ft_free(pile, args);
+		ft_free(pile);//, args);
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -72,7 +72,7 @@ static void	ft_result(t_piles *pile, char **args)
 				ft_putstr("OK\n");
 			else
 			{
-				ft_free(pile, args);
+				ft_free(pile);//, args);
 				ft_putstr_err("Error\n");
 				exit(EXIT_FAILURE);
 			}
@@ -80,37 +80,33 @@ static void	ft_result(t_piles *pile, char **args)
 		else if (pile->error == VALID)
 			ft_putstr("KO\n");
 	}
-	ft_free(pile, args);
+	ft_free(pile);//, args);
 }
 
 int			main(int ac, char **av)
 {
-	char		**args;
 	t_piles		*pile;
 	t_checker	checker;
 	int			ret;
 
 	if (ac == 1)
 		return (EXIT_SUCCESS);
-	if (!(pile = (t_piles *)malloc(sizeof(t_piles))))
-		return (EXIT_FAILURE);
-	ft_init_var(pile);
-	pile->checker = 1;
-	args = NULL;
-	if (ft_is_valid(ac, av, &args, pile) == INVALID
-			|| ft_init(pile, args) == INVALID
-				|| ft_init_checker(&checker) == INVALID)
+	if (ft_is_valid(ac, av, &pile, CHECKER) == INVALID
+		|| ft_init_checker(&checker) == INVALID)
 	{
-		ft_free(pile, args);
+		ft_free(pile);
 		ft_putstr_err("Error\n");
 		return (EXIT_FAILURE);
 	}
-	while ((ret = get_next_line(0, &(checker.ps_instruction))))
+	ret = get_next_line(0, &(checker.ps_instruction));
+	while (ret == 1)
 	{
-		pile->error = ft_do_instructions(pile, &checker, pile->flag, ret);
+			pile->error = ft_do_instructions(pile, &checker, pile->flag, ret);
 		if (pile->error == INVALID)
-			break ;
+			ret = get_next_line(-1, &(checker.ps_instruction));
+		else
+			ret = get_next_line(0, &(checker.ps_instruction));
 	}
-	ft_result(pile, args);
+	ft_result(pile);
 	return (EXIT_SUCCESS);
 }
