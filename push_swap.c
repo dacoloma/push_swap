@@ -30,9 +30,6 @@ int			main(int ac, char **av)
 		ft_putstr_err("Error\n");
 		return (EXIT_FAILURE);
 	}
-	ft_get_min_index(pile);
-	ft_get_max_index(pile);
-	ft_get_med(pile);
 	ft_sort_stack(pile);
 	ft_free(pile, args);
 	return (EXIT_SUCCESS);
