@@ -105,7 +105,7 @@ int			main(int ac, char **av)
 		if (pile->error == INVALID || ret == GNL_ERROR)
 			break ;
 	}
-	if (ret == GNL_ERROR)
+	if (pile->error == INVALID || ret == GNL_ERROR)
 		get_next_line(-1, &(checker.ps_instruction));
 	ft_result(pile);
 	return (EXIT_SUCCESS);
