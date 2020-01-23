@@ -64,7 +64,6 @@ static int	ft_check_duplicate(char **tab, int start)
 
 int			ft_check_entry(char **tab, int *flag)
 {
-	
 	if (ft_check_flag(tab, flag) == INVALID)
 	{
 		return (INVALID);

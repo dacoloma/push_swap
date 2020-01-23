@@ -61,7 +61,6 @@ void		ft_del_elem(t_gnl **head)
 	{
 		tmp = (*head)->next;
 		ft_strdel(&(*head)->content);
-		// ft_strdel(&(*head)->tmp);
 		free(*head);
 		*head = tmp;
 	}

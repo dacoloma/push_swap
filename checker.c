@@ -57,11 +57,11 @@ static int	ft_do_instructions(t_piles *pile, t_checker *checker, int flag,
 	return (VALID);
 }
 
-static void	ft_result(t_piles *pile)//, char **args)
+static void	ft_result(t_piles *pile)
 {
 	if (pile->error == INVALID)
 	{
-		ft_free(pile);//, args);
+		ft_free(pile);
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -72,7 +72,7 @@ static void	ft_result(t_piles *pile)//, char **args)
 				ft_putstr("OK\n");
 			else
 			{
-				ft_free(pile);//, args);
+				ft_free(pile);
 				ft_putstr_err("Error\n");
 				exit(EXIT_FAILURE);
 			}
@@ -80,7 +80,7 @@ static void	ft_result(t_piles *pile)//, char **args)
 		else if (pile->error == VALID)
 			ft_putstr("KO\n");
 	}
-	ft_free(pile);//, args);
+	ft_free(pile);
 }
 
 int			main(int ac, char **av)
@@ -101,9 +101,9 @@ int			main(int ac, char **av)
 	while ((ret = get_next_line(0, &(checker.ps_instruction)))
 		&& pile->error == VALID)
 	{
-			pile->error = ft_do_instructions(pile, &checker, pile->flag, ret);
+		pile->error = ft_do_instructions(pile, &checker, pile->flag, ret);
 		if (pile->error == INVALID || ret == GNL_ERROR)
-			break;
+			break ;
 	}
 	if (ret == GNL_ERROR)
 		get_next_line(-1, &(checker.ps_instruction));

@@ -40,5 +40,4 @@ void	ft_free(t_piles *pile)
 			free(pile->quick);
 		free(pile);
 	}
-	// ft_free_tab(args);
 }
