@@ -98,15 +98,15 @@ int			main(int ac, char **av)
 		ft_putstr_err("Error\n");
 		return (EXIT_FAILURE);
 	}
-	ret = get_next_line(0, &(checker.ps_instruction));
-	while (ret == 1)
+	while ((ret = get_next_line(0, &(checker.ps_instruction)))
+		&& pile->error == VALID)
 	{
 			pile->error = ft_do_instructions(pile, &checker, pile->flag, ret);
-		if (pile->error == INVALID)
-			ret = get_next_line(-1, &(checker.ps_instruction));
-		else
-			ret = get_next_line(0, &(checker.ps_instruction));
+		if (pile->error == INVALID || ret == GNL_ERROR)
+			break;
 	}
+	if (ret == GNL_ERROR)
+		get_next_line(-1, &(checker.ps_instruction));
 	ft_result(pile);
 	return (EXIT_SUCCESS);
 }
