@@ -90,6 +90,8 @@ char		**ft_strsplit(char const *s, char c)
 	if (s == NULL)
 		return (NULL);
 	len = ft_word_count(s, c);
+	if (len == 0)
+		return (NULL);
 	tab = (char **)malloc(sizeof(char *) * (len + 1));
 	if (tab == NULL)
 		return (NULL);
