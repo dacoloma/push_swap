@@ -4,7 +4,7 @@ from sys import argv as av
 false = 0
 true = 1
 def generator(min, max, n):
-	arr = random.sample(range(min, max+1), n)
+	arr = random.sample(range(min, max), n)
 	return arr
 def check(arr):
 	sort_arr = sorted(arr)
