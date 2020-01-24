@@ -79,6 +79,8 @@ int			ft_is_valid(int ac, char **av, t_piles **pile, int prog)
 {
 	char **args;
 
+	if (ac == 1)
+		exit (EXIT_SUCCESS);
 	*pile = (t_piles *)malloc(sizeof(t_piles));
 	if (*pile == NULL)
 		return (INVALID);

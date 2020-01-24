@@ -89,8 +89,6 @@ int			main(int ac, char **av)
 	t_checker	checker;
 	int			ret;
 
-	if (ac == 1)
-		return (EXIT_SUCCESS);
 	if (ft_is_valid(ac, av, &pile, CHECKER) == INVALID
 		|| ft_init_checker(&checker) == INVALID)
 	{
@@ -98,6 +96,8 @@ int			main(int ac, char **av)
 		ft_putstr_err("Error\n");
 		return (EXIT_FAILURE);
 	}
+	if (pile->flag == 1)
+		ft_print_piles(pile);
 	while ((ret = get_next_line(0, &(checker.ps_instruction)))
 		&& pile->error == VALID)
 	{
