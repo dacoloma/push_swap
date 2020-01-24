@@ -62,11 +62,13 @@ void		ft_init_var(t_piles *pile)
 int			ft_init(t_piles *pile, char **args)
 {
 	pile->len = ft_tablen(args) - pile->flag;
-	if (!(pile->a = (int *)malloc(sizeof(int) * (pile->len))))
+	pile->a = (int *)malloc(sizeof(int) * (pile->len));
+	if (pile->a == NULL)
 		return (INVALID);
-	if (!(pile->b = (int *)malloc(sizeof(int) * (pile->len))))
+	pile->b = (int *)malloc(sizeof(int) * (pile->len));
+	if (pile->b == NULL)
 		return (INVALID);
-	if (!ft_convert(pile, args))
+	if (ft_convert(pile, args) == INVALID)
 		return (INVALID);
 	ft_get_min_index(pile);
 	ft_get_max_index(pile);
