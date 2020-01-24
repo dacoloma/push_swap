@@ -20,7 +20,7 @@ static int		ft_is_valid(const int fd, char **line)
 					|| BUFF_SIZE < 1)));
 }
 
-static void		ft_get_line(char *tmp, char **line, t_gnl *elem)
+static int		ft_get_line(char *tmp, char **line, t_gnl *elem)
 {
 	int	i;
 
@@ -28,8 +28,11 @@ static void		ft_get_line(char *tmp, char **line, t_gnl *elem)
 	while (tmp[i] && tmp[i] != '\n')
 		i++;
 	*line = ft_strsub(tmp, 0, i);
+	if (*line == NULL)
+		return (GNL_ERROR);
 	elem->content = (tmp[i] == '\n') ? ft_strdup(tmp + i + 1) : NULL;
 	ft_strdel(&tmp);
+	return (GNL_READ);
 }
 
 static int		ft_has_new_line(char *buf, int len)
@@ -63,6 +66,8 @@ static int		ft_get_content(const int fd, t_gnl *elem, char **tmp)
 		else
 			*tmp = ft_strnjoin(elem->content, buf, ret);
 		ft_strdel(&elem->content);
+		if (*tmp == NULL)
+			return (GNL_ERROR);
 		elem->content = *tmp;
 		if (ft_has_new_line(buf, ret) == VALID)
 			break ;
@@ -94,6 +99,7 @@ int				get_next_line(const int fd, char **line)
 		ft_del_elem(&(elem));
 		return (GNL_EOF);
 	}
-	ft_get_line(elem->tmp, line, elem);
+	if (ft_get_line(elem->tmp, line, elem) == GNL_ERROR)
+		return (GNL_ERROR);
 	return (GNL_READ);
 }
